@@ -2,23 +2,24 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { 
-  Mail, Phone, MapPin, ArrowRight, 
-  PhoneCall, Sparkles, Globe2 
+import {
+  Mail, Phone, MapPin, ArrowRight,
+  PhoneCall, Sparkles, Globe2
 } from "lucide-react";
-import { 
-  FaTwitter, FaLinkedinIn, FaGithub, FaInstagram, 
-  FaFacebookF, FaYoutube, FaWhatsapp 
+import {
+  FaTwitter, FaLinkedinIn, FaGithub, FaInstagram,
+  FaFacebookF, FaYoutube, FaWhatsapp
 } from "react-icons/fa";
 import { COMPANY } from "@/lib/utils";
+import { useWebSettings } from "@/context/WebSettingsContext";
 import { triggerOnboardingModal } from "@/components/shared/OnboardingModal";
 import { triggerBookDemoModal } from "@/components/shared/BookDemoModal";
 
 function LogoMark({ size = 68 }: { size?: number }) {
   return (
     <img
-      src="/images/logo.png"
-      alt="NextGen Tech Solution"
+      // src="/images/logo.png"
+      alt="Eveda Online Services"
       style={{ height: `${size}px`, width: "auto", display: "block", objectFit: "contain" }}
       onError={(e) => { e.currentTarget.style.display = "none"; }}
     />
@@ -28,41 +29,41 @@ function LogoMark({ size = 68 }: { size?: number }) {
 const footerLinks = {
   Services: [
     { label: "Web Development", href: "/services/web" },
-    { label: "Mobile Apps",     href: "/services/mobile" },
-    { label: "SaaS Platforms",  href: "/services/saas" },
-    { label: "AI Solutions",    href: "/services/ai" },
-    { label: "Cloud & DevOps",  href: "/services/cloud" },
-    { label: "UI/UX Design",    href: "/services/design" },
+    { label: "Mobile Apps", href: "/services/mobile" },
+    { label: "SaaS Platforms", href: "/services/saas" },
+    { label: "AI Solutions", href: "/services/ai" },
+    { label: "Cloud & DevOps", href: "/services/cloud" },
+    { label: "UI/UX Design", href: "/services/design" },
   ],
   Products: [
     { label: "Documents Management", href: "/products/dms" },
-    { label: "CRM System",           href: "/products/crm" },
-    { label: "E-Commerce System",    href: "/products/ecommerce" },
-    { label: "Hospital Management",  href: "/products/hms" },
-    { label: "HR Payroll & Roster",  href: "/products/hrms" },
+    { label: "CRM System", href: "/products/crm" },
+    { label: "E-Commerce System", href: "/products/ecommerce" },
+    { label: "Hospital Management", href: "/products/hms" },
+    { label: "HR Payroll & Roster", href: "/products/hrms" },
     { label: "POS & Retail Solutions", href: "/products/pos" },
   ],
   Company: [
-    { label: "About Us",     href: "/about" },
-    { label: "Our Team",      href: "/team" },
+    { label: "About Us", href: "/about" },
+    { label: "Our Team", href: "/team" },
     { label: "Our Portfolio", href: "/portfolio" },
-    { label: "Careers",      href: "/careers" },
+    { label: "Careers", href: "/careers" },
     { label: "Blog & Insights", href: "/blog" },
-    { label: "Contact Us",   href: "/contact" },
+    { label: "Contact Us", href: "/contact" },
   ]
 };
 
 export default function Footer() {
-  const [settings, setSettings] = useState<any>(COMPANY);
+  const { settings } = useWebSettings();
   const [isScrollActive, setIsScrollActive] = useState(false);
 
   const socials = [
-    { icon: FaLinkedinIn, href: settings.social.linkedin,  label: "LinkedIn" },
-    { icon: FaTwitter,    href: settings.social.twitter,   label: "Twitter" },
-    { icon: FaGithub,     href: settings.social.github,    label: "GitHub" },
-    { icon: FaInstagram,  href: settings.social.instagram, label: "Instagram" },
-    { icon: FaFacebookF,  href: settings.social.facebook,  label: "Facebook" },
-    { icon: FaYoutube,    href: settings.social.youtube,   label: "YouTube" },
+    { icon: FaLinkedinIn, href: settings.social.linkedin, label: "LinkedIn" },
+    { icon: FaTwitter, href: settings.social.twitter, label: "Twitter" },
+    { icon: FaGithub, href: settings.social.github, label: "GitHub" },
+    { icon: FaInstagram, href: settings.social.instagram, label: "Instagram" },
+    { icon: FaFacebookF, href: settings.social.facebook, label: "Facebook" },
+    { icon: FaYoutube, href: settings.social.youtube, label: "YouTube" },
   ];
 
   useEffect(() => {
@@ -75,21 +76,6 @@ export default function Footer() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-
-    fetch("/api/settings")
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.data) {
-          setSettings({
-            ...COMPANY,
-            phone: json.data.phone || COMPANY.phone,
-            email: json.data.email || COMPANY.email,
-            whatsapp: json.data.whatsapp || COMPANY.whatsapp,
-            location: json.data.address || COMPANY.location,
-          });
-        }
-      })
-      .catch((err) => console.error("Error loading web settings in Footer:", err));
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -105,7 +91,7 @@ export default function Footer() {
             "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(124, 58, 237, 0.25) 0%, rgba(109, 40, 217, 0.1) 45%, transparent 80%)",
         }}
       />
-      
+
       {/* Subtle secondary glow bottom-right */}
       <div
         className="absolute bottom-0 right-0 w-[600px] h-[500px] pointer-events-none"
@@ -114,7 +100,7 @@ export default function Footer() {
             "radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.12) 0%, transparent 70%)",
         }}
       />
-      
+
       {/* Grid dot pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
@@ -122,7 +108,7 @@ export default function Footer() {
           backgroundSize: "32px 32px",
         }}
       />
-      
+
       {/* Top neon border glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7C3AED]/70 to-transparent" />
 
@@ -132,7 +118,7 @@ export default function Footer() {
         {/* ══ STUNNING GLASSMOPHIC CTA BANNER ══ */}
         <div className="mb-16 p-8 sm:p-10 rounded-[32px] bg-white/[0.02] border border-white/[0.06] backdrop-blur-md relative overflow-hidden group/cta">
           <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full blur-[80px] opacity-25 pointer-events-none bg-[#7C3AED]" />
-          
+
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
             <div className="text-center lg:text-left space-y-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-[#a78bfa] bg-[#7C3AED]/10 border border-[#7C3AED]/20">
@@ -153,7 +139,7 @@ export default function Footer() {
               >
                 Get Free Estimate <ArrowRight className="w-4 h-4" />
               </button>
-              
+
               <button
                 onClick={() => triggerBookDemoModal()}
                 className="h-12 px-7 text-white font-extrabold text-xs uppercase tracking-widest rounded-full transition-all duration-300 border border-white/10 hover:border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
@@ -194,7 +180,7 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.label}>
-                      <Link 
+                      <Link
                         href={link.href}
                         className="text-[13px] text-slate-300 hover:text-white transition-all hover:translate-x-1 inline-block duration-200"
                       >
@@ -213,7 +199,7 @@ export default function Footer() {
               <span className="w-1 h-3.5 rounded-full bg-[#7C3AED] inline-block shadow-[0_0_8px_#7C3AED]" />
               Get in Touch
             </h4>
-            
+
             {/* Contact Details */}
             <div className="space-y-3.5">
               <a href={`mailto:${settings.email}`}
@@ -223,7 +209,7 @@ export default function Footer() {
                 </div>
                 <span className="truncate">{settings.email}</span>
               </a>
-              
+
               <a href={`tel:${settings.phone.replace(/\s+/g, "")}`}
                 className="flex items-center gap-3 text-[13px] text-slate-200 hover:text-[#a78bfa] transition-colors duration-250 group">
                 <div className="w-8 h-8 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center shrink-0 group-hover:border-[#7C3AED]/40 group-hover:bg-[#7C3AED]/10 transition-all">
@@ -231,7 +217,7 @@ export default function Footer() {
                 </div>
                 <span>{settings.phone}</span>
               </a>
-              
+
               <div className="flex items-start gap-3 text-[13px] text-slate-200">
                 <div className="w-8 h-8 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center shrink-0">
                   <MapPin className="w-3.5 h-3.5 text-[#a78bfa]" />
@@ -243,11 +229,11 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex flex-wrap gap-2 pt-2 border-t border-white/[0.06]">
               {socials.map(({ icon: Icon, href, label }) => (
-                <a 
-                  key={label} 
-                  href={href} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/[0.08] bg-white/[0.03] text-slate-300 hover:text-white hover:border-[#7C3AED]/40 hover:bg-[#7C3AED]/15 transition-all duration-300 hover:scale-105 active:scale-95"
                 >
@@ -265,7 +251,7 @@ export default function Footer() {
             <Globe2 className="w-4 h-4 text-[#a78bfa]" />
             <span className="text-[10px] font-black uppercase tracking-widest text-[#a78bfa]">Development Hubs</span>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-y-2 gap-x-4 text-[11px] font-bold text-slate-200 tracking-wider">
             <span>Ranchi (HQ)</span>
             <span className="text-white/20">•</span>
@@ -313,7 +299,7 @@ export default function Footer() {
       </div>
 
       {/* ══ PERSISTENT FLOATING CALL & WHATSAPP CTA WIDGET (Sits above Scroll-to-Top button dynamically) ══ */}
-      <div 
+      <div
         className="fixed right-6 z-45 flex flex-col gap-3.5 items-end transition-all duration-300 ease-out"
         style={{ bottom: isScrollActive ? "80px" : "24px" }}
       >

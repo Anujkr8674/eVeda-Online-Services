@@ -24,7 +24,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   web: {
     id: "web",
     title: "Web Development",
-    metaTitle: "Custom Web Application Development Services | NextGen Tech",
+    metaTitle: "Custom Web Application Development Services | eVeda",
     metaDesc: "Scale your business with high-performance, responsive full-stack web applications. Expert React, Next.js, and TypeScript developers.",
     headline: "Fast, Secure, and Autoscale Web Architectures",
     category: "software",
@@ -56,7 +56,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   mobile: {
     id: "mobile",
     title: "Mobile App Development",
-    metaTitle: "iOS & Android Mobile App Development Company | NextGen Tech",
+    metaTitle: "iOS & Android Mobile App Development Company | eVeda",
     metaDesc: "Hire developers to build premium native and cross-platform apps using Flutter and React Native. Fully optimized for the App Store.",
     headline: "Immersive Experiences for iOS and Android",
     category: "software",
@@ -88,7 +88,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   saas: {
     id: "saas",
     title: "SaaS Platforms",
-    metaTitle: "Custom SaaS Platform Development Services | NextGen Tech",
+    metaTitle: "Custom SaaS Platform Development Services | eVeda",
     metaDesc: "Build your next multi-tenant SaaS application. Advanced user billing, Stripe gateways, analytics dashboards, and role management.",
     headline: "Powering Your Next SaaS Unicorn Startup",
     category: "software",
@@ -120,7 +120,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   ai: {
     id: "ai",
     title: "AI & ML Solutions",
-    metaTitle: "Enterprise AI & Machine Learning Services | NextGen Tech",
+    metaTitle: "Enterprise AI & Machine Learning Services | eVeda",
     metaDesc: "Integrate custom AI models, LLM agents, and vector databases. Specialists in OpenAI, Claude, RAG, and NLP automation.",
     headline: "Deploy AI Agents That Generate Real Value",
     category: "ai-cloud",
@@ -152,7 +152,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   cloud: {
     id: "cloud",
     title: "Cloud Services",
-    metaTitle: "Enterprise Cloud Architecture & Migration | NextGen Tech",
+    metaTitle: "Enterprise Cloud Architecture & Migration | eVeda",
     metaDesc: "Scale securely with AWS, Google Cloud, and Azure. Specialized in serverless, microservices, and database tuning.",
     headline: "High-Availability, Zero-Downtime Cloud Architectures",
     category: "ai-cloud",
@@ -184,7 +184,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   erp: {
     id: "erp",
     title: "ERP & CRM Systems",
-    metaTitle: "Custom ERP & CRM Software Development | NextGen Tech",
+    metaTitle: "Custom ERP & CRM Software Development | eVeda",
     metaDesc: "Centralize business workflows, manage client leads, track invoicing, and generate reports with tailor-made ERP platforms.",
     headline: "Bespoke ERP and CRM Engines for Enterprise Scale",
     category: "software",
@@ -216,7 +216,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   devops: {
     id: "devops",
     title: "DevOps & CI/CD",
-    metaTitle: "DevOps Consulting & CI/CD Automation Services | NextGen Tech",
+    metaTitle: "DevOps Consulting & CI/CD Automation Services | eVeda",
     metaDesc: "Automate builds, containerize services, and monitor instances. Docker, Kubernetes, GitHub Actions, and Prometheus systems.",
     headline: "Ship Code Safely and Automatically",
     category: "ai-cloud",
@@ -248,7 +248,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   design: {
     id: "design",
     title: "UI/UX Design",
-    metaTitle: "Premium UI/UX Design & Design Systems Agency | NextGen Tech",
+    metaTitle: "Premium UI/UX Design & Design Systems Agency | eVeda",
     metaDesc: "User-centered design systems, Figma wireframing, high-fidelity prototypes, and cohesive mobile and web UI interfaces.",
     headline: "Interfaces That Feel Premium and Intuitive",
     category: "design-growth",
@@ -280,7 +280,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   transform: {
     id: "transform",
     title: "Digital Transformation",
-    metaTitle: "Legacy Modernization & Digital Transformation | NextGen Tech",
+    metaTitle: "Legacy Modernization & Digital Transformation | eVeda",
     metaDesc: "Modernize outdated software architectures, automate business processes, and deploy cloud-native configurations.",
     headline: "Future-Proof Your Enterprise Infrastructure",
     category: "design-growth",
@@ -312,7 +312,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   support: {
     id: "support",
     title: "Maintenance & Support",
-    metaTitle: "24/7 Software Maintenance & System Monitoring | NextGen Tech",
+    metaTitle: "24/7 Software Maintenance & System Monitoring | eVeda",
     metaDesc: "SLA-backed technical support, server monitoring, bug fixes, software updates, and performance tuning.",
     headline: "Keep Your Platforms Online and Optimized",
     category: "design-growth",
@@ -344,7 +344,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "whatsapp-marketing": {
     id: "whatsapp-marketing",
     title: "WhatsApp Marketing",
-    metaTitle: "Enterprise WhatsApp Marketing & Chatbot Automation | NextGen Tech",
+    metaTitle: "Enterprise WhatsApp Marketing & Chatbot Automation | eVeda",
     metaDesc: "Scale customer engagement with WhatsApp Business API integration, broadcast scheduling, and AI-powered automated chatbot workflows.",
     headline: "Connect Instantly with 98% Open Rate WhatsApp Solutions",
     category: "marketing",
@@ -376,7 +376,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "content-marketing": {
     id: "content-marketing",
     title: "Content Marketing",
-    metaTitle: "Premium Content Marketing & Copywriting Services | NextGen Tech",
+    metaTitle: "Premium Content Marketing & Copywriting Services | eVeda",
     metaDesc: "Scale search visibility and build brand authority with high-converting copy, technical blogs, press releases, and landing page assets.",
     headline: "High-Converting Content That Commands Authority",
     category: "marketing",
@@ -408,7 +408,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "seo": {
     id: "seo",
     title: "Search Engine Optimization",
-    metaTitle: "Technical SEO & Organic Growth Optimization | NextGen Tech",
+    metaTitle: "Technical SEO & Organic Growth Optimization | eVeda",
     metaDesc: "Rank page 1 on Google. Technical site speed optimization, schema markup integration, backlink building, and local SEO services.",
     headline: "Dominating Search Rankings for High-Value Intent",
     category: "marketing",
@@ -440,7 +440,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "social-media-marketing": {
     id: "social-media-marketing",
     title: "Social Media Marketing",
-    metaTitle: "Organic Social Media Growth & Brand Marketing | NextGen Tech",
+    metaTitle: "Organic Social Media Growth & Brand Marketing | eVeda",
     metaDesc: "Grow your audience on LinkedIn, X, Instagram, and YouTube. Creative asset production, community management, and growth strategies.",
     headline: "Engage Audiences Where They Spend Their Time",
     category: "marketing",
@@ -472,7 +472,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "ppc": {
     id: "ppc",
     title: "Paid Ads (PPC)",
-    metaTitle: "Google Ads & Meta Advertising (PPC) Experts | NextGen Tech",
+    metaTitle: "Google Ads & Meta Advertising (PPC) Experts | eVeda",
     metaDesc: "Maximize ROI with highly-targeted pay-per-click ad campaigns on Google, Meta, LinkedIn, and programmatic ad networks.",
     headline: "Direct Conversions with High-Yield Ad Campaigns",
     category: "marketing",
@@ -504,7 +504,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "influencer-marketing": {
     id: "influencer-marketing",
     title: "Influencer Marketing",
-    metaTitle: "Creator Partnerships & Influencer Campaigns | NextGen Tech",
+    metaTitle: "Creator Partnerships & Influencer Campaigns | eVeda",
     metaDesc: "Partner with top creators on YouTube, Instagram, and LinkedIn. End-to-end influencer outreach, negotiation, and ROI tracking.",
     headline: "Drive Brand Trust via Creator Endorsements",
     category: "marketing",
@@ -536,7 +536,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "digital-marketing": {
     id: "digital-marketing",
     title: "Digital Marketing Services",
-    metaTitle: "Full-Scale Growth & Digital Marketing Solutions | NextGen Tech",
+    metaTitle: "Full-Scale Growth & Digital Marketing Solutions | eVeda",
     metaDesc: "Comprehensive digital growth strategies combining SEO, Paid Ads, Email Funnels, CRO, and Content Marketing into one unified growth engine.",
     headline: "Omnichannel Growth Engine to Scale B2B and SaaS",
     category: "marketing",
@@ -568,7 +568,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "orm": {
     id: "orm",
     title: "Online Reputation Management",
-    metaTitle: "Online Reputation Management (ORM) & PR Services | NextGen Tech",
+    metaTitle: "Online Reputation Management (ORM) & PR Services | eVeda",
     metaDesc: "Protect your brand. Remove negative search results, manage online reviews, monitor brand mentions, and build positive PR campaigns.",
     headline: "Protect and Control Your Digital Footprint",
     category: "branding",
@@ -600,7 +600,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "3d-video-editing": {
     id: "3d-video-editing",
     title: "3D Video Editing",
-    metaTitle: "Premium 3D Animation & Video Editing Services | NextGen Tech",
+    metaTitle: "Premium 3D Animation & Video Editing Services | eVeda",
     metaDesc: "Cinematic video editing, 3D product renders, dynamic motion graphics, and corporate promo edits. Perfect for SaaS and ad creatives.",
     headline: "Cinematic 3D Visuals and Premium Motion Graphics",
     category: "branding",
@@ -632,7 +632,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "still-branding": {
     id: "still-branding",
     title: "Still Branding",
-    metaTitle: "Brand Identity, Logo Design & Style Systems | NextGen Tech",
+    metaTitle: "Brand Identity, Logo Design & Style Systems | eVeda",
     metaDesc: "Develop a premium brand identity. Custom logo designs, comprehensive design systems, typography rules, and stationery mockups.",
     headline: "Visual Identity That Commands Market Presence",
     category: "branding",
@@ -664,7 +664,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "performance-marketing": {
     id: "performance-marketing",
     title: "Performance Marketing",
-    metaTitle: "Data-Driven Performance Marketing & ROI Scaling | NextGen Tech",
+    metaTitle: "Data-Driven Performance Marketing & ROI Scaling | eVeda",
     metaDesc: "Scale revenue with performance-focused ad management, conversion tracking setup, budget optimization, and creative iterations.",
     headline: "Vetted Creative Testing for Guaranteed ROI Scale",
     category: "branding",
@@ -696,7 +696,7 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
   "graphic-designing": {
     id: "graphic-designing",
     title: "Graphic Designing",
-    metaTitle: "Premium Graphic Design & Collateral Production | NextGen Tech",
+    metaTitle: "Premium Graphic Design & Collateral Production | eVeda",
     metaDesc: "Professional graphic design services. Marketing collaterals, social media assets, ebooks, corporate brochures, and digital illustrations.",
     headline: "Stunning Graphic Collaterals That Match Your Brand",
     category: "branding",
@@ -723,6 +723,70 @@ export const SERVICES_MAP: Record<string, ServiceDetail> = {
       { tier: "Basic Pack", price: "₹50,000+", desc: "Essential marketing graphic assets for startups.", features: ["10 Custom social assets", "3 Ad banner variants", "Figma source files", "1 Round revision"] },
       { tier: "Brand Collateral", price: "₹1,20,000+", desc: "Premium brochure and multi-channel asset pack.", features: ["20 Social assets", "Full brochure PDF layout", "Banner ads suite", "3 Rounds revisions"] },
       { tier: "Monthly Studio", price: "Custom Quote", desc: "Ongoing graphic support for active marketing teams.", features: ["Dedicated designer availability", "Unlimited monthly requests", "Same-day turnaround times", "Source file handoffs"] }
+    ]
+  },
+  "book-designing": {
+    id: "book-designing",
+    title: "Book Designing",
+    metaTitle: "Professional Book Designing & Typesetting Services | eVeda",
+    metaDesc: "Bestseller-grade book formatting, cover design, typesetting, and interior layout for paperback, hardcover, Kindle, and audiobooks.",
+    headline: "Award-Winning Book Interior Layouts & Custom Cover Art",
+    category: "branding",
+    description: "We provide world-class book design services tailored for indie authors, publishers, and enterprises. From eye-catching 3D book covers to meticulously formatted interior typography, Kindle/ePub conversion, and print-ready files.",
+    iconName: "book",
+    accent: "#f97316",
+    gradient: "rgba(249, 115, 22, 0.15)",
+    features: [
+      "Custom Front, Back & Spine 3D Cover Designs",
+      "Professional Interior Typesetting & Layout (InDesign / Vellum)",
+      "Reflowable & Fixed ePub / Kindle Mobi Formats",
+      "IngramSpark, Amazon KDP & Barnes & Noble Print-Ready Specs",
+      "Custom Chapter Headers, Drop Caps & Ornaments",
+      "Audiobook ACX Square Cover Formatting & 3D Mockups"
+    ],
+    techStack: ["Adobe InDesign", "Adobe Photoshop", "Adobe Illustrator", "Vellum", "Kindle Create", "Sigil ePub"],
+    process: [
+      { step: "01", title: "Manuscript Review & Style Brief", desc: "Analyze genre aesthetics, target audience, trim size, and typography style preferences." },
+      { step: "02", title: "Cover Concepts & Sample Layout", desc: "Deliver 3 distinct front cover concepts and 5 formatted interior sample pages." },
+      { step: "03", title: "Full Interior Typesetting", desc: "Format entire manuscript with running headers, page numbers, margins, and drop caps." },
+      { step: "04", title: "Print & Digital Handoff", desc: "Deliver KDP/IngramSpark PDF print files with spine calculations and validated ePub files." }
+    ],
+    pricing: [
+      { tier: "Essential Author", price: "₹35,000+", desc: "Complete cover & interior formatting for standard fiction/non-fiction.", features: ["Custom Ebook & Paperback Cover", "Interior Layout (Up to 60k words)", "KDP & ePub Formats", "2 Rounds Revisions"] },
+      { tier: "Bestseller Pro", price: "₹75,000+", desc: "Premium formatting with custom illustrations, hardcover & audiobook kit.", features: ["Paperback + Hardcover + Dust Jacket", "Complex Interior Layout (Unlimited words)", "3D Promotional Mockups", "Audiobook ACX Cover", "Priority 5-Day Delivery"] },
+      { tier: "Publishing House", price: "Custom Quote", desc: "Bulk title design, catalog formatting, and dedicated art director.", features: ["Multi-title Volume Discounts", "Custom Typography & Licensing", "Dedicated Art Director", "Source Files (.INDD, .PSD)"] }
+    ]
+  },
+  "book-branding": {
+    id: "book-branding",
+    title: "Book Branding",
+    metaTitle: "Author Branding, Book Marketing & Launch Strategy | eVeda",
+    metaDesc: "Complete author identity, book launch PR, Amazon A+ Content, social media book trailers, and reader magnet funnels to turn books into bestsellers.",
+    headline: "Build an Iconic Author Brand & Bestseller Launch Campaign",
+    category: "branding",
+    description: "We transform books and authors into unforgettable global brands. From author logos and custom website landing pages to Amazon A+ Content, Goodreads launch kits, press release distribution, and viral social media campaigns.",
+    iconName: "sparkles",
+    accent: "#c4347cdc",
+    gradient: "rgba(196, 52, 124, 0.15)",
+    features: [
+      "Amazon A+ Content Modules & Enhanced Brand Content (EBC)",
+      "Author Platform Identity (Logo, Typography, Color Palette)",
+      "Viral Book Trailer Videos (Vertical TikTok/Reels & 16:9 4K)",
+      "Reader Magnet & Lead Generation Funnel Architecture",
+      "Goodreads, BookBub & Amazon Author Central Optimization",
+      "Full Media Press Kit, Virtual Launch Party Assets & PR Outreach"
+    ],
+    techStack: ["Figma", "After Effects", "Amazon A+ Creator", "Mailchimp", "Canva Pro", "WordPress/Next.js"],
+    process: [
+      { step: "01", title: "Brand Discovery & Audience Mapping", desc: "Define author voice, reader demographics, and genre positioning strategy." },
+      { step: "02", title: "Visual Identity & Asset Production", desc: "Design Amazon A+ modules, social launch kits, banners, and author media kit." },
+      { step: "03", title: "Launch Funnel & Trailer Cut", desc: "Produce 3D cinematic book teaser video and setup reader newsletter funnel." },
+      { step: "04", title: "Campaign Rollout & Scaling", desc: "Deploy omnichannel promotion across TikTok, Instagram, Amazon, and media publications." }
+    ],
+    pricing: [
+      { tier: "Launch Accelerator", price: "₹60,000+", desc: "Essential launch branding package for indie author releases.", features: ["Standard Amazon A+ Content", "15 Social Launch Posts & Stories", "Author One-Sheet Media Kit", "BookBub Banner Suite"] },
+      { tier: "Bestseller Authority", price: "₹1,40,000+", desc: "Complete author branding, high-retention video trailers, and launch funnel.", features: ["Premium Amazon A+ Layouts", "30-Sec 3D Cinematic Book Trailer", "Author Website Landing Page", "Full Press Release Distribution", "Newsletter Lead Magnet Setup"] },
+      { tier: "Franchise Brand", price: "Custom Quote", desc: "For series authors, publishing houses, and international bestseller tours.", features: ["Multi-Book Series Branding", "Dedicated Launch PR Strategist", "Omnichannel Ad Creative Production", "Speaker & Event Stage Kits"] }
     ]
   }
 };

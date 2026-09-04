@@ -116,7 +116,7 @@ export default function SettingsPage() {
                 </div>
                 <div className="space-y-1">
                   <label className="text-[12px] font-medium" style={{ color: "var(--crm-text)" }}>Email</label>
-                  <Input type="email" defaultValue="admin@nextgentech.com" disabled />
+                  <Input type="email" defaultValue="admin@evedaonlineservices.com" disabled />
                 </div>
                 <div className="space-y-1">
                   <label className="text-[12px] font-medium" style={{ color: "var(--crm-text)" }}>Phone</label>
@@ -231,7 +231,7 @@ export default function SettingsPage() {
                 </div>
                 <div className="space-y-1">
                   <label className="text-[12px] font-medium" style={{ color: "var(--crm-text)" }}>Username</label>
-                  <Input defaultValue="info@nextgentechsolution.org" />
+                  <Input defaultValue="info@evedaonlineservices.com" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-[12px] font-medium" style={{ color: "var(--crm-text)" }}>Password</label>

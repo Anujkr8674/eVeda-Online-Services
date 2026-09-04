@@ -22,7 +22,7 @@ interface SendEmailOptions {
 export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
   try {
     await transporter.sendMail({
-      from: `"${process.env.PDF_COMPANY_NAME ?? "NextGen Tech"}" <${process.env.MAIL_USER}>`,
+      from: `"${process.env.PDF_COMPANY_NAME ?? "Eveda Online Services"}" <${process.env.MAIL_USER}>`,
       to: opts.to,
       subject: opts.subject,
       html: opts.html,
@@ -37,7 +37,7 @@ export async function sendEmail(opts: SendEmailOptions): Promise<boolean> {
 
 /* ── Templates ───────────────────────────────────────────────────── */
 export function leadThankYouTemplate(name: string, services: string[]): string {
-  const co = process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution";
+  const co = process.env.PDF_COMPANY_NAME ?? "Eveda Online Services";
   return `
 <!DOCTYPE html>
 <html>
@@ -75,7 +75,7 @@ export function leadThankYouTemplate(name: string, services: string[]): string {
       </div>
       <p>Our expert team will analyze your requirements and prepare a detailed proposal for you.</p>
       <div class="cta">
-        <a href="${process.env.PDF_COMPANY_WEBSITE ?? "https://nextgentechsolution.org"}">Visit Our Website</a>
+        <a href="${process.env.PDF_COMPANY_WEBSITE ?? "https://evedaonlineservices.com"}">Visit Our Website</a>
       </div>
     </div>
     <div class="footer">
@@ -92,7 +92,7 @@ export function quotationEmailTemplate(
   quotationId: string,
   total: number
 ): string {
-  const co = process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution";
+  const co = process.env.PDF_COMPANY_NAME ?? "Eveda Online Services";
   return `
 <!DOCTYPE html>
 <html>
@@ -135,7 +135,7 @@ export function leadAdminNotificationTemplate(
   budget: string,
   message: string
 ): string {
-  const co = process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution";
+  const co = process.env.PDF_COMPANY_NAME ?? "Eveda Online Services";
   return `
 <!DOCTYPE html>
 <html>
@@ -209,7 +209,7 @@ export function ticketClientConfirmationTemplate(
   description: string,
   category: string
 ): string {
-  const co = process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution";
+  const co = process.env.PDF_COMPANY_NAME ?? "Eveda Online Services";
   return `
 <!DOCTYPE html>
 <html>
@@ -260,7 +260,7 @@ export function ticketAdminNotificationTemplate(
   description: string,
   category: string
 ): string {
-  const co = process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution";
+  const co = process.env.PDF_COMPANY_NAME ?? "Eveda Online Services";
   return `
 <!DOCTYPE html>
 <html>
@@ -306,7 +306,7 @@ export function ticketCommentAdminNotificationTemplate(
   ticketTitle: string,
   commentContent: string
 ): string {
-  const co = process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution";
+  const co = process.env.PDF_COMPANY_NAME ?? "Eveda Online Services";
   return `
 <!DOCTYPE html>
 <html>
@@ -346,7 +346,7 @@ export function ticketCommentClientNotificationTemplate(
   authorName: string,
   commentContent: string
 ): string {
-  const co = process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution";
+  const co = process.env.PDF_COMPANY_NAME ?? "Eveda Online Services";
   return `
 <!DOCTYPE html>
 <html>
@@ -387,7 +387,7 @@ export function ticketStatusClientTemplate(
   ticketTitle: string,
   status: string
 ): string {
-  const co = process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution";
+  const co = process.env.PDF_COMPANY_NAME ?? "Eveda Online Services";
   return `
 <!DOCTYPE html>
 <html>

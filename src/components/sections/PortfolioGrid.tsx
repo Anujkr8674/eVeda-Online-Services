@@ -177,7 +177,7 @@ export default function PortfolioGrid() {
                     <div className="w-1.5 h-1.5 rounded-full bg-yellow-400/80" />
                     <div className="w-1.5 h-1.5 rounded-full bg-green-400/80" />
                     <span className="mx-auto text-[7px] text-slate-400 font-mono font-medium tracking-tight truncate max-w-[60%]">
-                      nextgentech.solutions/{project.id}
+                      evedaonlineservices.com/{project.id}
                     </span>
                   </div>
                   

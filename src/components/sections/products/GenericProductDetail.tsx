@@ -19,6 +19,7 @@ import InteractiveTiltCard from "@/components/shared/InteractiveTiltCard";
 import { triggerOnboardingModal } from "@/components/shared/OnboardingModal";
 import { triggerBookDemoModal } from "@/components/shared/BookDemoModal";
 import { COMPANY } from "@/lib/utils";
+import { useWebSettings } from "@/context/WebSettingsContext";
 
 
 // Helper to convert hex to RGB
@@ -31,6 +32,7 @@ function hexToRgb(hex: string): string {
 }
 
 export default function GenericProductDetail({ product }: { product: ProductDetail }) {
+  const { settings } = useWebSettings();
   // Form State
   const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", message: "" });
   const [sending, setSending] = useState(false);
@@ -50,7 +52,7 @@ export default function GenericProductDetail({ product }: { product: ProductDeta
 
   const testimonials = [
     {
-      quote: `NextGen ${product.title} transformed how our team handles daily workflows. We scaled our operations 4x faster and maintain perfect data compliance. Truly the best system we have ever deployed.`,
+      quote: `eVeda ${product.title} transformed how our team handles daily workflows. We scaled our operations 4x faster and maintain perfect data compliance. Truly the best system we have ever deployed.`,
       name: "Sarah Jenkins",
       role: "Operations Director, FinTech Corp",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80",
@@ -223,7 +225,7 @@ export default function GenericProductDetail({ product }: { product: ProductDeta
               className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-4"
               style={{ fontFamily: "'Sora', sans-serif" }}
             >
-              Get Started with NextGen {product.title} <br />
+              Get Started with eVeda {product.title} <br />
               <span style={{ color: "var(--accent-global)" }}>in 3 Simple Steps</span>
             </h2>
             <p className="text-slate-500 text-sm sm:text-base leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -1017,14 +1019,14 @@ export default function GenericProductDetail({ product }: { product: ProductDeta
           <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-slate-950 via-slate-950/70 to-transparent z-10 pointer-events-none" />
           <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-slate-950/90 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/[0.14] shadow-xl whitespace-nowrap">
             <MapPin className="w-4 h-4 text-[var(--accent-global)] shrink-0" />
-            <span className="text-xs font-bold text-white tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>NextGen Tech Solution — RR Tower, Ratu Road, Ranchi</span>
+            <span className="text-xs font-bold text-white tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>{settings.address}</span>
           </div>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14649.6!2d85.2896!3d23.3641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1035ec9bf83%3A0x6ec8f9f38fe2fc8e!2sRatu%20Rd%2C%20Ranchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1718000000000!5m2!1sen!2sin"
+            src={settings.mapEmbed || "https://maps.google.com/maps?q=53+eVeda+Online+Services+Aryanagar+Haridwar&t=&z=13&ie=UTF8&iwloc=&output=embed"}
             width="100%" height="420"
             style={{ border: 0, display: "block", filter: "invert(92%) hue-rotate(180deg) brightness(0.82) saturate(0.6) contrast(0.88)" }}
             allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-            title="NextGen Tech Solution Office Location"
+            title="Eveda Online Services Office Location"
           />
         </div>
 
@@ -1060,8 +1062,8 @@ export default function GenericProductDetail({ product }: { product: ProductDeta
                   <span className="text-white/90">BUILD THE</span>
                   <span style={{ color: "var(--accent-global)" }}>FUTURE</span>
                   <span className="text-white/20">·</span>
-                  <span className="text-white/90">NEXTGEN</span>
-                  <span style={{ color: "var(--accent-global)" }}>SOLUTIONS</span>
+                  <span className="text-white/90">EVEDA ONLINE</span>
+                  <span style={{ color: "var(--accent-global)" }}>SERVICES</span>
                   <span className="text-white/20">·</span>
                 </span>
               ))}

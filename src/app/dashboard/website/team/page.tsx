@@ -150,7 +150,7 @@ export default function TeamCMSPage() {
     <div>
       <PageHeader
         title="Team CMS"
-        subtitle="Manage NextGen directors, tech leads, and dynamic team cards on the frontend website"
+        subtitle="Manage eVeda directors, tech leads, and dynamic team cards on the frontend website"
         badge="CMS Team"
         badgeColor="#10b981"
         actions={

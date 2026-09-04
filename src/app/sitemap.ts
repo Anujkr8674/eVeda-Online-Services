@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://nextgentechsolution.org";
+const BASE_URL = "https://evedaonlineservices.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const servicePages = [
-    "web", "mobile", "saas", "ai", "cloud", "devops", "erp", "design", "transform", "support",
+    "web", "mobile", "saas", "ai", "cloud", "devops", "whatsapp-marketing", "seo", "social-media-marketing", "ppc", "3d-video-editing", "graphic-designing", "book-designing", "book-branding", "erp", "design", "transform", "support",
   ].map((id) => ({
     url: `${BASE_URL}/services/${id}`,
     priority: 0.8,

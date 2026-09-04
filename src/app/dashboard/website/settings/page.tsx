@@ -160,7 +160,7 @@ export default function WebSettingsPage() {
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  placeholder="info@nextgentechsolution.org"
+                  placeholder="info@evedaonlineservices.com"
                   className="w-full bg-slate-500/5 border rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-500"
                   style={{ borderColor: "var(--crm-border)", color: "var(--crm-text)" }}
                 />
@@ -177,7 +177,7 @@ export default function WebSettingsPage() {
                   required
                   value={form.supportEmail}
                   onChange={(e) => setForm({ ...form, supportEmail: e.target.value })}
-                  placeholder="support@nextgentechsolution.org"
+                  placeholder="support@evedaonlineservices.com"
                   className="w-full bg-slate-500/5 border rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-500"
                   style={{ borderColor: "var(--crm-border)", color: "var(--crm-text)" }}
                 />

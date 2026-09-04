@@ -11,6 +11,8 @@ const serviceLinks = [
   { label: "UI/UX Design",           href: "/services/design" },
   { label: "ERP / CRM",              href: "/services/erp" },
   { label: "Digital Transformation", href: "/services/transform" },
+  { label: "Book Branding",          href: "/services/book-branding" },
+  { label: "Book Designing",         href: "/services/book-designing" },
 ];
 
 export default function ServicesTicker() {

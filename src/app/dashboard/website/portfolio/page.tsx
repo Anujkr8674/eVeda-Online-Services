@@ -320,7 +320,7 @@ export default function PortfolioCMSPage() {
                 <div>
                   <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Detailed Description*</label>
                   <textarea required rows={4} value={form.description} onChange={e => setForm({...form, description: e.target.value})}
-                    placeholder="Outline the case study summary and what NextGen engineered..." className="w-full bg-slate-500/5 border rounded-lg px-3 py-2 text-sm outline-none focus:border-purple-500 resize-none font-medium" style={{ borderColor: "var(--crm-border)", color: "var(--crm-text)" }} />
+                    placeholder="Outline the case study summary and what eVeda engineered..." className="w-full bg-slate-500/5 border rounded-lg px-3 py-2 text-sm outline-none focus:border-purple-500 resize-none font-medium" style={{ borderColor: "var(--crm-border)", color: "var(--crm-text)" }} />
                 </div>
 
                 <div className="pt-4 border-t flex justify-end gap-3" style={{ borderColor: "var(--crm-border-faint)" }}>

@@ -15,7 +15,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "su_001",
       name: "Super Admin",
-      email: process.env.SUPERADMIN_EMAIL ?? "superadmin@nextgentech.com",
+      email: process.env.SUPERADMIN_EMAIL ?? "superadmin@evedaonlineservices.com",
       role: "superadmin",
       phone: "+91 9000000001",
       department: "Management",
@@ -24,7 +24,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "adm_001",
       name: "Admin User",
-      email: process.env.ADMIN_EMAIL ?? "admin@nextgentech.com",
+      email: process.env.ADMIN_EMAIL ?? "admin@evedaonlineservices.com",
       role: "admin",
       phone: "+91 9000000002",
       department: "Sales",
@@ -33,7 +33,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "tc_001",
       name: "Rahul Sharma",
-      email: process.env.TELECALLER1_EMAIL ?? "telecaller1@nextgentech.com",
+      email: process.env.TELECALLER1_EMAIL ?? "telecaller1@evedaonlineservices.com",
       role: "telecaller",
       phone: "+91 9000000003",
       department: "Telecalling",
@@ -42,7 +42,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "tc_002",
       name: "Priya Verma",
-      email: process.env.TELECALLER2_EMAIL ?? "telecaller2@nextgentech.com",
+      email: process.env.TELECALLER2_EMAIL ?? "telecaller2@evedaonlineservices.com",
       role: "telecaller",
       phone: "+91 9000000004",
       department: "Telecalling",
@@ -51,7 +51,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "dev_001",
       name: "Aarav Mehta",
-      email: "developer1@nextgentech.com",
+      email: "developer1@evedaonlineservices.com",
       role: "developer",
       phone: "+91 9000000005",
       department: "Development",
@@ -60,7 +60,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "dev_002",
       name: "Neha Gupta",
-      email: "developer2@nextgentech.com",
+      email: "developer2@evedaonlineservices.com",
       role: "developer",
       phone: "+91 9000000006",
       department: "Development",
@@ -69,7 +69,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "dsg_001",
       name: "Karan Malhotra",
-      email: "designer@nextgentech.com",
+      email: "designer@evedaonlineservices.com",
       role: "designer",
       phone: "+91 9000000007",
       department: "UI/UX & Brand Design",
@@ -78,7 +78,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "cld_001",
       name: "Aditya Sen",
-      email: "cloud@nextgentech.com",
+      email: "cloud@evedaonlineservices.com",
       role: "cloud_engineer",
       phone: "+91 9000000008",
       department: "Cloud & AI Infrastructure",
@@ -87,7 +87,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "seo_001",
       name: "Rohan Das",
-      email: "seo@nextgentech.com",
+      email: "seo@evedaonlineservices.com",
       role: "seo_expert",
       phone: "+91 9000000009",
       department: "Search Optimization",
@@ -96,7 +96,7 @@ export function getStaticUsers(): Omit<CRMUser, "createdAt" | "updatedAt">[] {
     {
       _id: "mkt_001",
       name: "Shreya Sen",
-      email: "marketing@nextgentech.com",
+      email: "marketing@evedaonlineservices.com",
       role: "marketer",
       phone: "+91 9000000010",
       department: "Growth Campaigns",
@@ -110,20 +110,20 @@ export function validateCredentials(
   password: string
 ): Omit<CRMUser, "createdAt" | "updatedAt"> | null {
   const pairs: Record<string, string> = {
-    [process.env.SUPERADMIN_EMAIL ?? "superadmin@nextgentech.com"]:
+    [process.env.SUPERADMIN_EMAIL ?? "superadmin@evedaonlineservices.com"]:
       process.env.SUPERADMIN_PASSWORD ?? "SuperAdmin@123",
-    [process.env.ADMIN_EMAIL ?? "admin@nextgentech.com"]:
+    [process.env.ADMIN_EMAIL ?? "admin@evedaonlineservices.com"]:
       process.env.ADMIN_PASSWORD ?? "Admin@123",
-    [process.env.TELECALLER1_EMAIL ?? "telecaller1@nextgentech.com"]:
+    [process.env.TELECALLER1_EMAIL ?? "telecaller1@evedaonlineservices.com"]:
       process.env.TELECALLER1_PASSWORD ?? "Tele@123",
-    [process.env.TELECALLER2_EMAIL ?? "telecaller2@nextgentech.com"]:
+    [process.env.TELECALLER2_EMAIL ?? "telecaller2@evedaonlineservices.com"]:
       process.env.TELECALLER2_PASSWORD ?? "Tele@456",
-    ["developer1@nextgentech.com"]: "Dev@123",
-    ["developer2@nextgentech.com"]: "Dev@456",
-    ["designer@nextgentech.com"]: "Design@123",
-    ["cloud@nextgentech.com"]: "Cloud@123",
-    ["seo@nextgentech.com"]: "Seo@123",
-    ["marketing@nextgentech.com"]: "Marketing@123",
+    ["developer1@evedaonlineservices.com"]: "Dev@123",
+    ["developer2@evedaonlineservices.com"]: "Dev@456",
+    ["designer@evedaonlineservices.com"]: "Design@123",
+    ["cloud@evedaonlineservices.com"]: "Cloud@123",
+    ["seo@evedaonlineservices.com"]: "Seo@123",
+    ["marketing@evedaonlineservices.com"]: "Marketing@123",
   };
 
   if (pairs[email.toLowerCase()] !== password) return null;

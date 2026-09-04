@@ -399,7 +399,7 @@ export default function ServicesPage() {
                         >
                           <div>
                             <div className="h-2 w-8 bg-purple-200 rounded mb-4" />
-                            <h4 className="text-slate-800 font-extrabold text-xs font-sora">NextGen Bank App</h4>
+                            <h4 className="text-slate-800 font-extrabold text-xs font-sora">eVeda Bank App</h4>
                             <p className="text-[9px] text-slate-500 leading-normal mt-1">Simulated native cross-platform build.</p>
                             <div className="mt-4 p-2 bg-white rounded-xl border border-slate-100 flex items-center justify-between">
                               <span className="text-[8px] font-bold text-slate-600">Secure Vault Balance</span>

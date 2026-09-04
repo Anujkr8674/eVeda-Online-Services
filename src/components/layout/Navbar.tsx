@@ -8,19 +8,20 @@ import {
   Code2, Smartphone, Layers, Brain, Cloud, Server,
   ChevronDown, Menu, X, ArrowRight,
   MessageSquare, FileText, Search, Share2, Users, Shield, Video, PenTool, Target, Layout,
-  Phone, Mail, MapPin, Sparkles,
+  Phone, Mail, MapPin, Sparkles, BookOpen,
   GraduationCap, Activity, MonitorPlay, School, Store, Calculator, Truck, Boxes, ShoppingCart, Briefcase
 } from "lucide-react";
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { COMPANY } from "@/lib/utils";
+import { useWebSettings } from "@/context/WebSettingsContext";
 import { triggerOnboardingModal } from "@/components/shared/OnboardingModal";
 
 function LogoMark({ size = 52 }: { size?: number }) {
   return (
     <img
-      src="/images/logo.png"
-      alt="NextGen Tech Solution"
+      // src="/images/logo.png"
+      alt="Eveda Online Services"
       style={{
         height: `${size}px`,
         width: "auto",
@@ -132,6 +133,22 @@ const servicesMenuLinks = [
     icon: PenTool,
     color: "#06B6D4", // Cyan
     bg: "rgba(6, 182, 212, 0.08)"
+  },
+  {
+    label: "Book Designing",
+    desc: "Cover formatting, typesetting & print",
+    href: "/services/book-designing",
+    icon: BookOpen,
+    color: "#F97316", // Orange
+    bg: "rgba(249, 115, 22, 0.08)"
+  },
+  {
+    label: "Book Branding",
+    desc: "Author launch PR & Amazon A+ suite",
+    href: "/services/book-branding",
+    icon: Sparkles,
+    color: "#c4347cdc", // Pink
+    bg: "rgba(196, 52, 124, 0.08)"
   }
 ];
 
@@ -178,34 +195,17 @@ const aboutMenuLinks = [
 ];
 
 const navLinks = [
-  { label: "Home",      href: "/" },
-  { label: "About",     href: "/about", hasMenu: true },
-  { label: "Services",  href: "/services", hasMenu: true },
-  { label: "Products",  href: "/products", hasMenu: true },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about", hasMenu: true },
+  { label: "Services", href: "/services", hasMenu: true },
+  { label: "Products", href: "/products", hasMenu: true },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Blog",      href: "/blog" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [settings, setSettings] = useState<any>(COMPANY);
-
-  useEffect(() => {
-    fetch("/api/settings")
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.data) {
-          setSettings({
-            ...COMPANY,
-            phone: json.data.phone || COMPANY.phone,
-            email: json.data.email || COMPANY.email,
-            whatsapp: json.data.whatsapp || COMPANY.whatsapp,
-            location: json.data.address || COMPANY.location,
-          });
-        }
-      })
-      .catch((err) => console.error("Error loading web settings in Navbar:", err));
-  }, []);
+  const { settings } = useWebSettings();
 
   // Pages with a dark full-screen hero that needs a transparent navbar on load
   const isHome = pathname === "/" || pathname.startsWith("/products/");
@@ -303,7 +303,7 @@ export default function Navbar() {
                   </a>
                   {/* Twitter/X */}
                   <a href={settings.social.twitter} target="_blank" rel="noopener noreferrer" className="w-5.5 h-5.5 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:scale-110 hover:bg-slate-100 transition-all shadow-sm" aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
                   </a>
                   {/* Instagram */}
                   <a href={settings.social.instagram} target="_blank" rel="noopener noreferrer" className="w-5.5 h-5.5 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:scale-110 hover:bg-slate-100 transition-all shadow-sm" aria-label="Instagram">
@@ -340,7 +340,7 @@ export default function Navbar() {
           scrolled ? "h-[72px]" : "h-[104px]"
         )}>
           {/* Logo on Left */}
-          <Link href="/" className="flex items-center shrink-0 group" aria-label="NextGen Tech Solution — Home">
+          <Link href="/" className="flex items-center shrink-0 group" aria-label="Eveda Online Services — Home">
             <LogoMark size={scrolled ? 46 : 56} />
           </Link>
 
@@ -353,9 +353,9 @@ export default function Navbar() {
             {navLinks.map((link) => {
               const isActive = link.hasMenu
                 ? (link.label === "About"
-                    ? (pathname === "/about" || pathname === "/team" || pathname === "/gallery" || pathname === "/careers")
-                    : (link.label === "Services" ? pathname.startsWith("/services") : pathname.startsWith("/products"))
-                  )
+                  ? (pathname === "/about" || pathname === "/team" || pathname === "/gallery" || pathname === "/careers")
+                  : (link.label === "Services" ? pathname.startsWith("/services") : pathname.startsWith("/products"))
+                )
                 : pathname === link.href;
 
               return link.hasMenu ? (
@@ -443,105 +443,105 @@ export default function Navbar() {
                       role="menu"
                       aria-label={`${link.label} menu`}
                     >
-                    {/* Centered content aligning with the header container */}
-                    <div className="max-w-[1400px] mx-auto px-6 py-10 grid grid-cols-[1fr_450px] gap-10">
-                      
-                      {/* Left Pane - Grid of Services & Helper Link */}
-                      <div className="flex flex-col justify-between">
-                        {/* 3-column grid of service/product cards */}
-                        <div className="grid grid-cols-3 gap-4">
-                          {(link.label === "Products" ? productsMenuLinks : servicesMenuLinks).map((s) => {
-                            const ItemIcon = s.icon;
-                            return (
+                      {/* Centered content aligning with the header container */}
+                      <div className="max-w-[1400px] mx-auto px-6 py-10 grid grid-cols-[1fr_450px] gap-10">
+
+                        {/* Left Pane - Grid of Services & Helper Link */}
+                        <div className="flex flex-col justify-between">
+                          {/* 3-column grid of service/product cards */}
+                          <div className="grid grid-cols-3 gap-4">
+                            {(link.label === "Products" ? productsMenuLinks : servicesMenuLinks).map((s) => {
+                              const ItemIcon = s.icon;
+                              return (
+                                <Link
+                                  key={s.label}
+                                  href={s.href}
+                                  role="menuitem"
+                                  className="group/card flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50/50 hover:border-slate-350 transition-all duration-200"
+                                >
+                                  <div className="flex items-center gap-3.5 min-w-0">
+                                    <ItemIcon
+                                      className="w-5.5 h-5.5 shrink-0 transition-transform duration-300 group-hover/card:scale-105"
+                                      style={{ color: s.color }}
+                                    />
+                                    <span className="text-[13.5px] font-bold text-slate-850 font-sora leading-none truncate">
+                                      {s.label}
+                                    </span>
+                                  </div>
+                                  <div className="text-slate-300 group-hover/card:text-slate-800 transition-colors pl-1 shrink-0">
+                                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/card:translate-x-0.5" />
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+
+                          {/* Bottom Helper link */}
+                          <div className="mt-8 flex items-center gap-2 text-xs text-slate-500 font-medium">
+                            <MessageSquare className="w-4 h-4 text-slate-400 shrink-0" />
+                            <span>
+                              Need help? Contact our{" "}
                               <Link
-                                key={s.label}
-                                href={s.href}
-                                role="menuitem"
-                                className="group/card flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50/50 hover:border-slate-350 transition-all duration-200"
+                                href="/contact"
+                                className="text-slate-800 font-semibold underline underline-offset-4 decoration-[#7C3AED]/45 hover:decoration-[#7C3AED] transition-colors"
                               >
-                                <div className="flex items-center gap-3.5 min-w-0">
-                                  <ItemIcon
-                                    className="w-5.5 h-5.5 shrink-0 transition-transform duration-300 group-hover/card:scale-105"
-                                    style={{ color: s.color }}
-                                  />
-                                  <span className="text-[13.5px] font-bold text-slate-850 font-sora leading-none truncate">
-                                    {s.label}
-                                  </span>
-                                </div>
-                                <div className="text-slate-300 group-hover/card:text-slate-800 transition-colors pl-1 shrink-0">
-                                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/card:translate-x-0.5" />
-                                </div>
+                                support service
                               </Link>
-                            );
-                          })}
-                        </div>
+                            </span>
+                          </div>
+                        </div>                      {/* Right Pane - Feature Promo Banner */}
+                        <div className="pl-8 border-l border-slate-100 flex flex-col justify-center">
+                          {/* Vertical Custom Showcase Card */}
+                          <div className="flex flex-col justify-between p-6 rounded-[24px] bg-gradient-to-br from-purple-50/70 via-white/80 to-indigo-50/40 border border-purple-100/60 shadow-[0_8px_24px_rgba(124,58,237,0.02)] h-full relative overflow-hidden group/banner">
+                            {/* Decorative soft glowing backdrops */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/20 rounded-full blur-2xl -mr-8 -mt-8 pointer-events-none" />
 
-                        {/* Bottom Helper link */}
-                        <div className="mt-8 flex items-center gap-2 text-xs text-slate-500 font-medium">
-                          <MessageSquare className="w-4 h-4 text-slate-400 shrink-0" />
-                          <span>
-                            Need help? Contact our{" "}
-                            <Link
-                              href="/contact"
-                              className="text-slate-800 font-semibold underline underline-offset-4 decoration-[#7C3AED]/45 hover:decoration-[#7C3AED] transition-colors"
-                            >
-                              support service
-                            </Link>
-                          </span>
-                        </div>
-                      </div>                      {/* Right Pane - Feature Promo Banner */}
-                      <div className="pl-8 border-l border-slate-100 flex flex-col justify-center">
-                        {/* Vertical Custom Showcase Card */}
-                        <div className="flex flex-col justify-between p-6 rounded-[24px] bg-gradient-to-br from-purple-50/70 via-white/80 to-indigo-50/40 border border-purple-100/60 shadow-[0_8px_24px_rgba(124,58,237,0.02)] h-full relative overflow-hidden group/banner">
-                          {/* Decorative soft glowing backdrops */}
-                          <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/20 rounded-full blur-2xl -mr-8 -mt-8 pointer-events-none" />
+                            <div className="relative z-10">
+                              {/* 1. Capsule Badge: Featured Service */}
+                              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest text-[#7C3AED] bg-purple-100/50 border border-purple-200/30 mb-3">
+                                <Sparkles className="w-3 h-3 text-[#7C3AED] animate-pulse" />
+                                <span>Featured Service</span>
+                              </div>
 
-                          <div className="relative z-10">
-                            {/* 1. Capsule Badge: Featured Service */}
-                            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest text-[#7C3AED] bg-purple-100/50 border border-purple-200/30 mb-3">
-                              <Sparkles className="w-3 h-3 text-[#7C3AED] animate-pulse" />
-                              <span>Featured Service</span>
+                              {/* 2. Headline: Premium Digital Solutions */}
+                              <h3 className="text-lg font-black text-slate-900 font-sora leading-tight tracking-tight mb-1">
+                                <span className="text-[#7C3AED]">Premium</span> Digital {link.label}
+                              </h3>
+
+                              {/* 3. Description */}
+                              <p className="text-slate-500 text-xs leading-relaxed font-semibold max-w-[280px]">
+                                Powerful, scalable and future-ready {link.label.toLowerCase()} tailored for your business growth.
+                              </p>
                             </div>
 
-                            {/* 2. Headline: Premium Digital Solutions */}
-                            <h3 className="text-lg font-black text-slate-900 font-sora leading-tight tracking-tight mb-1">
-                              <span className="text-[#7C3AED]">Premium</span> Digital {link.label}
-                            </h3>
+                            {/* 4. Laptop Showcase image with purple background blob and shadow */}
+                            <div className="relative w-full aspect-[16/9] -mt-6 -mb-6 flex items-center justify-center z-10">
+                              {/* Glowing Purple background blob */}
+                              <div className="absolute w-28 h-28 bg-[#7C3AED]/20 rounded-full blur-2xl pointer-events-none z-0" />
+                              {/* Soft Purple shadow overlay underneath the laptop */}
+                              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[80%] h-4 bg-purple-500/30 blur-md rounded-full pointer-events-none z-0" />
+                              <img
+                                src="/images/mega_menu_banner.png"
+                                alt="Premium Digital Solutions"
+                                className="object-contain w-full h-full max-h-[110px] transition-transform duration-700 group-hover/banner:scale-105 relative z-10"
+                              />
+                            </div>
 
-                            {/* 3. Description */}
-                            <p className="text-slate-500 text-xs leading-relaxed font-semibold max-w-[280px]">
-                              Powerful, scalable and future-ready {link.label.toLowerCase()} tailored for your business growth.
-                            </p>
-                          </div>
-
-                          {/* 4. Laptop Showcase image with purple background blob and shadow */}
-                          <div className="relative w-full aspect-[16/9] -mt-6 -mb-6 flex items-center justify-center z-10">
-                            {/* Glowing Purple background blob */}
-                            <div className="absolute w-28 h-28 bg-[#7C3AED]/20 rounded-full blur-2xl pointer-events-none z-0" />
-                            {/* Soft Purple shadow overlay underneath the laptop */}
-                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[80%] h-4 bg-purple-500/30 blur-md rounded-full pointer-events-none z-0" />
-                            <img
-                              src="/images/mega_menu_banner.png"
-                              alt="Premium Digital Solutions"
-                              className="object-contain w-full h-full max-h-[110px] transition-transform duration-700 group-hover/banner:scale-105 relative z-10"
-                            />
-                          </div>
-
-                          {/* 5. Pill CTA Button */}
-                          <div className="relative z-10">
-                            <Link
-                              href={link.href}
-                              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-black text-white bg-[#7C3AED] hover:bg-[#6D28D9] shadow-[0_6px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_8px_26px_rgba(124,58,237,0.45)] transition-all duration-300 cursor-pointer"
-                            >
-                              <span>Explore {link.label}</span>
-                              <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover/banner:translate-x-0.5" />
-                            </Link>
+                            {/* 5. Pill CTA Button */}
+                            <div className="relative z-10">
+                              <Link
+                                href={link.href}
+                                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-black text-white bg-[#7C3AED] hover:bg-[#6D28D9] shadow-[0_6px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_8px_26px_rgba(124,58,237,0.45)] transition-all duration-300 cursor-pointer"
+                              >
+                                <span>Explore {link.label}</span>
+                                <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover/banner:translate-x-0.5" />
+                              </Link>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
                 </div>
               ) : (
                 <Link
@@ -600,7 +600,7 @@ export default function Navbar() {
           "flex lg:hidden items-center justify-between w-full px-4 py-3.5 transition-colors duration-500 ease-in-out",
           scrolled ? "bg-white text-slate-900 border-b border-slate-200" : "bg-transparent text-white"
         )}>
-          <Link href="/" className="flex items-center shrink-0" aria-label="NextGen Tech Solution — Home">
+          <Link href="/" className="flex items-center shrink-0" aria-label="Eveda Online Services — Home">
             <LogoMark size={38} />
           </Link>
           <div className="flex items-center gap-3">
@@ -734,7 +734,7 @@ export default function Navbar() {
                     <FaLinkedinIn className="w-4 h-4" />
                   </a>
                   <a href={settings.social.twitter} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:bg-slate-100 transition-colors shadow">
-                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
                   </a>
                   <a href={settings.social.instagram} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:bg-slate-100 transition-colors shadow">
                     <FaInstagram className="w-4 h-4" />

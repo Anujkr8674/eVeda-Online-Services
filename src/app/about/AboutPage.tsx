@@ -271,7 +271,7 @@ export default function AboutPage() {
         badge="About Us"
         title="Engineering Tomorrow's"
         titleHighlight="Digital Future"
-        description={`NextGen Tech Solution was founded in ${COMPANY.founded} with a singular mission: to make enterprise-grade software accessible to every ambitious business — not just the Fortune 500.`}
+        description={`${COMPANY.name} was founded in ${COMPANY.founded} with a singular mission: to make enterprise-grade software accessible to every ambitious business — not just the Fortune 500.`}
         breadcrumbs={[{ label: "About" }]}
       />
 

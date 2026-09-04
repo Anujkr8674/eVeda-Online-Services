@@ -38,7 +38,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Future-Proof React & Next.js Architecture",
         squareDesc: "Robust, secure, and search-optimized codebase designed to grow with your active user base.",
-        cardTitle: "NextGen Web Engine",
+        cardTitle: "eVeda Web Engine",
         icon: Code2,
         wideGradient: "from-[#1E3A8A] to-[#1D4ED8]",
         squareGradient: "from-[#10B981] to-[#059669]"
@@ -53,7 +53,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Offline-First Sync & Peripherals",
         squareDesc: "Keep your users engaged with seamless cloud synchronization and deep device hardware integration.",
-        cardTitle: "NextGen Mobile Dev",
+        cardTitle: "eVeda Mobile Dev",
         icon: Smartphone,
         wideGradient: "from-[#065F46] to-[#10B981]",
         squareGradient: "from-[#F59E0B] to-[#D97706]"
@@ -68,7 +68,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Embedded Analytics & User Panels",
         squareDesc: "Empower your software clients with dynamic charts, usage trackers, and white-labeling features.",
-        cardTitle: "NextGen SaaS Core",
+        cardTitle: "eVeda SaaS Core",
         icon: Layers,
         wideGradient: "from-[#4C1D95] to-[#8B5CF6]",
         squareGradient: "from-[#06B6D4] to-[#0891B2]"
@@ -83,7 +83,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Trained Enterprise Models & Vectors",
         squareDesc: "Leverage private internal corporate wikis with safe, secure, and sandboxed AI integrations.",
-        cardTitle: "NextGen AI Agent",
+        cardTitle: "eVeda AI Agent",
         icon: Cpu,
         wideGradient: "from-[#991B1B] to-[#EF4444]",
         squareGradient: "from-[#8B5CF6] to-[#7C3AED]"
@@ -98,7 +98,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Terraform Infrastructure as Code",
         squareDesc: "Deploy standardized, compliance-ready server and database clusters in minutes.",
-        cardTitle: "NextGen Cloud Node",
+        cardTitle: "eVeda Cloud Node",
         icon: Database,
         wideGradient: "from-[#0369A1] to-[#0EA5E9]",
         squareGradient: "from-[#10B981] to-[#059669]"
@@ -113,7 +113,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Continuous Monitoring & Alerts",
         squareDesc: "Instantly detect anomalies with Prometheus and Grafana dashboards before they affect users.",
-        cardTitle: "NextGen CI/CD Pipeline",
+        cardTitle: "eVeda CI/CD Pipeline",
         icon: Settings,
         wideGradient: "from-[#A16207] to-[#EAB308]",
         squareGradient: "from-[#0F172A] to-[#334155]"
@@ -128,7 +128,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Omnichannel Communications Hub",
         squareDesc: "Interact with client logs, SMTP email routing, and WhatsApp alerts directly inside one unified portal.",
-        cardTitle: "NextGen ERP Engine",
+        cardTitle: "eVeda ERP Engine",
         icon: Layers,
         wideGradient: "from-[#1E1B4B] to-[#312E81]",
         squareGradient: "from-[#EC4899] to-[#DB2777]"
@@ -143,7 +143,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Real-Time CRM & Lead Sync",
         squareDesc: "Connect message triggers directly to user actions and databases for immediate notifications.",
-        cardTitle: "NextGen WA Bot",
+        cardTitle: "eVeda WA Bot",
         icon: MessageSquare,
         wideGradient: "from-[#14532D] to-[#22C55E]",
         squareGradient: "from-[#1E40AF] to-[#3B82F6]"
@@ -158,7 +158,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Omnichannel Calendar Scheduling",
         squareDesc: "Publish across LinkedIn, X, Instagram, and YouTube seamlessly.",
-        cardTitle: "NextGen Social",
+        cardTitle: "eVeda Social",
         icon: MessageSquare,
         wideGradient: "from-[#6B21A8] to-[#A855F7]",
         squareGradient: "from-[#0F172A] to-[#1E293B]"
@@ -173,7 +173,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Dynamic Retargeting Loops",
         squareDesc: "Advanced pixel tracking and A/B testing to capture intent and re-engage lost leads.",
-        cardTitle: "NextGen PPC",
+        cardTitle: "eVeda PPC",
         icon: Coins,
         wideGradient: "from-[#991B1B] to-[#DC2626]",
         squareGradient: "from-[#C2410C] to-[#F97316]"
@@ -188,7 +188,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Dynamic Motion Graphics",
         squareDesc: "Custom typography, 3D tracking, and fluid transitions to elevate your storytelling.",
-        cardTitle: "NextGen Studio",
+        cardTitle: "eVeda Studio",
         icon: Layers,
         wideGradient: "from-[#BE185D] to-[#EC4899]",
         squareGradient: "from-[#312E81] to-[#6366F1]"
@@ -203,7 +203,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Brand Asset Vault",
         squareDesc: "Organized, shareable design libraries containing all your high-res vectors and print-ready files.",
-        cardTitle: "NextGen Graphics",
+        cardTitle: "eVeda Graphics",
         icon: Layers,
         wideGradient: "from-[#0369A1] to-[#38BDF8]",
         squareGradient: "from-[#9D174D] to-[#EC4899]"
@@ -218,7 +218,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "JSON-LD Rich Schema Markups",
         squareDesc: "Guide crawler engines to index product specifications, FAQs, and reviews with rich result cards.",
-        cardTitle: "NextGen SEO Core",
+        cardTitle: "eVeda SEO Core",
         icon: Globe,
         wideGradient: "from-[#1E3A8A] to-[#1D4ED8]",
         squareGradient: "from-[#8B5CF6] to-[#7C3AED]"
@@ -233,7 +233,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Role-Based Security & Audit Compliance",
         squareDesc: "Rigid user permission control, full document activity logging, and AES-256 data protection setups.",
-        cardTitle: "NextGen DMS Platform",
+        cardTitle: "eVeda DMS Platform",
         icon: ShieldCheck,
         wideGradient: "from-[#1E3A8A] to-[#3B82F6]",
         squareGradient: "from-[#10B981] to-[#059669]"
@@ -248,7 +248,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Interactive Student Portal & Forums",
         squareDesc: "Let students collaborate in discussion forums and track modules via visual progress logs.",
-        cardTitle: "NextGen LMS Core",
+        cardTitle: "eVeda LMS Core",
         icon: Briefcase,
         wideGradient: "from-[#D97706] to-[#F59E0B]",
         squareGradient: "from-[#0F172A] to-[#1E293B]"
@@ -263,7 +263,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Granular Ward & Bed Allocation Grid",
         squareDesc: "Instantly allocate available ICU slots, hospital beds, and track active nurse assignments.",
-        cardTitle: "NextGen HMS Node",
+        cardTitle: "eVeda HMS Node",
         icon: ShieldCheck,
         wideGradient: "from-[#DC2626] to-[#EF4444]",
         squareGradient: "from-[#1E3A8A] to-[#2563EB]"
@@ -278,7 +278,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Multi-Platform Smart TV Playback",
         squareDesc: "Deliver clean streaming experiences natively on Web, Android, Apple TV, FireTV, and Tizen.",
-        cardTitle: "NextGen OTT Stream",
+        cardTitle: "eVeda OTT Stream",
         icon: Smartphone,
         wideGradient: "from-[#6D28D9] to-[#8B5CF6]",
         squareGradient: "from-[#10B981] to-[#059669]"
@@ -293,7 +293,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "RFID Biometrics & GPS Tracking Hub",
         squareDesc: "Let parents monitor real-time bus locations and register biometric student check-ins.",
-        cardTitle: "NextGen School ERP",
+        cardTitle: "eVeda School ERP",
         icon: Calendar,
         wideGradient: "from-[#059669] to-[#10B981]",
         squareGradient: "from-[#B45309] to-[#D97706]"
@@ -308,7 +308,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Advanced Escrow & Dispute Management",
         squareDesc: "Protect buyers and sellers with custom holding rule sets and order settlements.",
-        cardTitle: "NextGen Market Core",
+        cardTitle: "eVeda Market Core",
         icon: Coins,
         wideGradient: "from-[#EA580C] to-[#F97316]",
         squareGradient: "from-[#1E1B4B] to-[#312E81]"
@@ -323,7 +323,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Central Multi-Warehouse Inventory Sync",
         squareDesc: "Deduct items in real-time as bills settle, ensuring accurate stock balances.",
-        cardTitle: "NextGen Cloud POS",
+        cardTitle: "eVeda Cloud POS",
         icon: Settings,
         wideGradient: "from-[#0284C7] to-[#0EA5E9]",
         squareGradient: "from-[#10B981] to-[#059669]"
@@ -338,7 +338,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Omnichannel Communications & API Integrations",
         squareDesc: "Onboard leads directly from Google Ads, Meta, IndiaMart, and custom website forms.",
-        cardTitle: "NextGen CRM Panel",
+        cardTitle: "eVeda CRM Panel",
         icon: MessageSquare,
         wideGradient: "from-[#DB2777] to-[#EC4899]",
         squareGradient: "from-[#5B21B6] to-[#7C3AED]"
@@ -353,7 +353,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Client Consignment Tracking Links",
         squareDesc: "Send secure, live transit links to clients for real-time order location updates.",
-        cardTitle: "NextGen Logistics",
+        cardTitle: "eVeda Logistics",
         icon: Globe,
         wideGradient: "from-[#4F46E5] to-[#6366F1]",
         squareGradient: "from-[#0D9488] to-[#14B8A6]"
@@ -368,7 +368,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Supplier Portals & COGS Analytics",
         squareDesc: "Manage vendor product lists and analyze product profit margins automatically.",
-        cardTitle: "NextGen Inventory Node",
+        cardTitle: "eVeda Inventory Node",
         icon: Database,
         wideGradient: "from-[#0D9488] to-[#14B8A6]",
         squareGradient: "from-[#1E3A8A] to-[#2563EB]"
@@ -383,7 +383,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Automated Abandoned Cart Marketing",
         squareDesc: "Send automated WhatsApp discount codes and checkout reminder emails to recover lost sales.",
-        cardTitle: "NextGen Commerce Core",
+        cardTitle: "eVeda Commerce Core",
         icon: Coins,
         wideGradient: "from-[#E11D48] to-[#F43F5E]",
         squareGradient: "from-[#312E81] to-[#4338CA]"
@@ -398,7 +398,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Full Applicant Tracking System (ATS)",
         squareDesc: "Track candidates, log interview notes, and dispatch job offers from a single screen.",
-        cardTitle: "NextGen HRMS Portal",
+        cardTitle: "eVeda HRMS Portal",
         icon: Briefcase,
         wideGradient: "from-[#6D28D9] to-[#8B5CF6]",
         squareGradient: "from-[#1E293B] to-[#334155]"
@@ -413,7 +413,7 @@ const getMarketingContent = (id: string, title: string): ServiceMarketingContent
         ],
         squareTitle: "Engineered for Enterprise Performance",
         squareDesc: "Security audits, clean modular patterns, and flexible integrations mapped for scaling companies.",
-        cardTitle: "NextGen Engine",
+        cardTitle: "eVeda Engine",
         icon: Settings,
         wideGradient: "from-[#1E1B4B] to-[#312E81]",
         squareGradient: "from-[#10B981] to-[#059669]"
@@ -635,7 +635,7 @@ export default function PremiumCapabilities({ serviceId, serviceTitle, features 
               <div className="absolute bottom-[-10%] right-[-5%] w-[120px] h-[120px] opacity-10 rounded-full border-[8px] border-white pointer-events-none" />
 
               <div className="z-10 text-[11px] font-bold uppercase tracking-widest text-white/60">
-                NEXTGEN VERIFIED
+                EVEDA VERIFIED
               </div>
             </div>
           </motion.div>

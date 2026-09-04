@@ -106,7 +106,7 @@ export default function PrivacyPage() {
                 <h2 className="text-slate-900 font-bold text-lg m-0">1. Introduction</h2>
               </div>
               <p className="text-xs leading-relaxed text-slate-600">
-                Welcome to NextGen Tech Solution. We value your trust and are dedicated to safeguarding the confidentiality of your personal and business data. This Privacy Policy outlines the types of information we collect, process, and protect when you interact with our website, our cloud CRM platform, and our custom software engineering services.
+                Welcome to Eveda Online Services. We value your trust and are dedicated to safeguarding the confidentiality of your personal and business data. This Privacy Policy outlines the types of information we collect, process, and protect when you interact with our website, our cloud CRM platform, and our custom software engineering services.
               </p>
             </div>
 
@@ -189,8 +189,8 @@ export default function PrivacyPage() {
                 For questions regarding this policy or data storage practices, please write to:
               </p>
               <p className="text-xs text-slate-805 font-bold leading-relaxed">
-                Email: compliance@nextgentechsolution.org<br />
-                Office: 509, RR Tower, Ratu Road, Ranchi, Jharkhand
+                Email: compliance@evedaonlineservices.com<br />
+                Office: 53 eVeda Online Services Aryanagar, Haridwar, Uttarakhand
               </p>
             </div>
           </div>

@@ -72,8 +72,8 @@ export default function LoginPage({
       toast.success(`Welcome back, ${data.user.name}!`);
       router.push("/dashboard");
       router.refresh();
-    } catch {
-      setError("Network error. Please try again.");
+    } catch (err: any) {
+      setError(err?.message || "Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -117,7 +117,7 @@ export default function LoginPage({
             <Zap className="w-5 h-5 text-white" />
           </div>
           <div>
-            <p className="text-[14px] font-semibold text-white leading-tight">NextGen Tech Solution</p>
+            <p className="text-[14px] font-semibold text-white leading-tight">Eveda Online Services</p>
             <p className="text-[11px] text-white/70">Premium CRM System</p>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function LoginPage({
             style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.18)" }}
           >
             <p className="text-[13px] text-white/90 leading-relaxed">
-              &ldquo;We replaced three tools with NextGen CRM. Our lead conversion improved by 38% in the first quarter.&rdquo;
+              &ldquo;We replaced three tools with eVeda CRM. Our lead conversion improved by 38% in the first quarter.&rdquo;
             </p>
             <div className="flex items-center gap-2 mt-3">
               <div className="w-7 h-7 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-[11px] font-semibold text-white">
@@ -191,7 +191,7 @@ export default function LoginPage({
               <Zap className="w-4 h-4 text-white" />
             </div>
             <p className="text-[14px] font-semibold" style={{ color: "var(--crm-text-strong)" }}>
-              NextGen CRM
+              eVeda CRM
             </p>
           </div>
 
@@ -329,7 +329,7 @@ export default function LoginPage({
             <span className="font-medium" style={{ color: "var(--crm-text)" }}>Demo mode</span>
             <span> — credentials are pre-configured in </span>
             <code className="px-1 py-0.5 rounded text-[11px] font-mono" style={{ background: "var(--crm-surface)", border: "1px solid var(--crm-border-faint)" }}>
-              .env.local
+              .env
             </code>
           </div>
 

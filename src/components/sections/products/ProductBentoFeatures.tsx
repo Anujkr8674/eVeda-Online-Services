@@ -96,7 +96,7 @@ export default function ProductBentoFeatures({ productTitle, features, accentCol
             Everything You Need in a <span style={{ color: accentColor }}>Modern {productTitle}</span>
           </h2>
           <p className="mt-3 text-slate-500 text-sm leading-relaxed max-w-xl mx-auto font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>
-            NextGen {productTitle} simplifies how teams operate, protect sensitive data, and accelerate workflows.
+            eVeda {productTitle} simplifies how teams operate, protect sensitive data, and accelerate workflows.
           </p>
         </div>
 

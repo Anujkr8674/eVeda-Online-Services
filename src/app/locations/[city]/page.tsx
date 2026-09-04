@@ -26,15 +26,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `Best IT & Software Company in ${cityData.name} | NextGen Tech Solution`,
-    description: `Looking for top-tier software development, AI solutions, and digital marketing in ${cityData.name}, ${cityData.state}? NextGen Tech Solution delivers enterprise-grade IT services globally.`,
+    title: `Best IT & Software Company in ${cityData.name} | Eveda Online Services`,
+    description: `Looking for top-tier software development, AI solutions, and digital marketing in ${cityData.name}, ${cityData.state}? Eveda Online Services delivers enterprise-grade IT services globally.`,
     alternates: {
-      canonical: `https://nextgentechsolution.org/locations/${cityData.id}`,
+      canonical: `https://evedaonlineservices.com/locations/${cityData.id}`,
     },
     openGraph: {
       title: `Premium Software & IT Agency in ${cityData.name}`,
       description: `Transform your business with cutting-edge web, mobile, and AI solutions crafted by experts serving ${cityData.name}.`,
-      url: `https://nextgentechsolution.org/locations/${cityData.id}`,
+      url: `https://evedaonlineservices.com/locations/${cityData.id}`,
     },
   };
 }
@@ -51,10 +51,10 @@ export default async function LocationPage({ params }: Props) {
   const localSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": `NextGen Tech Solution - ${cityData.name}`,
-    "image": "https://nextgentechsolution.org/images/og-image.png",
-    "url": `https://nextgentechsolution.org/locations/${cityData.id}`,
-    "telephone": "+91-90318-06381",
+    "name": `Eveda Online Services - ${cityData.name}`,
+    "image": "https://evedaonlineservices.com/images/og-image.png",
+    "url": `https://evedaonlineservices.com/locations/${cityData.id}`,
+    "telephone": "+91-8630508235",
     "description": `Premium technology company delivering web, app, and AI solutions to businesses in ${cityData.name}, ${cityData.state}.`,
     "address": {
       "@type": "PostalAddress",

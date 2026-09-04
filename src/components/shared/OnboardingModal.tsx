@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
+import {
   X, Clock, User, Mail, Phone, Info, Check, Loader2, ArrowRight, ChevronLeft, AlertCircle, MessageSquare, Sparkles
 } from "lucide-react";
 import Image from "next/image";
@@ -40,9 +40,9 @@ export function triggerOnboardingModal(options: OnboardingTriggerOptions) {
 
 export default function OnboardingModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState(0); 
+  const [step, setStep] = useState(0);
   const [accentColor, setAccentColor] = useState("");
-  
+
   // Dynamic settings from trigger
   const [flowType, setFlowType] = useState<"package" | "quote" | "general">("general");
   const [preselectedPackage, setPreselectedPackage] = useState("");
@@ -75,13 +75,13 @@ export default function OnboardingModal() {
     const handleOpen = (e: Event) => {
       const customEvent = e as CustomEvent<OnboardingTriggerOptions>;
       const detail = customEvent.detail || { type: "general" };
-      
+
       setFlowType(detail.type || "general");
       setPreselectedPackage(detail.preselectedPackage || "");
       setServiceType(detail.serviceType || "");
       setQuoteDetails(detail.customQuoteDetails || null);
       setAccentColor(detail.accentColor || "");
-      
+
       // Auto-prefill budget and default messages based on type
       let defaultBudget = "";
       let defaultMessage = "";
@@ -213,7 +213,7 @@ export default function OnboardingModal() {
       }
 
       setLeadId(data.leadId ?? "");
-      setStep(4); 
+      setStep(4);
     } catch {
       setError("A connection error occurred. Please try again.");
     } finally {
@@ -237,7 +237,7 @@ export default function OnboardingModal() {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-55 flex items-center justify-center p-4 overflow-y-auto">
-          
+
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -261,12 +261,12 @@ export default function OnboardingModal() {
             } as React.CSSProperties : undefined}
             className="bg-white text-slate-800 rounded-3xl w-full max-w-4xl shadow-2xl relative z-10 overflow-hidden min-h-fit md:min-h-[500px] flex flex-col md:flex-row border border-slate-100"
           >
-            
+
             {/* ══ STEP 0: Welcome Panel ══ */}
             {step === 0 && (
               <div className="w-full flex flex-col md:flex-row relative">
                 {/* Mobile close button (hidden on desktop) */}
-                <button 
+                <button
                   onClick={handleClose}
                   className="absolute top-5 right-5 z-20 w-8 h-8 rounded-full flex items-center justify-center bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-950 transition-all cursor-pointer shadow-md border border-slate-200 md:hidden"
                 >
@@ -276,10 +276,10 @@ export default function OnboardingModal() {
                 {/* Left info column */}
                 <div className="flex-1 p-8 sm:p-12 flex flex-col justify-between" style={{ fontFamily: "'Inter', sans-serif" }}>
                   <div className="space-y-5">
-                    
+
                     {/* Flow-specific header badge */}
                     {flowType === "package" && (
-                      <span 
+                      <span
                         className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest"
                         style={{
                           background: "var(--accent-global-dim, rgba(124, 58, 237, 0.08))",
@@ -291,7 +291,7 @@ export default function OnboardingModal() {
                       </span>
                     )}
                     {flowType === "quote" && (
-                      <span 
+                      <span
                         className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest"
                         style={{
                           background: "var(--accent-global-dim, rgba(124, 58, 237, 0.08))",
@@ -303,7 +303,7 @@ export default function OnboardingModal() {
                       </span>
                     )}
                     {flowType === "general" && (
-                      <span 
+                      <span
                         className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest"
                         style={{
                           background: "var(--accent-global-dim, rgba(124, 58, 237, 0.08))",
@@ -351,7 +351,7 @@ export default function OnboardingModal() {
                       <button
                         onClick={() => setStep(1)}
                         className="h-12 px-8 text-white font-extrabold text-xs uppercase tracking-widest rounded-full transition-all duration-200 flex items-center gap-2 cursor-pointer"
-                        style={{ 
+                        style={{
                           background: "var(--accent-global, #7c3aed)",
                           boxShadow: "0 8px 24px rgba(124, 58, 237, 0.25)"
                         }}
@@ -377,10 +377,10 @@ export default function OnboardingModal() {
                     {/* Google Trust Box */}
                     <div className="text-left flex items-center gap-2.5">
                       <svg className="w-8 h-8 shrink-0" viewBox="0 0 24 24">
-                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
                       </svg>
                       <div>
                         <div className="flex text-amber-500 mb-0.5 text-[8px] tracking-tighter">★★★★★</div>
@@ -391,7 +391,7 @@ export default function OnboardingModal() {
                     {/* Trustpilot Trust Box */}
                     <div className="text-left flex items-center gap-2.5">
                       <svg className="w-8 h-8 shrink-0" viewBox="0 0 24 24">
-                        <path d="M24 9.624H14.832L12 1.008l-2.832 8.616H0l7.416 5.376-2.832 8.616L12 18.24l7.416 5.376-2.832-8.616L24 9.624z" fill="#00b67a"/>
+                        <path d="M24 9.624H14.832L12 1.008l-2.832 8.616H0l7.416 5.376-2.832 8.616L12 18.24l7.416 5.376-2.832-8.616L24 9.624z" fill="#00b67a" />
                       </svg>
                       <div>
                         <div className="flex text-emerald-500 mb-0.5 text-[8px] tracking-tighter">★★★★★</div>
@@ -402,7 +402,7 @@ export default function OnboardingModal() {
                     {/* Facebook Trust Box */}
                     <div className="text-left flex items-center gap-2.5">
                       <svg className="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="#1877F2">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                       </svg>
                       <div>
                         <div className="flex text-blue-600 mb-0.5 text-[8px] tracking-tighter">★★★★★</div>
@@ -418,6 +418,7 @@ export default function OnboardingModal() {
                     src="/images/architect_portrait.png"
                     alt="Technical Supervisor"
                     fill
+                    // style={{ width: "80%" }}
                     className="object-contain object-bottom pt-4 scale-120 origin-bottom"
                     priority
                   />
@@ -427,8 +428,8 @@ export default function OnboardingModal() {
                   {/* Floating Card 1: Projects Done */}
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
-                    animate={{ 
-                      opacity: 1, 
+                    animate={{
+                      opacity: 1,
                       x: 0,
                       y: [0, -6, 0]
                     }}
@@ -451,8 +452,8 @@ export default function OnboardingModal() {
                   {/* Floating Card 2: On-Time SLA */}
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
-                    animate={{ 
-                      opacity: 1, 
+                    animate={{
+                      opacity: 1,
                       x: 0,
                       y: [0, 6, 0]
                     }}
@@ -473,7 +474,7 @@ export default function OnboardingModal() {
                   </motion.div>
 
                   {/* Close button on welcome screen */}
-                  <button 
+                  <button
                     onClick={handleClose}
                     className="absolute top-5 right-5 z-20 w-8 h-8 rounded-full flex items-center justify-center bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-955 transition-all cursor-pointer shadow-md border border-slate-200"
                   >
@@ -486,7 +487,7 @@ export default function OnboardingModal() {
             {/* ══ STEPS 1, 2, 3: Questionnaire ══ */}
             {step > 0 && step < 4 && (
               <div className="w-full flex flex-col p-8 sm:p-12 justify-between flex-1" style={{ fontFamily: "'Inter', sans-serif" }}>
-                
+
                 {/* Header Row */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -499,7 +500,7 @@ export default function OnboardingModal() {
                       <span className="text-[11px] font-extrabold text-slate-505 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
                         Step {step} of 3
                       </span>
-                      <button 
+                      <button
                         onClick={handleClose}
                         className="w-8 h-8 rounded-full flex items-center justify-center bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-all border border-slate-100 cursor-pointer"
                       >
@@ -521,7 +522,7 @@ export default function OnboardingModal() {
 
                 {/* Form fields & hint blocks */}
                 <div className="my-6 space-y-6 flex-1 max-w-2xl">
-                  
+
                   {/* STEP 1: Name */}
                   {step === 1 && (
                     <div className="space-y-4 animate-fadeIn">
@@ -537,11 +538,10 @@ export default function OnboardingModal() {
                           onChange={(e) => setForm({ ...form, name: e.target.value })}
                           onBlur={() => handleBlur("name")}
                           placeholder="Enter your full name"
-                          className={`w-full h-12 pl-12 pr-4 rounded-xl bg-slate-50 border text-sm text-slate-900 placeholder:text-slate-450 outline-none transition-all duration-200 ${
-                            touched.name && !isNameValid
+                          className={`w-full h-12 pl-12 pr-4 rounded-xl bg-slate-50 border text-sm text-slate-900 placeholder:text-slate-450 outline-none transition-all duration-200 ${touched.name && !isNameValid
                               ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-slate-200 focus:bg-white focus:border-purple-600 focus:ring-2 focus:ring-purple-200/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {touched.name && !isNameValid && (
@@ -571,7 +571,7 @@ export default function OnboardingModal() {
                       <label className="block text-slate-900 font-extrabold text-lg sm:text-xl font-sora tracking-tight">
                         Provide your mobile number and email.
                       </label>
-                      
+
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="relative">
                           <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -582,14 +582,13 @@ export default function OnboardingModal() {
                             onChange={(e) => handlePhoneChange(e.target.value)}
                             onBlur={() => handleBlur("phone")}
                             placeholder="10-digit Phone Number"
-                            className={`w-full h-12 pl-12 pr-4 rounded-xl bg-slate-50 border text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all duration-200 ${
-                              touched.phone && !isPhoneValid
+                            className={`w-full h-12 pl-12 pr-4 rounded-xl bg-slate-50 border text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all duration-200 ${touched.phone && !isPhoneValid
                                 ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                                 : "border-slate-200 focus:bg-white focus:border-purple-600 focus:ring-2 focus:ring-purple-200/10"
-                            }`}
+                              }`}
                           />
                         </div>
-                        
+
                         <div className="relative">
                           <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                           <input
@@ -599,11 +598,10 @@ export default function OnboardingModal() {
                             onChange={(e) => setForm({ ...form, email: e.target.value })}
                             onBlur={() => handleBlur("email")}
                             placeholder="Work Email Address"
-                            className={`w-full h-12 pl-12 pr-4 rounded-xl bg-slate-50 border text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all duration-200 ${
-                              touched.email && !isEmailValid
+                            className={`w-full h-12 pl-12 pr-4 rounded-xl bg-slate-50 border text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all duration-200 ${touched.email && !isEmailValid
                                 ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                                 : "border-slate-200 focus:bg-white focus:border-purple-600 focus:ring-2 focus:ring-purple-200/10"
-                            }`}
+                              }`}
                           />
                         </div>
                       </div>
@@ -638,7 +636,7 @@ export default function OnboardingModal() {
                   {/* STEP 3: Dynamic Requirements & Prefilled Details */}
                   {step === 3 && (
                     <div className="space-y-4 animate-fadeIn">
-                      
+
                       {/* Dynamic budget and summary layout based on trigger origin */}
                       {flowType === "package" && (
                         <div className="space-y-4">
@@ -655,7 +653,7 @@ export default function OnboardingModal() {
                               {serviceType && <p className="text-[10px] text-slate-500 font-semibold">{serviceType}</p>}
                             </div>
                           </div>
-                          
+
                           <label className="block text-slate-900 font-extrabold text-sm font-sora mt-4">
                             Describe any custom features or timeline requirements (Optional)
                           </label>
@@ -667,7 +665,7 @@ export default function OnboardingModal() {
                           <label className="block text-slate-900 font-extrabold text-lg sm:text-xl font-sora tracking-tight">
                             Confirm your custom configuration estimate
                           </label>
-                          
+
                           <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-purple-50/30 border border-purple-100 font-sans">
                             <div>
                               <p className="text-[9px] font-black uppercase text-purple-600 tracking-widest">PROJECT TYPE</p>
@@ -686,7 +684,7 @@ export default function OnboardingModal() {
                               <p className="text-purple-700 text-xs font-black font-mono">₹{quoteDetails.cost.toLocaleString("en-IN")}</p>
                             </div>
                           </div>
-                          
+
                           <label className="block text-slate-900 font-extrabold text-sm font-sora mt-4">
                             Any other requirements or specific databases needed? (Optional)
                           </label>
@@ -698,7 +696,7 @@ export default function OnboardingModal() {
                           <label className="block text-slate-900 font-extrabold text-lg sm:text-xl font-sora tracking-tight">
                             Select a budget tier
                           </label>
-                          
+
                           <div className="grid sm:grid-cols-3 gap-3">
                             {[
                               { val: "startup", title: "Startup Tier", desc: "Under ₹4 Lakhs" },
@@ -709,11 +707,10 @@ export default function OnboardingModal() {
                                 key={tier.val}
                                 type="button"
                                 onClick={() => setForm({ ...form, budget: tier.val })}
-                                className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all duration-200 ${
-                                  form.budget === tier.val 
-                                    ? "bg-purple-50/10 ring-2" 
+                                className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all duration-200 ${form.budget === tier.val
+                                    ? "bg-purple-50/10 ring-2"
                                     : "border-slate-200 hover:border-slate-350 hover:bg-slate-50"
-                                }`}
+                                  }`}
                                 style={{
                                   borderColor: form.budget === tier.val ? "var(--accent-global, #7c3aed)" : "",
                                   boxShadow: form.budget === tier.val ? "0 4px 12px rgba(124, 58, 237, 0.08)" : "",
@@ -766,7 +763,7 @@ export default function OnboardingModal() {
                     onClick={nextStep}
                     disabled={!isStepValid() || sending}
                     className="h-11 px-8 text-white font-extrabold text-xs uppercase tracking-widest rounded-full transition-all duration-200 flex items-center gap-2 cursor-pointer disabled:opacity-50"
-                    style={{ 
+                    style={{
                       background: "var(--accent-global, #7c3aed)",
                       boxShadow: "0 6px 20px rgba(124, 58, 237, 0.2)"
                     }}
@@ -802,7 +799,7 @@ export default function OnboardingModal() {
             {/* ══ STEP 4: Dynamic Success Panel ══ */}
             {step === 4 && (
               <div className="w-full p-8 sm:p-12 flex flex-col items-center justify-center text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
-                <div 
+                <div
                   className="w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white shadow-lg"
                   style={{
                     background: "var(--accent-global, #7c3aed)",
@@ -815,7 +812,7 @@ export default function OnboardingModal() {
                 <h3 className="text-2xl sm:text-3xl font-extrabold font-sora text-slate-900 tracking-tight mb-3">
                   {flowType === "package" ? "Package Preference Secured!" : flowType === "quote" ? "Custom Configuration Logged!" : "Project Details Received!"}
                 </h3>
-                
+
                 <p className="text-slate-655 text-sm max-w-md mx-auto leading-relaxed mb-6">
                   Success! Thank you, <span className="text-slate-900 font-bold">{form.name}</span>. We are compiling your custom development sprints and proposal. Check <span className="text-slate-900 font-bold">{form.email}</span> for your tailored quote in 2–4 hours.
                 </p>

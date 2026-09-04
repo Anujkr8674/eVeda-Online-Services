@@ -21,11 +21,14 @@ import SmmServiceDetail from "@/components/sections/SmmServiceDetail";
 import PpcServiceDetail from "@/components/sections/PpcServiceDetail";
 import VideoEditingServiceDetail from "@/components/sections/VideoEditingServiceDetail";
 import GraphicDesignServiceDetail from "@/components/sections/GraphicDesignServiceDetail";
+import BookDesigningServiceDetail from "@/components/sections/BookDesigningServiceDetail";
+import BookBrandingServiceDetail from "@/components/sections/BookBrandingServiceDetail";
 import ProcessSteps from "@/components/sections/ProcessSteps";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import React from "react";
 import { triggerOnboardingModal } from "@/components/shared/OnboardingModal";
 import Portfolio from "@/components/sections/Portfolio";
+import { useWebSettings } from "@/context/WebSettingsContext";
 
 // Helper to convert hex to RGB
 function hexToRgb(hex: string): string {
@@ -84,6 +87,8 @@ function Interactive3DCard({ children, className = "" }: { children: React.React
 }
 
 export default function ServiceDetailClient({ service }: { service: ServiceDetail }) {
+  const { settings } = useWebSettings();
+
   if (service.id === "web") {
     return <WebServiceDetail service={service} />;
   }
@@ -119,6 +124,12 @@ export default function ServiceDetailClient({ service }: { service: ServiceDetai
   }
   if (service.id === "graphic-designing") {
     return <GraphicDesignServiceDetail service={service} />;
+  }
+  if (service.id === "book-designing") {
+    return <BookDesigningServiceDetail service={service} />;
+  }
+  if (service.id === "book-branding") {
+    return <BookBrandingServiceDetail service={service} />;
   }
 
   const [form, setForm] = useState({ name: "", email: "", phone: "", budget: "", message: "" });
@@ -520,14 +531,14 @@ export default function ServiceDetailClient({ service }: { service: ServiceDetai
           <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-slate-950 via-slate-950/70 to-transparent z-10 pointer-events-none" />
           <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-slate-950/90 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/[0.14] shadow-xl whitespace-nowrap">
             <MapPin className="w-4 h-4 text-[var(--accent-global)] shrink-0" />
-            <span className="text-xs font-bold text-white tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>NextGen Tech Solution — RR Tower, Ratu Road, Ranchi</span>
+            <span className="text-xs font-bold text-white tracking-wide" style={{ fontFamily: "'Inter', sans-serif" }}>{settings.address}</span>
           </div>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14649.6!2d85.2896!3d23.3641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1035ec9bf83%3A0x6ec8f9f38fe2fc8e!2sRatu%20Rd%2C%20Ranchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1718000000000!5m2!1sen!2sin"
+            src={settings.mapEmbed || "https://maps.google.com/maps?q=53+eVeda+Online+Services+Aryanagar+Haridwar&t=&z=13&ie=UTF8&iwloc=&output=embed"}
             width="100%" height="420"
             style={{ border: 0, display: "block", filter: "invert(92%) hue-rotate(180deg) brightness(0.82) saturate(0.6) contrast(0.88)" }}
             allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-            title="NextGen Tech Solution Office Location"
+            title="Eveda Online Services Office Location"
           />
         </div>
 
@@ -563,8 +574,8 @@ export default function ServiceDetailClient({ service }: { service: ServiceDetai
                   <span className="text-white/90">BUILD THE</span>
                   <span style={{ color: "var(--accent-global)" }}>FUTURE</span>
                   <span className="text-white/20">·</span>
-                  <span className="text-white/90">NEXTGEN</span>
-                  <span style={{ color: "var(--accent-global)" }}>SOLUTIONS</span>
+                  <span className="text-white/90">EVEDA ONLINE</span>
+                  <span style={{ color: "var(--accent-global)" }}>SERVICES</span>
                   <span className="text-white/20">·</span>
                 </span>
               ))}
@@ -579,8 +590,8 @@ export default function ServiceDetailClient({ service }: { service: ServiceDetai
                   <span className="text-white/90">BUILD THE</span>
                   <span style={{ color: "var(--accent-global)" }}>FUTURE</span>
                   <span className="text-white/20">·</span>
-                  <span className="text-white/90">NEXTGEN</span>
-                  <span style={{ color: "var(--accent-global)" }}>SOLUTIONS</span>
+                  <span className="text-white/90">EVEDA ONLINE</span>
+                  <span style={{ color: "var(--accent-global)" }}>SERVICES</span>
                   <span className="text-white/20">·</span>
                 </span>
               ))}

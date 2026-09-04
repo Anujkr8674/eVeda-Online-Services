@@ -206,7 +206,7 @@ export default function TeamPage() {
       <PageHero
         badge="Our Experts"
         title="Meet the Minds Driving"
-        titleHighlight="NextGen Engineering"
+        titleHighlight="eVeda Engineering"
         description="A premium collective of directors, product leaders, and veteran system architects building the future of software."
         breadcrumbs={[{ label: "Team" }]}
       />
@@ -321,7 +321,7 @@ export default function TeamPage() {
                     )}
                   </div>
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                    NextGen Partner
+                    eVeda Partner
                   </span>
                 </div>
 

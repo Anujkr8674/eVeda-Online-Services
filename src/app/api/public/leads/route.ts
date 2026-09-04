@@ -160,7 +160,7 @@ export async function POST(req: NextRequest) {
     // Send customer thank-you
     sendEmail({
       to: email,
-      subject: `Thanks for reaching out — ${process.env.PDF_COMPANY_NAME ?? "NextGen Tech Solution"}`,
+      subject: `Thanks for reaching out — ${process.env.PDF_COMPANY_NAME ?? "Eveda Online Services"}`,
       html: leadThankYouTemplate(name, services.length ? services : ["Custom IT Solution"]),
     }).catch((err) => console.error("[public/leads] thank-you mail failed:", err));
 

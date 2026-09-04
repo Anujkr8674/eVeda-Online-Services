@@ -109,7 +109,7 @@ export default function SupportChatbot() {
 
   // AI Assistant Chat States
   const [aiMessages, setAiMessages] = useState<Array<{ sender: "user" | "ai"; text: string }>>([
-    { sender: "ai", text: "Hello! I am your NextGen AI Assistant. How can I help you today?" }
+    { sender: "ai", text: "Hello! I am your eVeda AI Assistant. How can I help you today?" }
   ]);
   const [aiInput, setAiInput] = useState("");
   const [aiTyping, setAiTyping] = useState(false);
@@ -300,16 +300,16 @@ export default function SupportChatbot() {
     const text = msg.toLowerCase().trim();
 
     if (/hi|hello|hey|greetings|good morning|good afternoon|good evening/.test(text)) {
-      return "Hello! I am your NextGen AI Assistant. I can help you with our custom software services, tech stack, project timelines, pricing/quotes, or redirect you to raise a support ticket. What would you like to know?";
+      return "Hello! I am your eVeda AI Assistant. How can I assist you with our software solutions, services, or technical tickets today?";
     }
     if (/service|offer|do you build|mobile app|website|software|saas|web development|artificial intelligence|ai|enterprise|automation|design|ui/.test(text)) {
-      return "NextGen Tech Solutions specializes in high-performance digital products:\n\n• **Custom Web & Mobile Apps** (Next.js, React Native, Node.js)\n• **SaaS Products & Enterprise Platforms** (custom CRM/ERP)\n• **AI & Automation** (LLM integrations, custom chat agents)\n• **Cloud & DevOps** (AWS, Supabase, Docker)\n\nWe design, develop, and deploy end-to-end custom systems for global clients!";
+      return "Eveda Online Services specializes in high-performance digital products:\n\n• **Custom Web & Mobile Apps** (Next.js, React Native, Node.js)\n• **SaaS Products & Enterprise Platforms** (custom CRM/ERP)\n• **AI & Automation** (LLM integrations, custom chat agents)\n• **Cloud & DevOps** (AWS, Supabase, Docker)\n\nWe design, develop, and deploy end-to-end custom systems for global clients!";
     }
     if (/tech|stack|technology|language|react|next|node|python|supabase|database|framework/.test(text)) {
       return "Our standard premium technology stack includes:\n\n• **Frontend:** Next.js, React, Tailwind CSS, TypeScript\n• **Backend & APIs:** Node.js, Express, Python (FastAPI/Django)\n• **Database & Realtime:** Supabase, PostgreSQL, MongoDB, Redis\n• **Cloud & Infrastructure:** AWS, Docker, Vercel, Hostinger\n\nThis ensures your application is fast, secure, and infinitely scalable.";
     }
     if (/price|cost|quote|budget|how much|rate/.test(text)) {
-      return "We provide tailor-made quotes based on project complexity, features, and timeline. Simple websites or MVPs start around $1,500, while complex enterprise platforms or custom AI integrations range higher.\n\nTo get a precise estimate, you can click **'Request Callback'** in the main menu, or email us at **info@nextgentechsolution.org**!";
+      return "We provide tailor-made quotes based on project complexity, features, and timeline. Simple websites or MVPs start around $1,500, while complex enterprise platforms or custom AI integrations range higher.\n\nTo get a precise estimate, you can click **'Request Callback'** in the main menu, or email us at **info@evedaonlineservices.com**!";
     }
     if (/time|timeline|duration|how long|process|methodology/.test(text)) {
       return "Our standard development lifecycle follows 4 key phases:\n\n1. **Discovery & UI/UX Design** (1-2 weeks)\n2. **Agile Development** (3-6 weeks)\n3. **Quality Assurance & Testing** (1 week)\n4. **Deployment & Launch** (1-2 days)\n\nMost projects are fully delivered and launched within 4 to 8 weeks.";
@@ -317,14 +317,14 @@ export default function SupportChatbot() {
     if (/ticket|support|bug|issue|error|help desk/.test(text)) {
       return "To raise a technical ticket, go back to the main menu and select **'Support Ticketing Desk'** -> **'Raise Technical Ticket'**. You will need your Project ID or Lead ID. Once created, you can track it live and message developers directly!";
     }
-    if (/location|office|address|where are you|ranchi|india/.test(text)) {
-      return "Our corporate delivery office is located at:\n\n**509, RR Tower, Ratu Road, Ranchi, Jharkhand, 834005, India.**\n\nWe serve clients globally and hold meetings online via Zoom, Google Meet, or Microsoft Teams.";
+    if (/location|office|address|where are you|haridwar|india/.test(text)) {
+      return "Our corporate office is located at:\n\n**53 eVeda Online Services Aryanagar, Haridwar, Uttarakhand, India.**\n\nWe serve clients globally and hold meetings online via Zoom, Google Meet, or Microsoft Teams.";
     }
     if (/contact|email|phone|whatsapp|reach/.test(text)) {
-      return "You can reach us instantly via:\n\n• **Email:** info@nextgentechsolution.org\n• **Phone/WhatsApp:** +91-90318-06381\n• **Callback:** Use the 'Request Call Back' feature in the menu to have us contact you directly.";
+      return "You can reach us instantly via:\n\n• **Email:** info@evedaonlineservices.com\n• **Phone/WhatsApp:** +91 8630508235\n• **Callback:** Use the 'Request Call Back' feature in the menu to have us contact you directly.";
     }
 
-    return "That's an interesting question! As an AI assistant, I recommend discussing this directly with our engineers.\n\nYou can click **'Request Call Back'** on the main menu, or email our technical delivery desk at **info@nextgentechsolution.org** for a detailed consultation.";
+    return "That's an interesting question! As an AI assistant, I recommend discussing this directly with our engineers.\n\nYou can click **'Request Call Back'** on the main menu, or email our technical delivery desk at **info@evedaonlineservices.com** for a detailed consultation.";
   };
 
   const handleSendMessageToAI = (messageText?: string) => {
@@ -353,7 +353,7 @@ export default function SupportChatbot() {
     setActiveFaq(null);
     setRatingFeedback(false);
     setAiMessages([
-      { sender: "ai", text: "Hello! I am your NextGen AI Assistant. How can I help you today?" }
+      { sender: "ai", text: "Hello! I am your eVeda AI Assistant. How can I help you today?" }
     ]);
     setAiInput("");
     setAiTyping(false);
@@ -400,7 +400,7 @@ export default function SupportChatbot() {
               <div className="flex items-center gap-2.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
                 <div>
-                  <h4 className="text-[13px] font-bold text-white tracking-wide Outfit">NextGen Support Desk</h4>
+                  <h4 className="text-[13px] font-bold text-white tracking-wide Outfit">eVeda Support Desk</h4>
                   <p className="text-[10px] text-purple-100 flex items-center gap-1.5">
                     Project & Delivery Center <span className="text-[8px] bg-purple-700 px-1.5 py-0.2 rounded text-emerald-300 font-bold uppercase tracking-wider">Live</span>
                   </p>
@@ -481,7 +481,7 @@ export default function SupportChatbot() {
                     </button>
 
                     <a
-                      href="https://wa.me/919031806381?text=Hello%20NextGen%20Support,%20I%20need%20assistance%20regarding%20my%20project."
+                      href="https://wa.me/918630508235?text=Hello%20eVeda%20Support,%20I%20need%20assistance%20regarding%20my%20project."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full flex items-center justify-between p-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 transition-all text-left text-xs font-semibold text-slate-700 hover:border-emerald-600/30 group cursor-pointer shadow-sm no-underline"
@@ -508,7 +508,7 @@ export default function SupportChatbot() {
 
                     <div className="flex items-center justify-between">
                       <div>
-                        <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wider">NextGen AI Assistant</h5>
+                        <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wider">eVeda AI Assistant</h5>
                         <p className="text-[10px] text-slate-500">Ask about our services, pricing, or tech stack.</p>
                       </div>
                       <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
@@ -1107,7 +1107,7 @@ export default function SupportChatbot() {
             </div>
             {/* System Status operational banner */}
             <div className="px-5 py-2.5 bg-slate-100 border-t border-slate-200/80 flex items-center justify-between text-[9px] text-slate-500 font-semibold tracking-wide">
-              <span>NextGen System Core</span>
+              <span>eVeda System Core</span>
               <span className="flex items-center gap-1 text-emerald-600 uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Operational
               </span>

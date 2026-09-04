@@ -12,7 +12,7 @@ export default function CareersPage() {
         badge="We're Hiring"
         title="Join a Team That"
         titleHighlight="Builds the Future"
-        description="NextGen Tech Solution is growing fast. We're looking for exceptional engineers, designers, and builders who want to do the best work of their careers."
+        description="Eveda Online Services is growing fast. We're looking for exceptional engineers, designers, and builders who want to do the best work of their careers."
         breadcrumbs={[{ label: "Careers" }]}
       />
       <Careers hideViewAll={true} />

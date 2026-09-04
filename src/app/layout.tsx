@@ -8,37 +8,39 @@ import OnboardingModal from "@/components/shared/OnboardingModal";
 import BookDemoModal from "@/components/shared/BookDemoModal";
 import SupportChatbot from "@/components/shared/SupportChatbot";
 import { Toaster } from "react-hot-toast";
+import { getWebsiteSettings } from "@/lib/settings";
+import { WebSettingsProvider } from "@/context/WebSettingsContext";
 
 const CRM_PATHS = ["/dashboard", "/admin", "/telecallers", "/superadmin"];
 
 export const metadata: Metadata = {
   title: {
-    default: "NextGen Tech Solution — Engineering Tomorrow's Digital Future",
-    template: "%s | NextGen Tech Solution",
+    default: "Eveda Online Services — Engineering Tomorrow's Digital Future",
+    template: "%s | Eveda Online Services",
   },
   description:
     "Premium technology company specializing in AI, SaaS, Enterprise Software, Automation, Cloud Infrastructure, and Digital Transformation. 150+ projects delivered to 50+ global clients.",
-  metadataBase: new URL("https://nextgentechsolution.org"),
+  metadataBase: new URL("https://evedaonlineservices.com"),
   keywords: [
     "AI solutions", "SaaS development", "enterprise software", "digital transformation",
     "cloud infrastructure", "web development", "mobile app development",
-    "software company India", "IT company Ranchi Jharkhand", "custom software development",
+    "software company India", "IT company Haridwar", "custom software development",
     "Next.js developer", "React developer", "machine learning solutions",
     "DevOps CI/CD", "ERP CRM development", "UI UX design", "full-stack development",
-    "NextGen Tech Solution", "nextgentechsolution.org",
+    "Eveda Online Services", "eVeda", "evedaonlineservices.com",
   ],
-  authors: [{ name: "NextGen Tech Solution", url: "https://nextgentechsolution.org" }],
-  creator: "NextGen Tech Solution",
-  publisher: "NextGen Tech Solution",
+  authors: [{ name: "Eveda Online Services", url: "https://evedaonlineservices.com" }],
+  creator: "Eveda Online Services",
+  publisher: "Eveda Online Services",
   alternates: {
-    canonical: "https://nextgentechsolution.org",
+    canonical: "https://evedaonlineservices.com",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nextgentechsolution.org",
-    siteName: "NextGen Tech Solution",
-    title: "NextGen Tech Solution — Engineering Tomorrow's Digital Future",
+    url: "https://evedaonlineservices.com",
+    siteName: "Eveda Online Services",
+    title: "Eveda Online Services — Engineering Tomorrow's Digital Future",
     description:
       "Premium technology company delivering AI, SaaS, Enterprise Software, and Digital Transformation. 150+ projects, 50+ global clients.",
     images: [
@@ -46,16 +48,16 @@ export const metadata: Metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "NextGen Tech Solution — Engineering Tomorrow's Digital Future",
+        alt: "Eveda Online Services — Engineering Tomorrow's Digital Future",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@nextgentechsol",
-    creator: "@nextgentechsol",
-    title: "NextGen Tech Solution — Engineering Tomorrow's Digital Future",
+    site: "@evedaonlineservices",
+    creator: "@evedaonlineservices",
+    title: "Eveda Online Services — Engineering Tomorrow's Digital Future",
     description:
       "AI, SaaS, and Enterprise Software for the modern world. 150+ projects, 50+ global clients.",
     images: ["/images/og-image.png"],
@@ -94,54 +96,54 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://nextgentechsolution.org/#organization",
-      name: "NextGen Tech Solution",
-      url: "https://nextgentechsolution.org",
+      "@id": "https://evedaonlineservices.com/#organization",
+      name: "Eveda Online Services",
+      url: "https://evedaonlineservices.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://nextgentechsolution.org/images/logo.png",
+        url: "https://evedaonlineservices.com/images/logo.png",
         width: 400,
         height: 100,
       },
       sameAs: [
-        "https://twitter.com/nextgentechsol",
-        "https://linkedin.com/company/nextgentechsolution",
-        "https://github.com/nextgentechsolution",
-        "https://instagram.com/nextgentechsolution",
-        "https://facebook.com/nextgentechsolution",
-        "https://youtube.com/@nextgentechsolution",
+        "https://twitter.com/evedaonlineservices",
+        "https://linkedin.com/company/evedaonlineservices",
+        "https://github.com/evedaonlineservices",
+        "https://instagram.com/evedaonlineservices",
+        "https://facebook.com/evedaonlineservices",
+        "https://youtube.com/@evedaonlineservices",
       ],
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+91-90318-06381",
+        telephone: "+91-8630508235",
         contactType: "customer service",
-        email: "info@nextgentechsolution.org",
+        email: "info@evedaonlineservices.com",
         areaServed: "Worldwide",
         availableLanguage: ["English", "Hindi"],
       },
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://nextgentechsolution.org/#localbusiness",
-      name: "NextGen Tech Solution",
-      image: "https://nextgentechsolution.org/images/og-image.png",
-      url: "https://nextgentechsolution.org",
-      telephone: "+91-90318-06381",
-      email: "info@nextgentechsolution.org",
+      "@id": "https://evedaonlineservices.com/#localbusiness",
+      name: "Eveda Online Services",
+      image: "https://evedaonlineservices.com/images/og-image.png",
+      url: "https://evedaonlineservices.com",
+      telephone: "+91-8630508235",
+      email: "info@evedaonlineservices.com",
       description:
-        "Premium technology company specializing in AI, SaaS, Enterprise Software, and Digital Transformation. Serving global clients from Ranchi, India.",
+        "Premium technology company specializing in AI, SaaS, Enterprise Software, and Digital Transformation. Serving global clients.",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "509, RR Tower, Ratu Road",
-        addressLocality: "Ranchi",
-        addressRegion: "Jharkhand",
-        postalCode: "834005",
+        streetAddress: "53 eVeda Online Services Aryanagar",
+        addressLocality: "Haridwar",
+        addressRegion: "Uttarakhand",
+        postalCode: "249407",
         addressCountry: "IN",
       },
       geo: {
         "@type": "GeoCoordinates",
-        latitude: 23.3441,
-        longitude: 85.3096,
+        latitude: 29.9231,
+        longitude: 78.1194,
       },
       priceRange: "$$",
       openingHours: "Mo-Sa 09:00-18:00",
@@ -152,20 +154,20 @@ const jsonLd = {
         bestRating: "5",
         worstRating: "1",
       },
-      hasMap: "https://maps.google.com/?q=509,RR+Tower,Ratu+Road,Ranchi,Jharkhand,834005",
+      hasMap: "https://maps.google.com/?q=53+eVeda+Online+Services+Aryanagar+Haridwar",
     },
     {
       "@type": "WebSite",
-      "@id": "https://nextgentechsolution.org/#website",
-      url: "https://nextgentechsolution.org",
-      name: "NextGen Tech Solution",
+      "@id": "https://evedaonlineservices.com/#website",
+      url: "https://evedaonlineservices.com",
+      name: "Eveda Online Services",
       description: "Engineering Tomorrow's Digital Future",
-      publisher: { "@id": "https://nextgentechsolution.org/#organization" },
+      publisher: { "@id": "https://evedaonlineservices.com/#organization" },
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: "https://nextgentechsolution.org/blog?q={search_term_string}",
+          urlTemplate: "https://evedaonlineservices.com/blog?q={search_term_string}",
         },
         "query-input": "required name=search_term_string",
       },
@@ -177,6 +179,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const h = await headers();
   const pathname = h.get("x-pathname") ?? "";
   const isCRM = CRM_PATHS.some((p) => pathname.startsWith(p));
+  const settings = await getWebsiteSettings();
 
   return (
     <html
@@ -225,7 +228,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {isCRM ? (
           children
         ) : (
-          <>
+          <WebSettingsProvider initialSettings={settings}>
             <Navbar />
             <main className="relative">{children}</main>
             <Footer />
@@ -233,7 +236,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <OnboardingModal />
             <BookDemoModal />
             <SupportChatbot />
-          </>
+          </WebSettingsProvider>
         )}
       </body>
     </html>

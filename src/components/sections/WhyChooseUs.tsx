@@ -58,7 +58,7 @@ export default function WhyChooseUs() {
             <div className="relative z-10 w-full rounded-2xl overflow-hidden border border-slate-200 shadow-2xl bg-white">
               <img
                 src="/images/about_office2.png"
-                alt="NextGen Technical Excellence"
+                alt="eVeda Technical Excellence"
                 className="w-full h-[420px] object-cover"
               />
               {/* Blur gradient overlay at the bottom */}
@@ -89,7 +89,7 @@ export default function WhyChooseUs() {
                 Why Choose Us
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-sora">
-                Why Global Leaders <span className="text-[var(--accent-global)]">Choose NextGen</span>
+                Why Global Leaders <span className="text-[var(--accent-global)]">Choose eVeda</span>
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 World-class engineering talent, enterprise security, and transparent delivery — engineered to maximize the ROI of your technology investments.

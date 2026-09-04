@@ -41,7 +41,7 @@ export const productsData: Record<string, ProductDetail> = {
   "dms": {
     id: "dms",
     title: "Documents Management System",
-    metaTitle: "Enterprise Document Management System (DMS) | NextGen Tech",
+    metaTitle: "Enterprise Document Management System (DMS) | eVeda",
     metaDesc: "Secure, scalable document management system with OCR, version control, and workflow automation.",
     headline: "Go Paperless with Intelligent Document Management",
     description: "Centralize, secure, and manage all your corporate files with our enterprise-grade DMS.",
@@ -183,7 +183,7 @@ export const productsData: Record<string, ProductDetail> = {
   "lms": {
     id: "lms",
     title: "Learning Management System",
-    metaTitle: "Custom Learning Management System (LMS) | NextGen Tech",
+    metaTitle: "Custom Learning Management System (LMS) | eVeda",
     metaDesc: "Launch your own online academy or corporate training portal with our white-label LMS.",
     headline: "Empower Your Team with Scalable E-Learning",
     description: "A complete LMS featuring course builders, video hosting, quizzes, and automated certifications.",
@@ -321,7 +321,7 @@ export const productsData: Record<string, ProductDetail> = {
   "hms": {
     id: "hms",
     title: "Hospital Management System",
-    metaTitle: "Hospital Management System (HMS) | NextGen Tech",
+    metaTitle: "Hospital Management System (HMS) | eVeda",
     metaDesc: "End-to-end HMS software for clinics, nursing homes, and multi-specialty hospitals.",
     headline: "Streamline Healthcare Operations",
     description: "Manage patient records, appointments, billing, and pharmacy inventory all from a single dashboard.",
@@ -459,7 +459,7 @@ export const productsData: Record<string, ProductDetail> = {
   "ott": {
     id: "ott",
     title: "OTT Platforms",
-    metaTitle: "Custom OTT Platform Development | NextGen Tech",
+    metaTitle: "Custom OTT Platform Development | eVeda",
     metaDesc: "Launch your own Netflix-like video streaming platform with DRM and subscription management.",
     headline: "Launch Your Own Video Streaming Empire",
     description: "Build robust, scalable OTT apps for Web, iOS, Android, and Smart TVs with premium DRM protection.",
@@ -597,7 +597,7 @@ export const productsData: Record<string, ProductDetail> = {
   "school-erp": {
     id: "school-erp",
     title: "School Management System",
-    metaTitle: "School Management ERP | NextGen Tech",
+    metaTitle: "School Management ERP | eVeda",
     metaDesc: "Digitalize your school campus with our comprehensive ERP. Manage admissions, fees, and academics.",
     headline: "The Complete Digital Campus ERP",
     description: "Automate fee collection, attendance, timetables, and parent communication securely.",
@@ -735,7 +735,7 @@ export const productsData: Record<string, ProductDetail> = {
   "marketplace": {
     id: "marketplace",
     title: "Marketplace Solutions",
-    metaTitle: "Multi-vendor Marketplace Development | NextGen Tech",
+    metaTitle: "Multi-vendor Marketplace Development | eVeda",
     metaDesc: "Launch your own B2B or B2C multi-vendor marketplace like Amazon or Upwork.",
     headline: "Build Your Multi-Vendor Marketplace",
     description: "Robust platform to onboard multiple sellers, manage commissions, and track global fulfillment.",
@@ -873,7 +873,7 @@ export const productsData: Record<string, ProductDetail> = {
   "pos": {
     id: "pos",
     title: "Point of Sale (POS)",
-    metaTitle: "Cloud Point of Sale (POS) Software | NextGen Tech",
+    metaTitle: "Cloud Point of Sale (POS) Software | eVeda",
     metaDesc: "Fast, reliable cloud POS for retail and restaurants with offline support and inventory sync.",
     headline: "Modern Cloud POS for Retail & Restaurants",
     description: "A lightning-fast billing solution with hardware integration, offline mode, and real-time inventory.",
@@ -1011,7 +1011,7 @@ export const productsData: Record<string, ProductDetail> = {
   "crm": {
     id: "crm",
     title: "CRM System",
-    metaTitle: "Custom CRM Software Development | NextGen Tech",
+    metaTitle: "Custom CRM Software Development | eVeda",
     metaDesc: "Custom Customer Relationship Management software tailored to your specific sales pipeline.",
     headline: "Close More Deals with Custom CRM",
     description: "Track leads, manage pipelines, automate follow-ups, and integrate with WhatsApp & Email.",
@@ -1149,7 +1149,7 @@ export const productsData: Record<string, ProductDetail> = {
   "logistics": {
     id: "logistics",
     title: "Logistics Management",
-    metaTitle: "Logistics & Fleet Management Software | NextGen Tech",
+    metaTitle: "Logistics & Fleet Management Software | eVeda",
     metaDesc: "Track vehicles, optimize routes, and manage dispatch with our Logistics ERP.",
     headline: "Optimize Your Supply Chain & Fleet",
     description: "End-to-end logistics platform with live GPS tracking, route optimization, and driver apps.",
@@ -1287,7 +1287,7 @@ export const productsData: Record<string, ProductDetail> = {
   "inventory": {
     id: "inventory",
     title: "Inventory Management",
-    metaTitle: "Smart Inventory Management System | NextGen Tech",
+    metaTitle: "Smart Inventory Management System | eVeda",
     metaDesc: "Multi-warehouse inventory tracking with low-stock alerts and purchase order automation.",
     headline: "Never Run Out of Stock Again",
     description: "Smart, automated inventory management supporting multiple warehouses, serialization, and batch tracking.",
@@ -1425,7 +1425,7 @@ export const productsData: Record<string, ProductDetail> = {
   "ecommerce": {
     id: "ecommerce",
     title: "E-Commerce Solutions",
-    metaTitle: "Custom E-Commerce Development | NextGen Tech",
+    metaTitle: "Custom E-Commerce Development | eVeda",
     metaDesc: "High-performance headless e-commerce platforms built for scale and conversion.",
     headline: "High-Performance Digital Storefronts",
     description: "Custom headless e-commerce solutions that load instantly and provide seamless checkout experiences.",
@@ -1563,7 +1563,7 @@ export const productsData: Record<string, ProductDetail> = {
   "hrms": {
     id: "hrms",
     title: "HR Payroll & Roster",
-    metaTitle: "HRMS & Payroll Management Software | NextGen Tech",
+    metaTitle: "HRMS & Payroll Management Software | eVeda",
     metaDesc: "Automate payroll, track attendance, and manage employee life-cycles with our HRMS.",
     headline: "Automate Your HR & Payroll",
     description: "Comprehensive HRMS that handles everything from recruitment and onboarding to payroll and tax compliance.",

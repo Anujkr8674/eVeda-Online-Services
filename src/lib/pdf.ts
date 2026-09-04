@@ -13,11 +13,11 @@ export async function generateQuotationPDF(quotation: Quotation): Promise<Buffer
   const R    = W - 14; // right edge
 
   const co = {
-    name:    process.env.PDF_COMPANY_NAME    ?? "NextGen Tech Solution",
-    email:   process.env.PDF_COMPANY_EMAIL   ?? "info@nextgentechsolution.org",
-    phone:   process.env.PDF_COMPANY_PHONE   ?? "+91 9876543210",
-    address: process.env.PDF_COMPANY_ADDRESS ?? "India",
-    website: process.env.PDF_COMPANY_WEBSITE ?? "https://nextgentechsolution.org",
+    name:    process.env.PDF_COMPANY_NAME    ?? "Eveda Online Services",
+    email:   process.env.PDF_COMPANY_EMAIL   ?? "info@evedaonlineservices.com",
+    phone:   process.env.PDF_COMPANY_PHONE   ?? "+91 8630508235",
+    address: process.env.PDF_COMPANY_ADDRESS ?? "53 eVeda Online Services Aryanagar, Haridwar",
+    website: process.env.PDF_COMPANY_WEBSITE ?? "https://evedaonlineservices.com",
   };
 
   // ── Helper: draw a filled rect ────────────────────────────────────
@@ -231,11 +231,11 @@ export async function generateInvoicePDF(invoice: Invoice): Promise<Buffer> {
   const R    = W - 14;
 
   const co = {
-    name:    process.env.PDF_COMPANY_NAME    ?? "NextGen Tech Solution",
-    email:   process.env.PDF_COMPANY_EMAIL   ?? "info@nextgentechsolution.org",
-    phone:   process.env.PDF_COMPANY_PHONE   ?? "+91 9876543210",
-    address: process.env.PDF_COMPANY_ADDRESS ?? "India",
-    website: process.env.PDF_COMPANY_WEBSITE ?? "https://nextgentechsolution.org",
+    name:    process.env.PDF_COMPANY_NAME    ?? "Eveda Online Services",
+    email:   process.env.PDF_COMPANY_EMAIL   ?? "info@evedaonlineservices.com",
+    phone:   process.env.PDF_COMPANY_PHONE   ?? "+91 8630508235",
+    address: process.env.PDF_COMPANY_ADDRESS ?? "53 eVeda Online Services Aryanagar, Haridwar",
+    website: process.env.PDF_COMPANY_WEBSITE ?? "https://evedaonlineservices.com",
   };
 
   const fillRect = (x: number, y: number, w: number, h: number, r: number, g: number, b: number) => {
@@ -447,11 +447,11 @@ export async function generatePaymentReceiptPDF(
   const R    = W - 14;
 
   const co = {
-    name:    process.env.PDF_COMPANY_NAME    ?? "NextGen Tech Solution",
-    email:   process.env.PDF_COMPANY_EMAIL   ?? "info@nextgentechsolution.org",
-    phone:   process.env.PDF_COMPANY_PHONE   ?? "+91 9876543210",
-    address: process.env.PDF_COMPANY_ADDRESS ?? "India",
-    website: process.env.PDF_COMPANY_WEBSITE ?? "https://nextgentechsolution.org",
+    name:    process.env.PDF_COMPANY_NAME    ?? "Eveda Online Services",
+    email:   process.env.PDF_COMPANY_EMAIL   ?? "info@evedaonlineservices.com",
+    phone:   process.env.PDF_COMPANY_PHONE   ?? "+91 8630508235",
+    address: process.env.PDF_COMPANY_ADDRESS ?? "53 eVeda Online Services Aryanagar, Haridwar",
+    website: process.env.PDF_COMPANY_WEBSITE ?? "https://evedaonlineservices.com",
   };
 
   const fillRect = (x: number, y: number, w: number, h: number, r: number, g: number, b: number) => {

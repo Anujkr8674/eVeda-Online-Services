@@ -91,7 +91,7 @@ async function syncInvoiceFromQuotation(supabase: any, data: any, user: any) {
           billing_date:    new Date().toISOString(),
           due_date:        dueDate.toISOString(),
           terms:           "Payment is due within 15 days of invoice date.",
-          bank_details:    "Bank Name: HDFC Bank\nAccount Name: NextGen Tech Solution\nAccount Number: 50200012345678\nIFSC Code: HDFC0001234\nBranch: New Delhi\nUPI ID: nextgentech@hdfc",
+          bank_details:    "Bank Name: HDFC Bank\nAccount Name: Eveda Online Services\nAccount Number: 50200012345678\nIFSC Code: HDFC0001234\nBranch: New Delhi\nUPI ID: evedaonlineservices@hdfc",
           created_by:      user.sub,
         })
         .select()

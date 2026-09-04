@@ -3,7 +3,8 @@
 import { useState } from "react";
 import {
   Code2, Smartphone, Layers, Brain, Cloud, Server,
-  BarChart3, Palette, Zap, Settings2, ArrowRight, ChevronRight, CheckCircle2
+  BarChart3, Palette, Zap, Settings2, ArrowRight, ChevronRight, CheckCircle2,
+  BookOpen, Sparkles
 } from "lucide-react";
 import Link from "next/link";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -55,6 +56,16 @@ const services = [
     icon: Palette, title: "UI/UX Design", id: "design", category: "design-growth",
     description: "Pixel-perfect, user-centered design systems that drive conversion and engagement.",
     features: ["Design systems", "Figma prototypes", "User research", "Accessibility"],
+  },
+  {
+    icon: BookOpen, title: "Book Designing", id: "book-designing", category: "design-growth",
+    description: "Bespoke 3D book covers, interior typesetting, and print-ready files for KDP & IngramSpark.",
+    features: ["Full cover wrap", "Interior typesetting", "ePub & Kindle mobi", "100% KDP compliance"],
+  },
+  {
+    icon: Sparkles, title: "Book Branding", id: "book-branding", category: "design-growth",
+    description: "Author platform architecture, Amazon A+ Content, BookTok trailers, and bestseller launch campaigns.",
+    features: ["Amazon A+ modules", "Cinematic 3D trailers", "Author website", "ARC reader funnel"],
   },
   {
     icon: Zap, title: "Digital Transformation", id: "transform", category: "design-growth",

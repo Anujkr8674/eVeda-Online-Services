@@ -4,12 +4,12 @@ import AboutPage from "./AboutPage";
 export const metadata: Metadata = {
   title: "About Us — Our Story, Team & Values",
   description:
-    "Founded in 2019, NextGen Tech Solution has grown from 3 engineers to a global team of 30+ specialists. Learn about our mission, company values, leadership team, and what makes us the right technology partner.",
-  alternates: { canonical: "https://nextgentechsolution.org/about" },
+    "Eveda Online Services has grown to a global team of specialists. Learn about our mission, company values, leadership team, and what makes us the right technology partner.",
+  alternates: { canonical: "https://evedaonlineservices.com/about" },
   openGraph: {
-    title: "About NextGen Tech Solution — Our Story, Team & Values",
-    description: "From 3 engineers to a global technology partner. Meet our team and learn what drives us.",
-    url: "https://nextgentechsolution.org/about",
+    title: "About Eveda Online Services — Our Story, Team & Values",
+    description: "From a focused engineering firm to a global technology partner. Meet our team and learn what drives us.",
+    url: "https://evedaonlineservices.com/about",
     images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
   },
 };

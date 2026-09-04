@@ -150,7 +150,7 @@ export default function Careers({ hideViewAll = false }: { hideViewAll?: boolean
               <p className="text-xs text-slate-550 italic leading-relaxed">
                 &ldquo;The most collaborative and technically challenging place I&apos;ve ever worked. Real ownership, real impact.&rdquo;
               </p>
-              <div className="text-[10px] text-slate-450 mt-3 font-semibold">— Senior Engineer, 3 years at NextGen</div>
+              <div className="text-[10px] text-slate-450 mt-3 font-semibold">— Senior Engineer, 3 years at eVeda</div>
             </div>
           </div>
 
@@ -163,7 +163,7 @@ export default function Careers({ hideViewAll = false }: { hideViewAll?: boolean
             <div className="lg:col-span-5 space-y-6">
               <span className="inline-block text-[10.5px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-purple-200/50 text-purple-600 bg-purple-50"
               >
-                Life at NextGen
+                Life at eVeda
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-tight font-sora">
                 Where Builders Do Their Best Work
@@ -192,7 +192,7 @@ export default function Careers({ hideViewAll = false }: { hideViewAll?: boolean
               <div className="relative rounded-2xl overflow-hidden border border-slate-200/80 shadow-2xl aspect-[4/3] group/c1 bg-slate-100">
                 <img 
                   src="/images/careers/team_collab.png" 
-                  alt="NextGen Developers Collaboration" 
+                  alt="eVeda Developers Collaboration" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover/c1:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/c1:opacity-100 transition-opacity duration-300 flex items-end p-4">
@@ -251,7 +251,7 @@ export default function Careers({ hideViewAll = false }: { hideViewAll?: boolean
                 </div>
                 <h4 className="text-slate-900 font-bold text-lg mb-1 font-sora">Application Submitted!</h4>
                 <p className="text-xs text-slate-500 leading-relaxed max-w-sm">
-                  Thank you for applying to NextGen. We review applications within 48 hours and will email you with the next steps if your profile fits.
+                  Thank you for applying to Eveda Online Services. We review applications within 48 hours and will email you with the next steps if your profile fits.
                 </p>
                 <button 
                   onClick={closeModal}

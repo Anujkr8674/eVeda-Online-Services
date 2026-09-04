@@ -127,7 +127,7 @@ export default function DmsBentoFeatures() {
             Everything You Need in a <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Modern DMS</span>
           </h2>
           <p className="mt-3 text-slate-500 text-sm leading-relaxed max-w-xl mx-auto font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>
-            NextGen DMS simplifies how teams manage documents, protect sensitive data, and accelerate workflows.
+            eVeda DMS simplifies how teams manage documents, protect sensitive data, and accelerate workflows.
           </p>
         </div>
 

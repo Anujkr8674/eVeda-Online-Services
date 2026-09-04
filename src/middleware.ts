@@ -16,11 +16,7 @@ export async function middleware(req: NextRequest) {
   requestHeaders.set("x-pathname", pathname);
 
   if (pathname.startsWith("/api/")) {
-    return NextResponse.next({
-      request: {
-        headers: requestHeaders,
-      }
-    });
+    return NextResponse.next();
   }
 
   const res = NextResponse.next({

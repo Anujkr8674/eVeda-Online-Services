@@ -162,7 +162,7 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
               className="overflow-hidden whitespace-nowrap"
             >
               <p className="text-[13px] font-semibold leading-tight" style={{ color: "var(--crm-text-strong)" }}>
-                NextGen CRM
+                eVeda CRM
               </p>
               <p className="text-[10px] tracking-wider uppercase font-medium" style={{ color: "var(--crm-text-subtle)" }}>
                 {ROLE_LABELS[role]}

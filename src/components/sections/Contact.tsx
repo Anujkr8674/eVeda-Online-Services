@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import { Mail, Phone, MapPin, Send, ArrowRight, AlertCircle, User, AtSign, PhoneCall, DollarSign, CheckCircle2 } from "lucide-react";
 import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
 import { COMPANY } from "@/lib/utils";
+import { useWebSettings } from "@/context/WebSettingsContext";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const services = [
   "Web Development", "Mobile App", "SaaS Platform",
   "AI Solutions", "Cloud / DevOps", "UI/UX Design",
   "ERP / CRM", "Digital Transformation",
+  "Book Branding", "Book Designing",
 ];
 
 const budgets = [
@@ -36,25 +38,7 @@ function Field({ label, icon: Icon, required, children }: {
 const inputCls = "w-full bg-slate-50 border border-slate-200 focus:border-[var(--accent-global)] focus:bg-white focus:ring-2 focus:ring-[var(--accent-global)]/10 rounded-xl px-4 py-3.5 text-sm outline-none text-slate-800 placeholder-slate-400 transition-all duration-200 font-medium";
 
 export default function Contact() {
-  const [settings, setSettings] = useState<any>(COMPANY);
-
-  useEffect(() => {
-    fetch("/api/settings")
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.data) {
-          setSettings({
-            ...COMPANY,
-            phone: json.data.phone || COMPANY.phone,
-            email: json.data.email || COMPANY.email,
-            whatsapp: json.data.whatsapp || COMPANY.whatsapp,
-            location: json.data.address || COMPANY.location,
-            map_embed: json.data.map_embed || "",
-          });
-        }
-      })
-      .catch((err) => console.error("Error loading settings in Contact:", err));
-  }, []);
+  const { settings } = useWebSettings();
 
   const getMapSrc = (src: string) => {
     if (!src) return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14649.6!2d85.2896!3d23.3641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1035ec9bf83%3A0x6ec8f9f38fe2fc8e!2sRatu%20Rd%2C%20Ranchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1718000000000!5m2!1sen!2sin";
@@ -74,7 +58,7 @@ export default function Contact() {
 
   useEffect(() => {
     const checkPlannedScope = () => {
-      const saved = localStorage.getItem("nextgen_planned_scope");
+      const saved = localStorage.getItem("eveda_planned_scope") || localStorage.getItem("nextgen_planned_scope");
       if (saved) {
         try {
           const scope = JSON.parse(saved);
@@ -84,13 +68,18 @@ export default function Contact() {
             budget: scope.budget || prev.budget,
             message: `Locked Blueprint Specs:\n• ID: ${scope.blueprintId}\n• Primary: ${scope.service}\n• Scale: ${scope.scale}\n• Timeline Velocity: ${scope.velocity}\n• Est. Hours: ${scope.hours} hrs\n• Estimated Cost: ${scope.costRange}\n\nLet's discuss my custom requirement details: `
           }));
+          localStorage.removeItem("eveda_planned_scope");
           localStorage.removeItem("nextgen_planned_scope");
         } catch (e) { console.error("Error parsing planned scope", e); }
       }
     };
     checkPlannedScope();
+    window.addEventListener("eveda_scope_locked", checkPlannedScope);
     window.addEventListener("nextgen_scope_locked", checkPlannedScope);
-    return () => window.removeEventListener("nextgen_scope_locked", checkPlannedScope);
+    return () => {
+      window.removeEventListener("eveda_scope_locked", checkPlannedScope);
+      window.removeEventListener("nextgen_scope_locked", checkPlannedScope);
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -274,14 +263,14 @@ export default function Contact() {
         <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-slate-950 via-slate-950/70 to-transparent z-10 pointer-events-none" />
         <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-slate-950/90 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/[0.14] shadow-xl whitespace-nowrap">
           <MapPin className="w-4 h-4 text-[var(--accent-global)] shrink-0" />
-          <span className="text-xs font-bold text-white tracking-wide">NextGen Tech Solution — {settings.location}</span>
+          <span className="text-xs font-bold text-white tracking-wide">{COMPANY.name} — {settings.location}</span>
         </div>
         <iframe
-          src={getMapSrc(settings.map_embed)}
+          src={getMapSrc(settings.mapEmbed)}
           width="100%" height="420"
           style={{ border: 0, display: "block", filter: "invert(92%) hue-rotate(180deg) brightness(0.82) saturate(0.6) contrast(0.88)" }}
           allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-          title="NextGen Tech Solution Office Location"
+          title={`${COMPANY.name} Office Location`}
         />
       </div>
 
@@ -317,8 +306,8 @@ export default function Contact() {
                 <span className="text-white/90">BUILD THE</span>
                 <span style={{ color: "var(--accent-global)" }}>FUTURE</span>
                 <span className="text-white/20">·</span>
-                <span className="text-white/90">NEXTGEN</span>
-                <span style={{ color: "var(--accent-global)" }}>SOLUTIONS</span>
+                <span className="text-white/90">EVEDA ONLINE</span>
+                <span style={{ color: "var(--accent-global)" }}>SERVICES</span>
                 <span className="text-white/20">·</span>
               </span>
             ))}
@@ -333,8 +322,8 @@ export default function Contact() {
                 <span className="text-white/90">BUILD THE</span>
                 <span style={{ color: "var(--accent-global)" }}>FUTURE</span>
                 <span className="text-white/20">·</span>
-                <span className="text-white/90">NEXTGEN</span>
-                <span style={{ color: "var(--accent-global)" }}>SOLUTIONS</span>
+                <span className="text-white/90">EVEDA ONLINE</span>
+                <span style={{ color: "var(--accent-global)" }}>SERVICES</span>
                 <span className="text-white/20">·</span>
               </span>
             ))}

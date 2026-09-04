@@ -52,7 +52,7 @@ export default function NewInvoicePage() {
   });
   
   const [amountPaid, setAmountPaid] = useState("0");
-  const [bankDetails, setBankDetails] = useState("Bank Name: HDFC Bank\nAccount Name: NextGen Tech Solution\nAccount Number: 50200012345678\nIFSC Code: HDFC0001234\nBranch: New Delhi\nUPI ID: nextgentech@hdfc");
+  const [bankDetails, setBankDetails] = useState("Bank Name: HDFC Bank\nAccount Name: Eveda Online Services\nAccount Number: 50200012345678\nIFSC Code: HDFC0001234\nBranch: Haridwar\nUPI ID: eveda@hdfc");
   const [terms,     setTerms]     = useState("Payment is due within 15 days of invoice date. Late payments may incur interest charges of 1.5% per month.");
   
   const [items,     setItems]     = useState<Item[]>([

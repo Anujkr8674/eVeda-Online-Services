@@ -60,7 +60,7 @@ export default function GalleryPage() {
       {/* Page Header */}
       <PageHero
         badge="Office & Life"
-        title="Life at NextGen"
+        title="Life at eVeda"
         titleHighlight="Our Gallery"
         description="Take a look inside our state-of-the-art innovation lab, collaborative culture, and team celebrations."
         breadcrumbs={[

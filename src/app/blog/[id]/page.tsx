@@ -88,7 +88,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Post Not Found" };
 
   return {
-    title: `${post.title} | NextGen Blog`,
+    title: `${post.title} | eVeda Blog`,
     description: post.excerpt,
   };
 }

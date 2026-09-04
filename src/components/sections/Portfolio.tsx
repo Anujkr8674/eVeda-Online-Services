@@ -103,7 +103,7 @@ function ProjectCard({ project, cardRef }: {
           <h3
             className="ra-project3-title-text"
             style={{
-              textDecoration: hovered ? "underline" : "none",
+              textDecorationLine: hovered ? "underline" : "none",
               textUnderlineOffset: 4,
               textDecorationColor: "rgba(28,28,45,0.3)",
             }}
@@ -405,7 +405,7 @@ export default function Portfolio() {
               badge="BUILD WITH US"
               title="Start Your"
               titleHighlight="Success Story"
-              description="Partner with NextGen to transform your product ideas into digital realities."
+              description="Partner with eVeda to transform your product ideas into digital realities."
               align="left"
               theme="dark"
               className="w-[320px]"

@@ -11,7 +11,7 @@ const track1 = [
     role: "CTO",
     company: "FinanceIQ",
     avatar: "SM",
-    content: "NextGen Tech Solution transformed our entire fintech platform in just 4 months. The quality of engineering, attention to detail, and proactive communication was exceptional.",
+    content: "Eveda Online Services transformed our entire fintech platform in just 4 months. The quality of engineering, attention to detail, and proactive communication was exceptional.",
     date: "2 weeks ago",
   },
   {
@@ -20,7 +20,7 @@ const track1 = [
     role: "Founder & CEO",
     company: "MediConnect",
     avatar: "RK",
-    content: "Working with NextGen felt like having an extension of our in-house team. They built our healthcare platform from scratch — backend, mobile apps, and AI features — with world-class execution.",
+    content: "Working with eVeda felt like having an extension of our in-house team. They built our healthcare platform from scratch — backend, mobile apps, and AI features — with world-class execution.",
     date: "1 month ago",
   },
   {
@@ -29,7 +29,7 @@ const track1 = [
     role: "VP Engineering",
     company: "RetailMax",
     avatar: "ET",
-    content: "We needed a complete e-commerce overhaul in a tight timeline. NextGen delivered a next-gen platform handling 2M+ users seamlessly. Their DevOps expertise saved us $200K/year.",
+    content: "We needed a complete e-commerce overhaul in a tight timeline. eVeda delivered a next-gen platform handling 2M+ users seamlessly. Their DevOps expertise saved us $200K/year.",
     date: "3 days ago",
   },
   {
@@ -50,7 +50,7 @@ const track2 = [
     role: "CEO",
     company: "EduLearn",
     avatar: "PS",
-    content: "Our edtech platform now serves 25,000+ students globally, thanks to NextGen's brilliant engineering. The real-time video infrastructure they built is flawlessly reliable.",
+    content: "Our edtech platform now serves 25,000+ students globally, thanks to eVeda's brilliant engineering. The real-time video infrastructure they built is flawlessly reliable.",
     date: "2 months ago",
   },
   {
@@ -59,7 +59,7 @@ const track2 = [
     role: "VP Operations",
     company: "Securitas AI",
     avatar: "MV",
-    content: "NextGen designed our cyber threat defense backend. Security is top-tier and AWS scalability is flawless. Their engineers are absolute cloud architectural specialists.",
+    content: "eVeda designed our cyber threat defense backend. Security is top-tier and AWS scalability is flawless. Their engineers are absolute cloud architectural specialists.",
     date: "1 month ago",
   },
   {
@@ -77,7 +77,7 @@ const track2 = [
     role: "Co-Founder",
     company: "CryoTech SaaS",
     avatar: "AM",
-    content: "Launched our subscriber portal on schedule. Stripe integration, auto-invoicing, and sub-accounts work beautifully. The NextGen team is highly recommended for SaaS execution.",
+    content: "Launched our subscriber portal on schedule. Stripe integration, auto-invoicing, and sub-accounts work beautifully. The eVeda team is highly recommended for SaaS execution.",
     date: "5 days ago",
   },
 ];

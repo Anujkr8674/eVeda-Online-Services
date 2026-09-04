@@ -121,8 +121,8 @@ export default function Process() {
       blueprintId,
       budget: mappedBudget
     };
-    localStorage.setItem("nextgen_planned_scope", JSON.stringify(scopeData));
-    window.dispatchEvent(new Event("nextgen_scope_locked"));
+    localStorage.setItem("eveda_planned_scope", JSON.stringify(scopeData));
+    window.dispatchEvent(new Event("eveda_scope_locked"));
 
     const el = document.getElementById("contact");
     if (el) {

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/dashboard/", "/admin/", "/telecallers/", "/superadmin/", "/api/"],
       },
     ],
-    sitemap: "https://nextgentechsolution.org/sitemap.xml",
-    host: "https://nextgentechsolution.org",
+    sitemap: "https://evedaonlineservices.com/sitemap.xml",
+    host: "https://evedaonlineservices.com",
   };
 }

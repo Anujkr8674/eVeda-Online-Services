@@ -10,6 +10,7 @@ import SupportChatbot from "@/components/shared/SupportChatbot";
 import { Toaster } from "react-hot-toast";
 import { getWebsiteSettings } from "@/lib/settings";
 import { WebSettingsProvider } from "@/context/WebSettingsContext";
+import RouteScrollRestorer from "@/components/shared/RouteScrollRestorer";
 
 const CRM_PATHS = ["/dashboard", "/admin", "/telecallers", "/superadmin"];
 
@@ -229,6 +230,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           children
         ) : (
           <WebSettingsProvider initialSettings={settings}>
+            <RouteScrollRestorer />
             <Navbar />
             <main className="relative">{children}</main>
             <Footer />

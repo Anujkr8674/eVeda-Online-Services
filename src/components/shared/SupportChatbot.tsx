@@ -362,7 +362,7 @@ export default function SupportChatbot() {
   return (
     <>
       {/* Floating Trigger Button */}
-      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40">
+      <div className="fixed bottom-4 left-3.5 sm:bottom-6 sm:left-6 z-40">
         <motion.button
           onClick={() => {
             setIsOpen(!isOpen);
@@ -373,9 +373,9 @@ export default function SupportChatbot() {
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="relative flex items-center justify-center w-14 h-14 rounded-full bg-purple-600 text-white shadow-xl hover:shadow-2xl cursor-pointer border-none outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all"
+          className="relative flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-purple-600 text-white shadow-xl hover:shadow-2xl cursor-pointer border-none outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
+          {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />}
           {/* Pulse Indicator */}
           {!isOpen && (
             <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5">

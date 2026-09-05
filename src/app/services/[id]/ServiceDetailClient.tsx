@@ -3,7 +3,7 @@
 import { 
   CheckCircle2, ArrowRight, Mail, Phone, MapPin, Send, AlertCircle, Sparkles, Check
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ServiceHero from "@/components/sections/ServiceHero";
 import PremiumCapabilities from "@/components/sections/PremiumCapabilities";
 import { ServiceDetail } from "@/lib/services-data";

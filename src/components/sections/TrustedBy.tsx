@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { IconType } from "react-icons";
@@ -13,11 +13,17 @@ import {
   SiSendgrid, 
   SiGithub, 
   SiFigma, 
-  SiFirebase 
+  SiFirebase,
+  SiCanva,
+  SiCoreldraw,
 } from "react-icons/si";
+import {
+  TbBrandAdobePhotoshop,
+  TbBrandAdobeIllustrator,
+} from "react-icons/tb";
 import { FaAws } from "react-icons/fa6";
 
-/* Trusted-by marquee — verified technology & payment integration partners with official logos */
+/* Trusted-by marquee — verified technology & design platform partners with official logos */
 
 interface Company {
   name: string;
@@ -56,6 +62,30 @@ const companies: Company[] = [
     category: "Cloud & Hosting",
     officialColor: "#000000",
     logo: SiVercel,
+  },
+  {
+    name: "Canva",
+    category: "Design & Branding",
+    officialColor: "#00c4cc",
+    logo: SiCanva,
+  },
+  {
+    name: "Adobe Photoshop",
+    category: "Book Cover & Imaging",
+    officialColor: "#31a8ff",
+    logo: TbBrandAdobePhotoshop,
+  },
+  {
+    name: "Adobe Illustrator",
+    category: "Vector & Book Art",
+    officialColor: "#ff9a00",
+    logo: TbBrandAdobeIllustrator,
+  },
+  {
+    name: "CorelDRAW",
+    category: "Print & Vector Layout",
+    officialColor: "#00b140",
+    logo: SiCoreldraw,
   },
   {
     name: "Supabase",
@@ -131,7 +161,7 @@ export default function TrustedBy() {
         <div
           className="flex items-center gap-4 w-max"
           style={{
-            animation: "ng-marquee 32s linear infinite",
+            animation: "ng-marquee 38s linear infinite",
             willChange: "transform",
           }}
         >

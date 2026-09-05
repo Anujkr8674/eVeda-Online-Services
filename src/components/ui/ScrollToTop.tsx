@@ -52,7 +52,7 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.8, y: 10 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/[0.08] text-white hover:text-[var(--accent-global)] shadow-[0_8px_30px_rgb(0,0,0,0.3)] transition-colors duration-300 group cursor-pointer focus:outline-none"
+          className="fixed bottom-4 right-3.5 sm:bottom-6 sm:right-6 z-50 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/[0.08] text-white hover:text-[var(--accent-global)] shadow-[0_8px_30px_rgb(0,0,0,0.3)] transition-colors duration-300 group cursor-pointer focus:outline-none"
           style={{
             WebkitTapHighlightColor: "transparent",
           }}

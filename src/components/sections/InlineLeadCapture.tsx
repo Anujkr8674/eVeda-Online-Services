@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Send, Sparkles, CheckCircle2, AlertCircle, User, 
+import {
+  Send, Sparkles, CheckCircle2, AlertCircle, User,
   Mail, Phone, FileText, ChevronRight, HelpCircle, Shield, Clock, Award
 } from "lucide-react";
 import { COMPANY } from "@/lib/utils";
@@ -11,9 +11,13 @@ import { COMPANY } from "@/lib/utils";
 const services = [
   "Web Development",
   "Mobile App Development",
+  "Book Designing",
+  "Book Branding",
+  "Logo Design",
   "SaaS Platform",
   "AI & Automation",
-  "Cloud / DevOps"
+  "Cloud / DevOps",
+  "Others"
 ];
 
 export default function InlineLeadCapture() {
@@ -84,7 +88,7 @@ export default function InlineLeadCapture() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10">
         {/* Consistent 50/50 Grid Split (lg:col-span-6 and lg:col-span-6 with lg:gap-16) */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column (50%) */}
           <div className="lg:col-span-6 space-y-6">
             <div>
@@ -96,7 +100,7 @@ export default function InlineLeadCapture() {
                 Request a Free <span className="text-[var(--accent-global)]">Custom Proposal</span>
               </h2>
             </div>
-            
+
             <p className="text-slate-450 text-sm sm:text-base leading-relaxed font-sora tracking-tight font-light">
               Fill out this quick form and our team will get back to you with a free project proposal and quote within 24 hours.
             </p>
@@ -127,9 +131,9 @@ export default function InlineLeadCapture() {
           {/* Right Column (50%): Compact Clean White Lead Form */}
           <div className="lg:col-span-6">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-[0_24px_50px_rgba(15,23,42,0.06)] relative text-slate-800">
-              
+
               {sent ? (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12 space-y-5"
@@ -148,7 +152,7 @@ export default function InlineLeadCapture() {
                       <p className="text-[10px] text-slate-500 font-mono">Reference: <span className="text-[#7C3AED] font-bold">{leadId}</span></p>
                     </div>
                   )}
-                  <button 
+                  <button
                     onClick={() => { setSent(false); setLeadId(null); }}
                     className="text-xs sm:text-sm font-bold text-[#7C3AED] hover:text-[#6D28D9] transition-colors block mx-auto pt-2 font-sora"
                   >
@@ -158,14 +162,14 @@ export default function InlineLeadCapture() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5 font-sora">
                   {/* Honeypot field */}
-                  <input 
-                    type="text" 
-                    tabIndex={-1} 
-                    autoComplete="off" 
-                    value={honeypot} 
-                    onChange={(e) => setHoneypot(e.target.value)} 
-                    className="absolute opacity-0 pointer-events-none w-0 h-0 overflow-hidden" 
-                    aria-hidden="true" 
+                  <input
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    className="absolute opacity-0 pointer-events-none w-0 h-0 overflow-hidden"
+                    aria-hidden="true"
                   />
 
                   {error && (
@@ -181,26 +185,26 @@ export default function InlineLeadCapture() {
                       <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
                         <User className="w-3.5 h-3.5 text-[#7C3AED]" /> Full Name *
                       </label>
-                      <input 
-                        type="text" 
-                        required 
-                        value={form.name} 
-                        onChange={(e) => setForm({ ...form, name: e.target.value })} 
-                        placeholder="Enter your name" 
+                      <input
+                        type="text"
+                        required
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        placeholder="Enter your name"
                         className="w-full h-11 px-4 bg-slate-50 border border-slate-200 focus:border-[#7C3AED] focus:bg-white focus:ring-2 focus:ring-[#7C3AED]/10 rounded-xl text-xs text-slate-800 placeholder-slate-400 outline-none transition-all font-medium tracking-tight"
                       />
                     </div>
-                    
+
                     <div className="flex flex-col gap-1.5">
                       <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
                         <Mail className="w-3.5 h-3.5 text-[#7C3AED]" /> Work Email *
                       </label>
-                      <input 
-                        type="email" 
-                        required 
-                        value={form.email} 
-                        onChange={(e) => setForm({ ...form, email: e.target.value })} 
-                        placeholder="Enter your email" 
+                      <input
+                        type="email"
+                        required
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        placeholder="Enter your email"
                         className="w-full h-11 px-4 bg-slate-50 border border-slate-200 focus:border-[#7C3AED] focus:bg-white focus:ring-2 focus:ring-[#7C3AED]/10 rounded-xl text-xs text-slate-800 placeholder-slate-400 outline-none transition-all font-medium tracking-tight"
                       />
                     </div>
@@ -211,25 +215,25 @@ export default function InlineLeadCapture() {
                       <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
                         <Phone className="w-3.5 h-3.5 text-[#7C3AED]" /> Phone Number *
                       </label>
-                      <input 
-                        type="tel" 
-                        required 
-                        value={form.phone} 
-                        onChange={(e) => handlePhoneChange(e.target.value)} 
-                        placeholder="Enter your phone number" 
+                      <input
+                        type="tel"
+                        required
+                        value={form.phone}
+                        onChange={(e) => handlePhoneChange(e.target.value)}
+                        placeholder="Enter your phone number"
                         className="w-full h-11 px-4 bg-slate-50 border border-slate-200 focus:border-[#7C3AED] focus:bg-white focus:ring-2 focus:ring-[#7C3AED]/10 rounded-xl text-xs text-slate-800 placeholder-slate-400 outline-none transition-all font-medium tracking-tight"
                       />
                     </div>
-                    
+
                     <div className="flex flex-col gap-1.5">
                       <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
                         <FileText className="w-3.5 h-3.5 text-[#7C3AED]" /> Service Interested *
                       </label>
                       <div className="relative">
-                        <select 
+                        <select
                           required
-                          value={form.service} 
-                          onChange={(e) => setForm({ ...form, service: e.target.value })} 
+                          value={form.service}
+                          onChange={(e) => setForm({ ...form, service: e.target.value })}
                           className="w-full h-11 pl-4 pr-10 bg-slate-50 border border-slate-200 focus:border-[#7C3AED] rounded-xl text-xs text-slate-700 outline-none transition-all font-semibold cursor-pointer appearance-none tracking-tight"
                         >
                           <option value="">Select Service</option>
@@ -249,18 +253,18 @@ export default function InlineLeadCapture() {
                     <label className="text-[9px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
                       <HelpCircle className="w-3.5 h-3.5 text-[#7C3AED]" /> Project Goals & Requirements
                     </label>
-                    <textarea 
-                      rows={3} 
-                      value={form.message} 
-                      onChange={(e) => setForm({ ...form, message: e.target.value })} 
-                      placeholder="Enter your requirements" 
+                    <textarea
+                      rows={3}
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="Enter your requirements"
                       className="w-full p-3.5 bg-slate-50 border border-slate-200 focus:border-[#7C3AED] focus:bg-white rounded-xl text-xs text-slate-800 placeholder-slate-400 outline-none transition-all font-medium resize-none leading-relaxed tracking-tight"
                     />
                   </div>
 
                   {/* Submit Button */}
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     disabled={sending}
                     className="w-full h-12 rounded-xl font-bold text-xs uppercase tracking-widest text-white bg-[#7C3AED] hover:bg-[#6D28D9] transition-all shadow-md shadow-purple-650/10 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 hover:-translate-y-0.5 duration-250"
                   >

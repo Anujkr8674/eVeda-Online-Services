@@ -212,6 +212,7 @@ export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(!isHome); // inner pages start scrolled
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpandedMenu, setMobileExpandedMenu] = useState<string | null>(null);
   const [megaOpen, setMegaOpen] = useState<string | null>(null);
   const megaTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -403,73 +404,107 @@ export default function Navbar() {
                   {link.label === "About" ? (
                     <div
                       className={cn(
-                        "absolute top-full left-1/2 -translate-x-1/2 w-52 bg-white border border-slate-200/85 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.08)] py-2 text-slate-800 transition-all duration-200 ease-in-out origin-top z-50",
+                        "absolute top-full left-1/2 -translate-x-1/2 w-60 bg-white/80 backdrop-blur-2xl backdrop-saturate-150 border border-white/70 shadow-[0_20px_45px_-10px_rgba(124,58,237,0.16),0_8px_20px_-6px_rgba(0,0,0,0.06)] rounded-2xl p-2.5 text-slate-800 transition-all duration-300 ease-out origin-top z-50 overflow-hidden",
                         (megaOpen === "About")
-                          ? "opacity-100 scale-y-100 pointer-events-auto"
-                          : "opacity-0 scale-y-95 pointer-events-none"
+                          ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+                          : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
                       )}
                       onMouseEnter={() => onMegaEnter("About")}
                       onMouseLeave={onMegaLeave}
                       role="menu"
                       aria-label="About menu"
                     >
-                      {aboutMenuLinks.map((s) => {
-                        const ItemIcon = s.icon;
-                        return (
-                          <Link
-                            key={s.label}
-                            href={s.href}
-                            role="menuitem"
-                            className="flex items-center gap-3 px-4.5 py-3 hover:bg-slate-50 text-slate-700 hover:text-[#7C3AED] transition-colors"
-                          >
-                            <ItemIcon className="w-4 h-4 text-slate-400 shrink-0" />
-                            <span className="text-[12px] font-extrabold uppercase tracking-wider font-sora">
-                              {s.label}
-                            </span>
-                          </Link>
-                        );
-                      })}
+                      {/* Atmospheric glass ambient glows */}
+                      <div className="absolute -top-10 -right-10 w-28 h-28 bg-[#7C3AED]/15 rounded-full blur-2xl pointer-events-none" />
+                      <div className="absolute -bottom-10 -left-10 w-28 h-28 bg-indigo-400/15 rounded-full blur-2xl pointer-events-none" />
+
+                      <div className="relative z-10 flex flex-col gap-1">
+                        {aboutMenuLinks.map((s) => {
+                          const ItemIcon = s.icon;
+                          return (
+                            <Link
+                              key={s.label}
+                              href={s.href}
+                              onClick={() => {
+                                setMegaOpen(null);
+                                window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                              }}
+                              role="menuitem"
+                              className="group/item flex items-center justify-between px-3.5 py-2.5 rounded-xl border border-transparent bg-white/40 hover:bg-white/95 hover:border-purple-200/80 hover:shadow-[0_8px_20px_-4px_rgba(124,58,237,0.18)] hover:-translate-y-0.5 hover:scale-[1.02] text-slate-700 hover:text-[#7C3AED] transition-all duration-200 ease-out"
+                            >
+                              <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-purple-50/70 border border-purple-100/50 group-hover/item:bg-[#7C3AED] text-purple-600 group-hover/item:text-white group-hover/item:scale-110 group-hover/item:rotate-3 shadow-xs transition-all duration-200 shrink-0">
+                                  <ItemIcon className="w-4 h-4 transition-transform" />
+                                </div>
+                                <span className="text-[12px] font-extrabold uppercase tracking-wider font-sora transition-colors">
+                                  {s.label}
+                                </span>
+                              </div>
+                              <ArrowRight className="w-3.5 h-3.5 text-[#7C3AED] opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200 shrink-0" />
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   ) : (
                     <div
                       className={cn(
-                        "absolute top-full left-0 right-0 w-full bg-white border-t border-slate-200/85 border-b border-slate-200 rounded-b-[28px] shadow-[0_20px_40px_rgba(0,0,0,0.06)] text-slate-800 transition-all duration-300 ease-in-out origin-top z-50",
+                        "absolute top-full left-0 right-0 w-full bg-white/80 backdrop-blur-3xl backdrop-saturate-150 border-t border-slate-200/60 border-b border-purple-200/40 rounded-b-[32px] shadow-[0_30px_70px_-15px_rgba(124,58,237,0.16),0_12px_32px_-6px_rgba(0,0,0,0.05)] text-slate-800 transition-all duration-300 ease-out origin-top z-50 overflow-hidden",
                         (megaOpen === link.label)
-                          ? "opacity-100 scale-y-100 pointer-events-auto"
-                          : "opacity-0 scale-y-95 pointer-events-none"
+                          ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+                          : "opacity-0 scale-[0.98] -translate-y-2 pointer-events-none"
                       )}
                       onMouseEnter={() => onMegaEnter(link.label)}
                       onMouseLeave={onMegaLeave}
                       role="menu"
                       aria-label={`${link.label} menu`}
                     >
+                      {/* Atmospheric Glass Ambient Glow Blobs behind content */}
+                      <div className="absolute -top-24 left-1/6 w-96 h-96 bg-purple-400/15 rounded-full blur-3xl pointer-events-none" />
+                      <div className="absolute -bottom-24 left-1/3 w-96 h-96 bg-blue-400/12 rounded-full blur-3xl pointer-events-none" />
+                      <div className="absolute top-10 right-1/4 w-80 h-80 bg-violet-500/12 rounded-full blur-3xl pointer-events-none" />
+                      {/* Frosted glass top sheen line */}
+                      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
                       {/* Centered content aligning with the header container */}
-                      <div className="max-w-[1400px] mx-auto px-6 py-10 grid grid-cols-[1fr_450px] gap-10">
+                      <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-9 grid grid-cols-[1fr_450px] gap-10">
 
                         {/* Left Pane - Grid of Services & Helper Link */}
                         <div className="flex flex-col justify-between">
-                          {/* 3-column grid of service/product cards */}
-                          <div className="grid grid-cols-3 gap-4">
+                          {/* 3-column grid of service/product cards with popup & glass effect */}
+                          <div className="grid grid-cols-3 gap-3.5">
                             {(link.label === "Products" ? productsMenuLinks : servicesMenuLinks).map((s) => {
                               const ItemIcon = s.icon;
                               return (
                                 <Link
                                   key={s.label}
                                   href={s.href}
+                                  onClick={() => {
+                                    setMegaOpen(null);
+                                    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                                  }}
                                   role="menuitem"
-                                  className="group/card flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50/50 hover:border-slate-350 transition-all duration-200"
+                                  className="group/card relative flex items-center justify-between p-3.5 rounded-2xl border border-white/80 bg-white/60 backdrop-blur-md shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:-translate-y-1.5 hover:scale-[1.025] hover:bg-white/95 hover:border-purple-300/80 hover:shadow-[0_16px_32px_-6px_rgba(124,58,237,0.20),0_4px_12px_rgba(0,0,0,0.04)] active:scale-[0.99] transition-all duration-300 ease-out cursor-pointer overflow-hidden"
                                 >
+                                  {/* Subtle top edge glass shine on hover */}
+                                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7C3AED]/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
                                   <div className="flex items-center gap-3.5 min-w-0">
-                                    <ItemIcon
-                                      className="w-5.5 h-5.5 shrink-0 transition-transform duration-300 group-hover/card:scale-105"
-                                      style={{ color: s.color }}
-                                    />
-                                    <span className="text-[13.5px] font-bold text-slate-850 font-sora leading-none truncate">
+                                    <div
+                                      className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-black/5 group-hover/card:scale-110 group-hover/card:rotate-3 group-hover/card:shadow-md transition-all duration-300 ease-out"
+                                      style={{ backgroundColor: s.bg || 'rgba(124,58,237,0.08)' }}
+                                    >
+                                      <ItemIcon
+                                        className="w-5 h-5 shrink-0 transition-transform duration-300"
+                                        style={{ color: s.color }}
+                                      />
+                                    </div>
+                                    <span className="text-[13px] font-bold text-slate-800 group-hover/card:text-[#7C3AED] font-sora leading-tight truncate transition-colors duration-200">
                                       {s.label}
                                     </span>
                                   </div>
-                                  <div className="text-slate-300 group-hover/card:text-slate-800 transition-colors pl-1 shrink-0">
-                                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/card:translate-x-0.5" />
+                                  <div className="w-7 h-7 rounded-full flex items-center justify-center bg-slate-100/70 text-slate-400 group-hover/card:bg-[#7C3AED] group-hover/card:text-white transition-all duration-300 ease-out group-hover/card:translate-x-0.5 group-hover/card:shadow-sm pl-0.5 shrink-0 ml-2">
+                                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300" />
                                   </div>
                                 </Link>
                               );
@@ -477,30 +512,39 @@ export default function Navbar() {
                           </div>
 
                           {/* Bottom Helper link */}
-                          <div className="mt-8 flex items-center gap-2 text-xs text-slate-500 font-medium">
-                            <MessageSquare className="w-4 h-4 text-slate-400 shrink-0" />
-                            <span>
-                              Need help? Contact our{" "}
-                              <Link
-                                href="/contact"
-                                className="text-slate-800 font-semibold underline underline-offset-4 decoration-[#7C3AED]/45 hover:decoration-[#7C3AED] transition-colors"
-                              >
-                                support service
-                              </Link>
-                            </span>
+                          <div className="mt-7 flex items-center gap-2">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/80 shadow-xs text-xs text-slate-600 font-medium hover:bg-white/90 transition-all">
+                              <MessageSquare className="w-4 h-4 text-[#7C3AED] shrink-0" />
+                              <span>
+                                Need help? Contact our{" "}
+                                <Link
+                                  href="/contact"
+                                  onClick={() => {
+                                    setMegaOpen(null);
+                                    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                                  }}
+                                  className="text-slate-900 font-bold underline underline-offset-4 decoration-[#7C3AED]/50 hover:decoration-[#7C3AED] hover:text-[#7C3AED] transition-colors"
+                                >
+                                  support service
+                                </Link>
+                              </span>
+                            </div>
                           </div>
-                        </div>                      {/* Right Pane - Feature Promo Banner */}
-                        <div className="pl-8 border-l border-slate-100 flex flex-col justify-center">
-                          {/* Vertical Custom Showcase Card */}
-                          <div className="flex flex-col justify-between p-6 rounded-[24px] bg-gradient-to-br from-purple-50/70 via-white/80 to-indigo-50/40 border border-purple-100/60 shadow-[0_8px_24px_rgba(124,58,237,0.02)] h-full relative overflow-hidden group/banner">
+                        </div>
+
+                        {/* Right Pane - Feature Promo Banner */}
+                        <div className="pl-8 border-l border-slate-200/50 flex flex-col justify-center">
+                          {/* Vertical Custom Showcase Card with Frosted Glass & Popup Hover */}
+                          <div className="flex flex-col justify-between p-6 rounded-[28px] bg-gradient-to-br from-purple-50/80 via-white/85 to-indigo-50/60 backdrop-blur-xl border border-white/80 shadow-[0_12px_32px_rgba(124,58,237,0.06)] hover:shadow-[0_20px_45px_rgba(124,58,237,0.16)] hover:-translate-y-1 transition-all duration-300 ease-out h-full relative overflow-hidden group/banner">
                             {/* Decorative soft glowing backdrops */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/20 rounded-full blur-2xl -mr-8 -mt-8 pointer-events-none" />
+                            <div className="absolute top-0 right-0 w-36 h-36 bg-purple-400/20 rounded-full blur-2xl -mr-8 -mt-8 pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-36 h-36 bg-indigo-400/20 rounded-full blur-2xl -ml-8 -mb-8 pointer-events-none" />
 
                             <div className="relative z-10">
                               {/* 1. Capsule Badge: Featured Service */}
-                              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest text-[#7C3AED] bg-purple-100/50 border border-purple-200/30 mb-3">
+                              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest text-[#7C3AED] bg-purple-100/70 border border-purple-200/50 mb-3 shadow-xs">
                                 <Sparkles className="w-3 h-3 text-[#7C3AED] animate-pulse" />
-                                <span>Featured Service</span>
+                                <span>Featured {link.label === "Products" ? "Product" : "Service"}</span>
                               </div>
 
                               {/* 2. Headline: Premium Digital Solutions */}
@@ -515,15 +559,15 @@ export default function Navbar() {
                             </div>
 
                             {/* 4. Laptop Showcase image with purple background blob and shadow */}
-                            <div className="relative w-full aspect-[16/9] -mt-6 -mb-6 flex items-center justify-center z-10">
+                            <div className="relative w-full aspect-[16/9] -mt-4 -mb-4 flex items-center justify-center z-10">
                               {/* Glowing Purple background blob */}
-                              <div className="absolute w-28 h-28 bg-[#7C3AED]/20 rounded-full blur-2xl pointer-events-none z-0" />
+                              <div className="absolute w-32 h-32 bg-[#7C3AED]/25 rounded-full blur-2xl pointer-events-none z-0 group-hover/banner:scale-125 transition-transform duration-500" />
                               {/* Soft Purple shadow overlay underneath the laptop */}
-                              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[80%] h-4 bg-purple-500/30 blur-md rounded-full pointer-events-none z-0" />
+                              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[80%] h-4 bg-purple-600/30 blur-md rounded-full pointer-events-none z-0" />
                               <img
                                 src="/images/mega_menu_banner.png"
                                 alt="Premium Digital Solutions"
-                                className="object-contain w-full h-full max-h-[110px] transition-transform duration-700 group-hover/banner:scale-105 relative z-10"
+                                className="object-contain w-full h-full max-h-[120px] transition-transform duration-500 ease-out group-hover/banner:scale-108 relative z-10"
                               />
                             </div>
 
@@ -531,10 +575,14 @@ export default function Navbar() {
                             <div className="relative z-10">
                               <Link
                                 href={link.href}
-                                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-black text-white bg-[#7C3AED] hover:bg-[#6D28D9] shadow-[0_6px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_8px_26px_rgba(124,58,237,0.45)] transition-all duration-300 cursor-pointer"
+                                onClick={() => {
+                                  setMegaOpen(null);
+                                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                                }}
+                                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-black text-white bg-[#7C3AED] hover:bg-[#6D28D9] shadow-[0_6px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_8px_26px_rgba(124,58,237,0.45)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
                               >
                                 <span>Explore {link.label}</span>
-                                <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover/banner:translate-x-0.5" />
+                                <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover/banner:translate-x-1" />
                               </Link>
                             </div>
                           </div>
@@ -632,7 +680,7 @@ export default function Navbar() {
         <>
           <div
             className="fixed inset-0 z-40 bg-slate-950/80 backdrop-blur-sm lg:hidden"
-            onClick={() => setMobileOpen(false)}
+            onClick={() => { setMobileOpen(false); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); }}
             aria-hidden="true"
           />
           <aside
@@ -643,7 +691,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
               <LogoMark size={36} />
               <button
-                onClick={() => setMobileOpen(false)}
+                onClick={() => { setMobileOpen(false); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); }}
                 className="w-9.5 h-9.5 rounded-lg flex items-center justify-center bg-slate-800 text-slate-400 hover:text-white transition-colors"
                 aria-label="Close navigation menu"
               >
@@ -654,32 +702,108 @@ export default function Navbar() {
             <nav aria-label="Mobile navigation links">
               <div className="space-y-1">
                 {[...navLinks, { label: "Contact", href: "/contact" }].map((link) => {
-                  if (link.label === "About") {
-                    const isSubActive = pathname === "/about" || pathname === "/team" || pathname === "/gallery" || pathname === "/careers";
+                  const hasSub = link.label === "About" || link.label === "Services" || link.label === "Products";
+                  
+                  if (hasSub) {
+                    const isSubActive =
+                      link.label === "About"
+                        ? pathname === "/about" || pathname === "/team" || pathname === "/gallery" || pathname === "/careers"
+                        : link.label === "Services"
+                        ? pathname.startsWith("/services")
+                        : pathname.startsWith("/products");
+
+                    const isExpanded = mobileExpandedMenu === link.label;
+
                     return (
                       <div key={link.label} className="space-y-1">
-                        <div className={cn(
-                          "flex items-center justify-between px-4 py-3 rounded-lg text-sm font-bold text-slate-450",
-                          isSubActive && "text-[#7C3AED] bg-violet-500/5"
-                        )}>
-                          <span>About</span>
-                        </div>
-                        <div className="pl-4 space-y-1 border-l border-slate-800/60 ml-4">
-                          {aboutMenuLinks.map((sub) => (
-                            <Link
-                              key={sub.label}
-                              href={sub.href}
-                              className={cn(
-                                "flex items-center justify-between px-4 py-2.5 rounded-lg text-xs font-bold transition-all",
-                                pathname === sub.href ? "text-[#7C3AED] bg-violet-500/10" : "text-slate-400 hover:text-white hover:bg-slate-800"
-                              )}
-                              onClick={() => setMobileOpen(false)}
-                            >
-                              {sub.label}
-                              <ArrowRight className="w-3.5 h-3.5 opacity-30" />
-                            </Link>
-                          ))}
-                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setMobileExpandedMenu(isExpanded ? null : link.label)}
+                          className={cn(
+                            "w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-all cursor-pointer",
+                            isSubActive
+                              ? "text-[#7C3AED] bg-violet-500/10"
+                              : "text-slate-300 hover:text-white hover:bg-slate-800"
+                          )}
+                          aria-expanded={isExpanded}
+                        >
+                          <span className="font-sora">{link.label}</span>
+                          <ChevronDown
+                            className={cn(
+                              "w-4 h-4 transition-transform duration-300 ease-in-out text-slate-400",
+                              isExpanded && "rotate-180 text-[#7C3AED]"
+                            )}
+                          />
+                        </button>
+
+                        {isExpanded && (
+                          <div className="pl-3 pr-1 py-1 space-y-1 border-l-2 border-violet-500/40 ml-4 max-h-64 overflow-y-auto">
+                            {link.label === "Services" && (
+                              <Link
+                                href="/services"
+                                className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-bold text-[#7C3AED] bg-violet-500/10 hover:bg-violet-500/20 mb-1 transition-all"
+                                onClick={() => {
+                                  setMobileOpen(false);
+                                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                                }}
+                              >
+                                <span>All Services Overview</span>
+                                <ArrowRight className="w-3.5 h-3.5" />
+                              </Link>
+                            )}
+
+                            {link.label === "Products" && (
+                              <Link
+                                href="/products"
+                                className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-bold text-[#7C3AED] bg-violet-500/10 hover:bg-violet-500/20 mb-1 transition-all"
+                                onClick={() => {
+                                  setMobileOpen(false);
+                                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                                }}
+                              >
+                                <span>All Products Overview</span>
+                                <ArrowRight className="w-3.5 h-3.5" />
+                              </Link>
+                            )}
+
+                            {(link.label === "About"
+                              ? aboutMenuLinks
+                              : link.label === "Services"
+                              ? servicesMenuLinks
+                              : productsMenuLinks
+                            ).map((sub) => {
+                              const ItemIcon = sub.icon;
+                              const isCurrent = pathname === sub.href;
+                              return (
+                                <Link
+                                  key={sub.label}
+                                  href={sub.href}
+                                  className={cn(
+                                    "flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold transition-all",
+                                    isCurrent
+                                      ? "text-white bg-[#7C3AED] font-bold shadow-sm"
+                                      : "text-slate-300 hover:text-white hover:bg-slate-800"
+                                  )}
+                                  onClick={() => {
+                                    setMobileOpen(false);
+                                    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                                  }}
+                                >
+                                  <span className="flex items-center gap-2.5 truncate">
+                                    {ItemIcon && (
+                                      <ItemIcon
+                                        className="w-3.5 h-3.5 shrink-0"
+                                        style={{ color: ("color" in sub) ? (sub as any).color : "#7C3AED" }}
+                                      />
+                                    )}
+                                    <span className="truncate">{sub.label}</span>
+                                  </span>
+                                  <ArrowRight className="w-3 h-3 opacity-40 shrink-0" />
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        )}
                       </div>
                     );
                   }
@@ -690,11 +814,14 @@ export default function Navbar() {
                       href={link.href}
                       className={cn(
                         "flex items-center justify-between px-4 py-3 rounded-lg text-sm font-bold transition-all",
-                        pathname === link.href ? "text-[#7C3AED] bg-violet-500/10" : "text-slate-400 hover:text-white hover:bg-slate-800"
+                        pathname === link.href ? "text-[#7C3AED] bg-violet-500/10" : "text-slate-300 hover:text-white hover:bg-slate-800"
                       )}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={() => {
+                        setMobileOpen(false);
+                        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                      }}
                     >
-                      {link.label}
+                      <span className="font-sora">{link.label}</span>
                       <ArrowRight className="w-4 h-4 opacity-30" />
                     </Link>
                   );

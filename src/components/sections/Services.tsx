@@ -1,12 +1,13 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import {
   Code2, Smartphone, Layers, Brain, Cloud, Server,
   BarChart3, Palette, Zap, Settings2, ArrowRight, ChevronRight, CheckCircle2,
-  BookOpen, Sparkles
+  BookOpen, Sparkles, ChevronDown, ChevronUp
 } from "lucide-react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const categories = [
@@ -81,15 +82,21 @@ const services = [
 
 export default function Services() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const filteredServices = services.filter((service) => {
     if (activeCategory === "all") return true;
     return service.category === activeCategory;
   });
 
+  const shouldShowExpandBtn = activeCategory === "all" && filteredServices.length > 4;
+  const visibleServices = (isExpanded || !shouldShowExpandBtn)
+    ? filteredServices
+    : filteredServices.slice(0, 4);
+
   return (
     <section 
-      className="py-10 text-slate-800 border-t border-slate-200/50 relative overflow-hidden" 
+      className="py-12 sm:py-16 text-slate-800 border-t border-slate-200/50 relative overflow-hidden" 
       id="services"
       style={{
         background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(var(--accent-global-rgb), 0.04) 0%, transparent 70%), linear-gradient(180deg, #f8fafc 0%, #f9f8ff 50%, #f8fafc 100%)"
@@ -97,7 +104,7 @@ export default function Services() {
     >
       <div className="max-w-[1400px] mx-auto px-4 relative z-10">
         
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 sm:mb-12">
           <div>
             <SectionHeader
               badge="OUR SERVICES"
@@ -114,7 +121,12 @@ export default function Services() {
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => {
+                  setActiveCategory(cat.id);
+                  if (cat.id !== "all") {
+                    setIsExpanded(true);
+                  }
+                }}
                 className={`px-4 py-2 rounded-full text-xs font-bold border transition-all cursor-pointer ${
                   activeCategory === cat.id
                     ? "bg-[var(--accent-global)] text-white border-[var(--accent-global)] shadow-md shadow-purple-500/10"
@@ -127,67 +139,112 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {filteredServices.map((service) => (
-            <div
-              key={service.id}
-              className="group p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5"
-              style={{
-                background: "#ffffff",
-                border: "1px solid rgba(0,0,0,0.06)",
-                borderRadius: "20px",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.04)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(var(--accent-global-rgb), 0.25)";
-                e.currentTarget.style.boxShadow = "0 20px 50px rgba(0,0,0,0.08), 0 0 30px rgba(var(--accent-global-rgb), 0.04)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(0,0,0,0.06)";
-                e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.04)";
-              }}
-            >
-              <div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-all duration-350 group-hover:scale-115 group-hover:rotate-6 shadow-sm shadow-purple-500/5 group-hover:shadow-md group-hover:shadow-purple-500/20"
-                  style={{
-                    background: "var(--accent-global)",
-                    color: "#ffffff",
-                  }}
-                >
-                  <service.icon className="w-5 h-5" />
+        {/* Cards Grid */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <AnimatePresence>
+            {visibleServices.map((service) => (
+              <motion.div
+                key={service.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 15 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="group p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5"
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                  borderRadius: "20px",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.04)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(var(--accent-global-rgb), 0.25)";
+                  e.currentTarget.style.boxShadow = "0 20px 50px rgba(0,0,0,0.08), 0 0 30px rgba(var(--accent-global-rgb), 0.04)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(0,0,0,0.06)";
+                  e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.04)";
+                }}
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-all duration-350 group-hover:scale-115 group-hover:rotate-6 shadow-sm shadow-purple-500/5 group-hover:shadow-md group-hover:shadow-purple-500/20"
+                    style={{
+                      background: "var(--accent-global)",
+                      color: "#ffffff",
+                    }}
+                  >
+                    <service.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-bold mb-2 text-slate-950" style={{ fontFamily: "Sora, sans-serif" }}>{service.title}</h3>
+                  <p className="text-xs text-slate-500 mb-4 leading-relaxed">{service.description}</p>
+                  <div className="space-y-1.5 border-t pt-4 mb-6" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+                    {service.features.map((feat) => (
+                      <div key={feat} className="flex items-center gap-2 text-xs text-slate-650">
+                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--accent-global)" }} />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-base font-bold mb-2 text-slate-950" style={{ fontFamily: "Sora, sans-serif" }}>{service.title}</h3>
-                <p className="text-xs text-slate-500 mb-4 leading-relaxed">{service.description}</p>
-                <div className="space-y-1.5 border-t pt-4 mb-6" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
-                  {service.features.map((feat) => (
-                    <div key={feat} className="flex items-center gap-2 text-xs text-slate-650">
-                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--accent-global)" }} />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
+                <div>
+                  <Link
+                    href={`/services/${service.id}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold transition-opacity hover:opacity-75"
+                    style={{ color: "var(--accent-global)" }}
+                  >
+                    Explore service <ChevronRight className="w-4 h-4" />
+                  </Link>
                 </div>
-              </div>
-              <div>
-                <Link
-                  href={`/services/${service.id}`}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold transition-opacity hover:opacity-75"
-                  style={{ color: "var(--accent-global)" }}
-                >
-                  Explore service <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
-        <div className="text-center mt-12">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 bg-[var(--accent-global)] hover:bg-[var(--accent-global-hover)] text-white font-bold text-xs px-6 py-3 rounded-full shadow-lg shadow-purple-500/10 transition-all border border-purple-500/10"
-          >
-            View All Services <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+        {/* Expand / View All Controls */}
+        {shouldShowExpandBtn && !isExpanded ? (
+          <div className="text-center mt-10 flex justify-center">
+            {/* ONLY "View All" button shown in collapsed state */}
+            <button
+              type="button"
+              onClick={() => setIsExpanded(true)}
+              className="inline-flex items-center gap-2.5 bg-[var(--accent-global)] hover:bg-[var(--accent-global-hover)] text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-lg shadow-purple-500/20 hover:shadow-purple-500/35 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer border border-purple-500/10"
+              aria-expanded={false}
+            >
+              <span>View All</span>
+              <ChevronDown className="w-4 h-4" />
+            </button>
+          </div>
+        ) : (
+          /* When in expanded state, show both "Show Less" and "View all Services" side by side */
+          <div className="text-center mt-12 flex flex-row items-center justify-center gap-4">
+            {shouldShowExpandBtn && isExpanded && (
+              <button
+                type="button"
+                onClick={() => {
+                  setIsExpanded(false);
+                  const el = document.getElementById("services");
+                  if (el) {
+                    const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top, behavior: "smooth" });
+                  }
+                }}
+                className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full border border-slate-200/80 transition-all cursor-pointer hover:border-slate-300"
+                aria-expanded={true}
+              >
+                <span>Show Less</span>
+                <ChevronUp className="w-4 h-4" />
+              </button>
+            )}
+
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 bg-[var(--accent-global)] hover:bg-[var(--accent-global-hover)] text-white font-bold text-xs sm:text-sm px-7 py-3.5 rounded-full shadow-lg shadow-purple-500/20 hover:shadow-purple-500/35 transition-all duration-300 hover:scale-105 border border-purple-500/10"
+            >
+              <span>View all Services</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

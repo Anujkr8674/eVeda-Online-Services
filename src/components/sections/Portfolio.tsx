@@ -9,7 +9,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ── Google Fonts for Syne + Playfair ─────────────────────────────── */
+/* ─── Google Fonts for Syne + Playfair ────────────────────────────── */
 const FONT_IMPORT = `
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Playfair+Display:ital,wght@1,700&display=swap');
 `;
@@ -53,7 +53,7 @@ const projects = [
   },
 ];
 
-/* ── Gradient Arrow SVG ────────────────────────────────────────────── */
+/* ─── Gradient Arrow SVG ───────────────────────────────────────────── */
 function ArrowIcon({ size = 40 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@ function ArrowIcon({ size = 40 }: { size?: number }) {
   );
 }
 
-/* ── Project Card ────────────────────────────────────────────────────── */
+/* ─── Project Card ─────────────────────────────────────────────────── */
 function ProjectCard({ project, cardRef }: {
   project: typeof projects[0];
   cardRef?: (el: HTMLDivElement | null) => void;
@@ -99,7 +99,7 @@ function ProjectCard({ project, cardRef }: {
       {/* ── Text block ── */}
       <div className="ra-project3-text">
         {/* Title + Arrow row */}
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, marginBottom: 20 }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 14, marginBottom: 16 }}>
           <h3
             className="ra-project3-title-text"
             style={{
@@ -111,33 +111,21 @@ function ProjectCard({ project, cardRef }: {
             {project.title}
           </h3>
           <div
+            className="ra-project3-arrow-wrap"
             style={{
-              flexShrink: 0,
-              marginTop: 2,
               transform: hovered ? "translate(3px,-3px)" : "translate(0,0)",
-              transition: "transform 0.3s ease",
             }}
           >
-            <ArrowIcon size={36} />
+            <ArrowIcon size={34} />
           </div>
         </div>
 
-        {/* Tags ── bg #e9ebed, Inter 14px, #46505b */}
+        {/* Tags */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {project.tags.map((tag) => (
             <span
               key={tag}
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 14,
-                fontWeight: 400,
-                color: "#46505b",
-                background: "#e9ebed",
-                padding: "6px 14px",
-                borderRadius: 6,
-                textTransform: "uppercase",
-                letterSpacing: "0.04em",
-              }}
+              className="ra-project3-tag"
             >
               {tag}
             </span>
@@ -146,54 +134,41 @@ function ProjectCard({ project, cardRef }: {
       </div>
 
       {/* ── Image block (fills remaining space) ── */}
-      <div
-        style={{
-          flex: 1,
-          margin: "0 18px 18px 18px",
-          borderRadius: 20,
-          overflow: "hidden",
-          minHeight: 0,
-        }}
-      >
+      <div className="ra-project3-img-box">
         <img
           src={project.image}
           alt={project.title}
+          loading="lazy"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
             transform: hovered ? "scale(1.06)" : "scale(1)",
-            transition: "transform 1.2s ease",
-            display: "block",
+            transition: "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           }}
-          loading="lazy"
         />
       </div>
     </div>
   );
 }
 
-/* ── Circular "View All Services" button (last item) ── */
+/* ─── Circular Link CTA Button ─────────────────────────────────────── */
 function CircleBtn() {
   const [hovered, setHovered] = useState(false);
+
   return (
     <Link
       href="/portfolio"
-      style={{
-        flexShrink: 0,
-        width: 208,
-        height: 208,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "relative",
-      }}
+      className="circle-btn-link"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      aria-label="View all portfolio projects"
     >
       {/* Gradient circle */}
       <svg
-        width="208" height="208" viewBox="0 0 208 208" fill="none"
+        className="circle-btn-svg"
+        viewBox="0 0 208 208"
+        fill="none"
         style={{
           position: "absolute",
           inset: 0,
@@ -209,19 +184,22 @@ function CircleBtn() {
         <circle cx="104.491" cy="103.509" r="102.509" stroke="url(#circleg)" strokeWidth="2" />
       </svg>
       {/* Inner arrow */}
-      <div style={{
-        transform: hovered ? "translate(5px,-5px)" : "translate(0,0)",
-        transition: "transform 0.3s ease",
-        position: "relative",
-        zIndex: 1,
-      }}>
-        <ArrowIcon size={61} />
+      <div
+        className="circle-btn-arrow"
+        style={{
+          transform: hovered ? "translate(4px,-4px)" : "translate(0,0)",
+          transition: "transform 0.3s ease",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <ArrowIcon size={52} />
       </div>
     </Link>
   );
 }
 
-/* ── Main Section ────────────────────────────────────────────────────── */
+/* ─── Main Section ─────────────────────────────────────────────────── */
 export default function Portfolio() {
   const sectionRef = useRef<HTMLElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -231,20 +209,32 @@ export default function Portfolio() {
     const wrap = wrapRef.current;
     if (!section || !wrap) return;
 
-    gsap.to(wrap, {
-      x: () => -(wrap.scrollWidth - section.clientWidth),
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => `+=${wrap.scrollWidth - section.clientWidth}`,
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-        pinSpacing: true,
-      },
+    // Only apply horizontal scroll pinning on desktop screens (>= 1024px)
+    // On mobile/tablet (< 1024px), keep native vertical page scroll and smooth horizontal snap carousel
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      const tween = gsap.to(wrap, {
+        x: () => -(wrap.scrollWidth - section.clientWidth),
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${wrap.scrollWidth - section.clientWidth}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          pinSpacing: true,
+        },
+      });
+
+      return () => {
+        tween.kill();
+      };
     });
+
+    return () => mm.revert();
   }, { scope: sectionRef });
 
   return (
@@ -254,6 +244,7 @@ export default function Portfolio() {
 
       {/* Portfolio section styles */}
       <style>{`
+        /* --- Desktop Default (>= 1024px) --- */
         #portfolio-section {
           position: relative;
           overflow: hidden;
@@ -299,7 +290,7 @@ export default function Portfolio() {
           position: relative;
           z-index: 2;
         }
-        /* Responsive Card styles */
+        /* Card styles */
         .ra-project3-item {
           flex-shrink: 0;
           width: 520px;
@@ -325,7 +316,45 @@ export default function Portfolio() {
           letter-spacing: -0.01em;
           flex: 1;
         }
-        @media (max-height: 850px) {
+        .ra-project3-arrow-wrap {
+          flex-shrink: 0;
+          margin-top: 2px;
+          transition: transform 0.3s ease;
+        }
+        .ra-project3-tag {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          color: #46505b;
+          background: #e9ebed;
+          padding: 6px 14px;
+          border-radius: 6px;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
+        .ra-project3-img-box {
+          flex: 1;
+          margin: 0 18px 18px 18px;
+          border-radius: 20px;
+          overflow: hidden;
+          min-height: 0;
+        }
+        .circle-btn-link {
+          flex-shrink: 0;
+          width: 208px;
+          height: 208px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+        .circle-btn-svg {
+          width: 208px;
+          height: 208px;
+        }
+
+        /* Desktop Height Adaptations */
+        @media (min-width: 1024px) and (max-height: 850px) {
           .ra-project3-item {
             width: 450px;
             height: 480px;
@@ -338,7 +367,7 @@ export default function Portfolio() {
             font-size: 19px;
           }
         }
-        @media (max-height: 700px) {
+        @media (min-width: 1024px) and (max-height: 700px) {
           .ra-project3-item {
             width: 390px;
             height: 400px;
@@ -351,17 +380,124 @@ export default function Portfolio() {
             font-size: 15px;
           }
         }
-        @media (max-width: 1024px) {
-          .ra-project3-title-2 { min-width: 260px; padding: 0 32px 0 40px; }
-          .ra-project3-title { min-width: 260px; padding: 0 40px 0 32px; }
-          .ra-project3-content { gap: 20px; padding: 0 20px; }
+
+        /* ── Mobile & Tablet Responsive Engine (< 1024px) ── */
+        @media (max-width: 1023px) {
+          #portfolio-section {
+            height: auto !important;
+            min-height: auto !important;
+            overflow: visible !important;
+            padding: 56px 0 72px 0 !important;
+          }
+          .ra-project3-wrap {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            height: auto !important;
+            margin-top: 0 !important;
+            width: 100% !important;
+            max-width: 100vw !important;
+            transform: none !important;
+            gap: 20px !important;
+          }
+          /* Left Title positioned at top of section */
+          .ra-project3-title-2 {
+            width: 100% !important;
+            min-width: 0 !important;
+            padding: 0 20px !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .ra-project3-title-2 .section-header-box {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+          /* Native smooth swipe cards carousel */
+          .ra-project3-content {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: stretch !important;
+            width: 100% !important;
+            max-width: 100vw !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            scroll-snap-type: x mandatory !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding: 6px 20px 20px 20px !important;
+            gap: 16px !important;
+            box-sizing: border-box !important;
+            scrollbar-width: none; /* Firefox */
+          }
+          .ra-project3-content::-webkit-scrollbar {
+            display: none; /* Chrome, Safari */
+          }
+          /* Mobile cards: fits viewport with peek of next card */
+          .ra-project3-item {
+            width: 82vw !important;
+            max-width: 340px !important;
+            min-width: 270px !important;
+            height: 440px !important;
+            scroll-snap-align: start !important;
+            border-radius: 22px !important;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.3) !important;
+            background: #ffffff !important;
+          }
+          .ra-project3-text {
+            padding: 22px 18px 14px 18px !important;
+          }
+          .ra-project3-title-text {
+            font-size: 17px !important;
+            line-height: 1.35 !important;
+          }
+          .ra-project3-tag {
+            font-size: 11px !important;
+            padding: 4px 9px !important;
+            border-radius: 5px !important;
+          }
+          .ra-project3-img-box {
+            margin: 0 12px 12px 12px !important;
+            border-radius: 14px !important;
+            min-height: 180px !important;
+          }
+          /* Trailing circular button styled nicely for mobile carousel */
+          .circle-btn-link {
+            width: 130px !important;
+            height: 130px !important;
+            min-width: 130px !important;
+            align-self: center !important;
+            scroll-snap-align: center !important;
+            margin: 0 10px 0 4px !important;
+          }
+          .circle-btn-svg {
+            width: 130px !important;
+            height: 130px !important;
+          }
+          .circle-btn-arrow {
+            transform: scale(0.68) !important;
+          }
+          /* Concluding call to action on mobile */
+          .ra-project3-title {
+            width: 100% !important;
+            min-width: 0 !important;
+            padding: 10px 20px 0 20px !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .ra-project3-title .section-header-box {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
         }
       `}</style>
 
       <section
         ref={sectionRef}
         id="portfolio-section"
-        className="relative overflow-hidden"
+        className="relative"
         style={{ background: "#0B0F19" }}
       >
         {/* --- BACKGROUND DESIGN (Static to ensure consistency during horizontal scroll) --- */}
@@ -385,8 +521,15 @@ export default function Portfolio() {
               description="A curated showcase of our latest enterprise solutions, mobile apps, and SaaS platforms."
               align="left"
               theme="dark"
-              className="w-[320px]"
+              className="w-[320px] section-header-box"
             />
+            {/* Mobile swipe hint */}
+            <div className="flex items-center gap-2 mt-4 text-xs font-semibold tracking-wider text-purple-400/90 uppercase lg:hidden">
+              <svg className="w-4 h-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+              <span>Swipe to explore projects</span>
+            </div>
           </div>
 
           {/* ── CARDS ROW (ra-project3-content) ── */}
@@ -408,8 +551,19 @@ export default function Portfolio() {
               description="Partner with eVeda to transform your product ideas into digital realities."
               align="left"
               theme="dark"
-              className="w-[320px]"
+              className="w-[320px] section-header-box"
             />
+            <div className="mt-5">
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition-all duration-300 shadow-lg shadow-purple-600/25"
+              >
+                <span>Explore All Projects</span>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
 
         </div>

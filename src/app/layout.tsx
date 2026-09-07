@@ -106,13 +106,12 @@ const jsonLd = {
         width: 400,
         height: 100,
       },
-      sameAs: [
-        "https://twitter.com/evedaonlineservices",
-        "https://linkedin.com/company/evedaonlineservices",
-        "https://github.com/evedaonlineservices",
-        "https://instagram.com/evedaonlineservices",
-        "https://facebook.com/evedaonlineservices",
-        "https://youtube.com/@evedaonlineservices",
+            sameAs: [
+        "https://www.youtube.com/@EVedaOnlineServices",
+        "https://github.com/E-Veda-Online-Services",
+        "https://www.linkedin.com/company/e-veda-online-services",
+        "https://www.instagram.com/evedaonlineservices/",
+        "https://www.facebook.com/evedaonlineservices/",
       ],
       contactPoint: {
         "@type": "ContactPoint",

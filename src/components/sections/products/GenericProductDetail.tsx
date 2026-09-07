@@ -8,7 +8,7 @@ import {
   MousePointerClick, ShieldCheck, Rocket, X, Play, Settings,
   CheckCircle2
 } from "lucide-react";
-import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaYoutube, FaGithub } from "react-icons/fa";
 import { ProductDetail } from "@/lib/products-data";
 import ProductHero from "./ProductHero";
 import TrustedBy from "../TrustedBy";
@@ -976,7 +976,7 @@ export default function GenericProductDetail({ product }: { product: ProductDeta
                 <div className="flex gap-3">
                   {[
                     { icon: FaLinkedinIn, href: COMPANY.social.linkedin, label: "LinkedIn" },
-                    { icon: FaTwitter,    href: COMPANY.social.twitter,  label: "Twitter" },
+                    { icon: FaYoutube, href: COMPANY.social.youtube, label: "YouTube" },
                     { icon: FaGithub,     href: COMPANY.social.github,   label: "GitHub" },
                   ].map(({ icon: Icon, href, label }) => (
                     <a key={label} href={href} target="_blank" rel="noopener noreferrer" title={label}

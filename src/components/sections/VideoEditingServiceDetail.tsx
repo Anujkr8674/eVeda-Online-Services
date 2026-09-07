@@ -8,7 +8,7 @@ import {
   Shield, Database, CreditCard, RefreshCw, Smartphone, ChevronRight, X
 } from "lucide-react";
 import Link from "next/link";
-import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaYoutube, FaGithub } from "react-icons/fa";
 import { ServiceDetail } from "@/lib/services-data";
 import { COMPANY } from "@/lib/utils";
 import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
@@ -1333,7 +1333,7 @@ export default function VideoEditingServiceDetail({ service }: { service: Servic
                 <div className="flex gap-3">
                   {[
                     { icon: FaLinkedinIn, href: COMPANY.social.linkedin, label: "LinkedIn" },
-                    { icon: FaTwitter,    href: COMPANY.social.twitter,  label: "Twitter" },
+                    { icon: FaYoutube, href: COMPANY.social.youtube, label: "YouTube" },
                     { icon: FaGithub,     href: COMPANY.social.github,   label: "GitHub" },
                   ].map(({ icon: Icon, href, label }) => (
                     <a key={label} href={href} target="_blank" rel="noopener noreferrer" title={label}

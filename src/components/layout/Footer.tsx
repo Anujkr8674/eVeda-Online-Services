@@ -59,12 +59,11 @@ export default function Footer() {
 
   const socials = [
     { icon: FaLinkedinIn, href: settings.social.linkedin, label: "LinkedIn" },
-    { icon: FaTwitter, href: settings.social.twitter, label: "Twitter" },
     { icon: FaGithub, href: settings.social.github, label: "GitHub" },
     { icon: FaInstagram, href: settings.social.instagram, label: "Instagram" },
     { icon: FaFacebookF, href: settings.social.facebook, label: "Facebook" },
     { icon: FaYoutube, href: settings.social.youtube, label: "YouTube" },
-  ];
+  ].filter((s) => Boolean(s.href));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -253,13 +252,13 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-y-2 gap-x-4 text-[11px] font-bold text-slate-200 tracking-wider">
-            <span>Ranchi (HQ)</span>
+            <span>Haridwar (HQ)</span>
             <span className="text-white/20">•</span>
-            <span>Bangalore</span>
+            <span>Delhi</span>
             <span className="text-white/20">•</span>
-            <span>Mumbai</span>
+            <span>Gurugram</span>
             <span className="text-white/20">•</span>
-            <span>Delhi NCR</span>
+            <span>Noida</span>
             <span className="text-white/20">•</span>
             <span>Hyderabad</span>
             <span className="text-white/20">•</span>

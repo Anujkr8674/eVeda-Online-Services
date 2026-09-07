@@ -105,13 +105,13 @@ export const COMPANY = {
   fullAddress: "53 eVeda Online Services Aryanagar, Haridwar, Uttarakhand, India",
   website: "https://evedaonlineservices.com",
   // Dummy social links — will be made dynamic via backend CMS
-  social: {
-    twitter: "https://twitter.com/evedaonlineservices",
-    linkedin: "https://linkedin.com/company/evedaonlineservices",
-    github: "https://github.com/evedaonlineservices",
-    instagram: "https://instagram.com/evedaonlineservices",
-    youtube: "https://youtube.com/@evedaonlineservices",
-    facebook: "https://facebook.com/evedaonlineservices",
+    social: {
+    twitter: "",
+    linkedin: "https://www.linkedin.com/company/e-veda-online-services",
+    github: "https://github.com/E-Veda-Online-Services",
+    instagram: "https://www.instagram.com/evedaonlineservices/",
+    youtube: "https://www.youtube.com/@EVedaOnlineServices",
+    facebook: "https://www.facebook.com/evedaonlineservices/",
   },
   stats: {
     projectsDelivered: "150+",

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import ServiceHero from "@/components/sections/ServiceHero";
 import PremiumCapabilities from "@/components/sections/PremiumCapabilities";
 import { ServiceDetail } from "@/lib/services-data";
-import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaYoutube, FaGithub } from "react-icons/fa";
 import { COMPANY } from "@/lib/utils";
 import WebServiceDetail from "@/components/sections/WebServiceDetail";
 import MobileServiceDetail from "@/components/sections/MobileServiceDetail";
@@ -488,7 +488,7 @@ export default function ServiceDetailClient({ service }: { service: ServiceDetai
                 <div className="flex gap-3">
                   {[
                     { icon: FaLinkedinIn, href: COMPANY.social.linkedin, label: "LinkedIn" },
-                    { icon: FaTwitter,    href: COMPANY.social.twitter,  label: "Twitter" },
+                    { icon: FaYoutube, href: COMPANY.social.youtube, label: "YouTube" },
                     { icon: FaGithub,     href: COMPANY.social.github,   label: "GitHub" },
                   ].map(({ icon: Icon, href, label }) => (
                     <a key={label} href={href} target="_blank" rel="noopener noreferrer" title={label}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Mail, Phone, MapPin, Send, ArrowRight, AlertCircle, User, AtSign, PhoneCall, DollarSign, CheckCircle2 } from "lucide-react";
-import { FaLinkedinIn, FaGithub, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import { FaLinkedinIn, FaTwitter, FaGithub, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 import { COMPANY } from "@/lib/utils";
 import { useWebSettings } from "@/context/WebSettingsContext";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -223,9 +223,10 @@ export default function Contact() {
 
             <div className="bg-slate-900 border border-white/[0.07] rounded-xl sm:rounded-2xl p-4 sm:p-5 min-w-0">
               <p className="text-[9.5px] sm:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3 sm:mb-4">Connect With Us</p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5">
                 {[
                   { icon: FaLinkedinIn, href: settings.social.linkedin, label: "LinkedIn" },
+                  { icon: FaTwitter, href: settings.social.twitter, label: "Twitter" },
                   { icon: FaGithub, href: settings.social.github, label: "GitHub" },
                   { icon: FaInstagram, href: settings.social.instagram, label: "Instagram" },
                   { icon: FaFacebookF, href: settings.social.facebook, label: "Facebook" },

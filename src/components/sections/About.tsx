@@ -47,7 +47,7 @@ export default function About({ isAboutPage = false }: AboutProps) {
                   <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                 </div>
                 <div className="mx-auto w-[55%] h-5 rounded bg-white border border-slate-200 text-[9px] text-slate-400 flex items-center justify-center font-mono select-none">
-                  nextgentech.solutions/about
+                  evedaonlineservices.com/about
                 </div>
               </div>
               
@@ -55,7 +55,7 @@ export default function About({ isAboutPage = false }: AboutProps) {
               <div className="relative aspect-[16/10] w-full bg-slate-50">
                 <Image
                   src="/images/about_office1.png"
-                  alt="NextGen Collaborative Teamwork"
+                  alt="E Veda Collaborative Teamwork"
                   fill
                   sizes="(max-width: 1024px) 100vw, 600px"
                   className="object-cover"

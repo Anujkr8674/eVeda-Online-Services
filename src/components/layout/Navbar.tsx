@@ -20,7 +20,7 @@ import { triggerOnboardingModal } from "@/components/shared/OnboardingModal";
 function LogoMark({ size = 52 }: { size?: number }) {
   return (
     <img
-      // src="/images/logo.png"
+      src="/images/logo.png"
       alt="Eveda Online Services"
       style={{
         height: `${size}px`,
@@ -197,6 +197,8 @@ const aboutMenuLinks = [
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about", hasMenu: true },
+  // { label: "Services", href: "/services", hasMenu: true },
+  // { label: "Products", href: "/products", hasMenu: true },
   { label: "Services", href: "/services", hasMenu: true },
   { label: "Products", href: "/products", hasMenu: true },
   { label: "Portfolio", href: "/portfolio" },
@@ -301,6 +303,10 @@ export default function Navbar() {
                   {/* LinkedIn */}
                   <a href={settings.social.linkedin} target="_blank" rel="noopener noreferrer" className="w-5.5 h-5.5 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:scale-110 hover:bg-slate-100 transition-all shadow-sm" aria-label="LinkedIn">
                     <FaLinkedinIn className="w-2.5 h-2.5" />
+                  </a>
+                  {/* Twitter/X */}
+                  <a href={settings.social.twitter} target="_blank" rel="noopener noreferrer" className="w-5.5 h-5.5 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:scale-110 hover:bg-slate-100 transition-all shadow-sm" aria-label="Twitter (X)">
+                    <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
                   </a>
                   {/* GitHub */}
                   <a href={settings.social.github} target="_blank" rel="noopener noreferrer" className="w-5.5 h-5.5 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:scale-110 hover:bg-slate-100 transition-all shadow-sm" aria-label="GitHub">
@@ -703,14 +709,14 @@ export default function Navbar() {
               <div className="space-y-1">
                 {[...navLinks, { label: "Contact", href: "/contact" }].map((link) => {
                   const hasSub = link.label === "About" || link.label === "Services" || link.label === "Products";
-                  
+
                   if (hasSub) {
                     const isSubActive =
                       link.label === "About"
                         ? pathname === "/about" || pathname === "/team" || pathname === "/gallery" || pathname === "/careers"
                         : link.label === "Services"
-                        ? pathname.startsWith("/services")
-                        : pathname.startsWith("/products");
+                          ? pathname.startsWith("/services")
+                          : pathname.startsWith("/products");
 
                     const isExpanded = mobileExpandedMenu === link.label;
 
@@ -769,8 +775,8 @@ export default function Navbar() {
                             {(link.label === "About"
                               ? aboutMenuLinks
                               : link.label === "Services"
-                              ? servicesMenuLinks
-                              : productsMenuLinks
+                                ? servicesMenuLinks
+                                : productsMenuLinks
                             ).map((sub) => {
                               const ItemIcon = sub.icon;
                               const isCurrent = pathname === sub.href;
@@ -859,6 +865,9 @@ export default function Navbar() {
                 <div className="flex items-center gap-2.5 px-4">
                   <a href={settings.social.linkedin} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:bg-slate-100 transition-colors shadow" aria-label="LinkedIn">
                     <FaLinkedinIn className="w-4 h-4" />
+                  </a>
+                  <a href={settings.social.twitter} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:bg-slate-100 transition-colors shadow" aria-label="Twitter (X)">
+                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
                   </a>
                   <a href={settings.social.github} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white text-[#7C3AED] flex items-center justify-center hover:bg-slate-100 transition-colors shadow" aria-label="GitHub">
                     <FaGithub className="w-4 h-4" />

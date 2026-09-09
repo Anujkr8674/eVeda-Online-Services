@@ -3,18 +3,30 @@
 import { useEffect, useRef, useState } from "react";
 import PageHero from "@/components/common/PageHero";
 import About from "@/components/sections/About";
+import FounderVision from "@/components/sections/FounderVision";
 import Contact from "@/components/sections/Contact";
 import Image from "next/image";
 import {
   CheckCircle2, Users, Award, TrendingUp, Globe,
   Target, Eye
 } from "lucide-react";
-import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaTwitter, FaGithub, FaInstagram, FaFacebookF, FaEnvelope } from "react-icons/fa";
 import { COMPANY } from "@/lib/utils";
 
 /* ─── Data ─────────────────────────────────────────────────────────── */
 
 const STATIC_TEAM_MEMBERS = [
+  {
+    name: "Geetanjali Singh",
+    role: "Founder & Visionary",
+    expertise: "Creative Direction, Publishing & Digital Ecosystem Strategy",
+    image: "/images/team/geetanjali.png",
+    email: "geetanjalisingh@evedaonlineservices.com",
+    linkedin: "https://www.linkedin.com/in/geetanjali-singh-83a53a100/",
+    instagram: "https://www.instagram.com/nirved1326/?hl=en",
+    facebook: "https://www.facebook.com/geetanjali.singh.92102",
+    twitter: "https://x.com/EVedaSpeaks",
+  },
   {
     name: "Dr. Rahul Sharma",
     role: "Managing Director",
@@ -278,6 +290,9 @@ export default function AboutPage() {
       {/* ── 2. About Section of Homepage ── */}
       <About isAboutPage={true} />
 
+      {/* ── 2.5 The Vision Behind E Veda: Meet Geetanjali Singh ── */}
+      <FounderVision variant="full" id="founder" />
+
       {/* ── 3. Stats Strip ── */}
       <section className="py-12 bg-slate-50 border-y border-slate-200/60">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
@@ -335,13 +350,13 @@ export default function AboutPage() {
                     <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                   </div>
                   <div className="mx-auto w-[60%] h-4 rounded bg-white border border-slate-200 text-[8px] text-slate-400 flex items-center justify-center font-mono">
-                    nextgentech.solutions/mission
+                    evedaonlineservices.com/mission
                   </div>
                 </div>
                 <div className="relative aspect-[16/10] bg-slate-50">
                   <Image
                     src="/images/careers/team_collab.png"
-                    alt="NextGen team collaborating on code"
+                    alt="eVeda team collaborating on code"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 600px"
@@ -381,13 +396,13 @@ export default function AboutPage() {
                     <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                   </div>
                   <div className="mx-auto w-[60%] h-4 rounded bg-white border border-slate-200 text-[8px] text-slate-400 flex items-center justify-center font-mono">
-                    nextgentech.solutions/vision
+                    evedaonlineservices.com/vision
                   </div>
                 </div>
                 <div className="relative aspect-[16/10] bg-slate-50">
                   <Image
                     src="/images/careers/workstation.png"
-                    alt="NextGen clean developer workstation"
+                    alt="eVeda clean developer workstation"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 600px"
@@ -499,7 +514,7 @@ export default function AboutPage() {
                     {/* Social links */}
                     <div className="flex items-center justify-between p-5 pt-3.5 border-t border-slate-200/50">
                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                        NextGen Partner
+                        eVeda Partner
                       </span>
                       <div className="flex gap-2">
                         {member.linkedin && member.linkedin !== "#" && member.linkedin.trim() !== "" && (
@@ -512,9 +527,24 @@ export default function AboutPage() {
                             <FaTwitter className="w-3.5 h-3.5" />
                           </a>
                         )}
+                        {member.instagram && member.instagram !== "#" && member.instagram.trim() !== "" && (
+                          <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full bg-purple-50 text-[#E1306C] hover:bg-[#E1306C] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm" aria-label="Instagram">
+                            <FaInstagram className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        {member.facebook && member.facebook !== "#" && member.facebook.trim() !== "" && (
+                          <a href={member.facebook} target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full bg-purple-50 text-[#1877F2] hover:bg-[#1877F2] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm" aria-label="Facebook">
+                            <FaFacebookF className="w-3.5 h-3.5" />
+                          </a>
+                        )}
                         {member.github && member.github !== "#" && member.github.trim() !== "" && (
                           <a href={member.github} target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded-full bg-purple-50 text-[#7C3AED] hover:bg-[#7C3AED] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm" aria-label="GitHub">
                             <FaGithub className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        {member.email && (
+                          <a href={`mailto:${member.email}`} className="w-7 h-7 rounded-full bg-purple-50 text-[#7C3AED] hover:bg-[#7C3AED] hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm" aria-label="Email">
+                            <FaEnvelope className="w-3.5 h-3.5" />
                           </a>
                         )}
                       </div>

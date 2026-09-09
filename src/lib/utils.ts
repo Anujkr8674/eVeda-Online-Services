@@ -106,7 +106,7 @@ export const COMPANY = {
   website: "https://evedaonlineservices.com",
   // Dummy social links — will be made dynamic via backend CMS
     social: {
-    twitter: "",
+    twitter: "https://x.com/EVedaSpeaks",
     linkedin: "https://www.linkedin.com/company/e-veda-online-services",
     github: "https://github.com/E-Veda-Online-Services",
     instagram: "https://www.instagram.com/evedaonlineservices/",
@@ -137,3 +137,16 @@ export const COMPANY = {
   ],
 } as const;
 
+
+export const FOUNDER = {
+  name: "Geetanjali Singh",
+  role: "Founder & Visionary",
+  company: "E Veda Online Services",
+  email: "geetanjalisingh@evedaonlineservices.com",
+  social: {
+    linkedin: "https://www.linkedin.com/in/geetanjali-singh-83a53a100/",
+    instagram: "https://www.instagram.com/nirved1326/?hl=en",
+    facebook: "https://www.facebook.com/geetanjali.singh.92102",
+    twitter: "https://x.com/EVedaSpeaks",
+  },
+} as const;

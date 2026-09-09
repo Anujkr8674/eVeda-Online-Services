@@ -18,7 +18,7 @@ import { triggerBookDemoModal } from "@/components/shared/BookDemoModal";
 function LogoMark({ size = 68 }: { size?: number }) {
   return (
     <img
-      // src="/images/logo.png"
+      src="/images/logo.png"
       alt="Eveda Online Services"
       style={{ height: `${size}px`, width: "auto", display: "block", objectFit: "contain" }}
       onError={(e) => { e.currentTarget.style.display = "none"; }}
@@ -59,6 +59,7 @@ export default function Footer() {
 
   const socials = [
     { icon: FaLinkedinIn, href: settings.social.linkedin, label: "LinkedIn" },
+    { icon: FaTwitter, href: settings.social.twitter, label: "Twitter (X)" },
     { icon: FaGithub, href: settings.social.github, label: "GitHub" },
     { icon: FaInstagram, href: settings.social.instagram, label: "Instagram" },
     { icon: FaFacebookF, href: settings.social.facebook, label: "Facebook" },

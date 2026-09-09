@@ -107,6 +107,7 @@ const jsonLd = {
         height: 100,
       },
             sameAs: [
+        "https://x.com/EVedaSpeaks",
         "https://www.youtube.com/@EVedaOnlineServices",
         "https://github.com/E-Veda-Online-Services",
         "https://www.linkedin.com/company/e-veda-online-services",

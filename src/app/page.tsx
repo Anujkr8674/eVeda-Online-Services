@@ -7,6 +7,7 @@ import Hero from "@/components/sections/Hero";
 const TrustedBy = dynamic(() => import("@/components/sections/TrustedBy"));
 const InlineLeadCapture = dynamic(() => import("@/components/sections/InlineLeadCapture"));
 const About = dynamic(() => import("@/components/sections/About"));
+const FounderVision = dynamic(() => import("@/components/sections/FounderVision"));
 const Services = dynamic(() => import("@/components/sections/Services"));
 const WhyChooseUs = dynamic(() => import("@/components/sections/WhyChooseUs"));
 const Portfolio = dynamic(() => import("@/components/sections/Portfolio"));
@@ -41,6 +42,7 @@ export default function HomePage() {
       <TrustedBy />
       <InlineLeadCapture />
       <About />
+      <FounderVision variant="compact" />
       <Services />
       <ServicesTicker />
       <WhyChooseUs />

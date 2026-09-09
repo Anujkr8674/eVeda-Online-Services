@@ -2,14 +2,27 @@
 
 import { useEffect, useState } from "react";
 import PageHero from "@/components/common/PageHero";
+import FounderVision from "@/components/sections/FounderVision";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { User, Sparkles, Send, ArrowRight } from "lucide-react";
-import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
+import { User, Users, Sparkles, Send, ArrowRight } from "lucide-react";
+import { FaLinkedinIn, FaTwitter, FaGithub, FaInstagram, FaFacebookF, FaEnvelope } from "react-icons/fa";
 import { COMPANY } from "@/lib/utils";
 import Link from "next/link";
 
 const STATIC_TEAM_MEMBERS = [
+  {
+    id: "static-founder",
+    name: "Geetanjali Singh",
+    role: "Founder & Visionary",
+    expertise: "Creative Direction, Publishing & Digital Ecosystem Strategy",
+    image: "/images/team/geet.png",
+    email: "geetanjalisingh@evedaonlineservices.com",
+    linkedin: "https://www.linkedin.com/in/geetanjali-singh-83a53a100/",
+    instagram: "https://www.instagram.com/nirved1326/?hl=en",
+    facebook: "https://www.facebook.com/geetanjali.singh.92102",
+    twitter: "https://x.com/EVedaSpeaks",
+  },
   {
     id: "static-1",
     name: "Dr. Rahul Sharma",
@@ -211,10 +224,29 @@ export default function TeamPage() {
         breadcrumbs={[{ label: "Team" }]}
       />
 
+      {/* ── Founder & Visionary Feature Section ── */}
+      <FounderVision variant="full" id="founder" />
+
       {/* ── 2. Grid Section ── */}
-      <section className="py-24 max-w-[1400px] mx-auto px-4 sm:px-6 relative">
+      <section className="py-20 lg:py-24 max-w-[1400px] mx-auto px-4 sm:px-6 relative">
         <div className="absolute top-[20%] left-[-5%] w-[40%] h-[40%] bg-[radial-gradient(circle,_rgba(124,58,237,0.025)_0%,_transparent_70%)] blur-[100px] pointer-events-none" />
         <div className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-[radial-gradient(circle,_rgba(6,182,212,0.025)_0%,_transparent_70%)] blur-[100px] pointer-events-none" />
+
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider text-[#7C3AED] bg-purple-50 border border-purple-200/60 mb-3.5 shadow-xs">
+            <Users className="w-3.5 h-3.5 text-[#7C3AED]" />
+            <span>Our Team</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 font-sora leading-tight mb-4">
+            Meet Our <span className="text-[#7C3AED]">Team Members</span>
+          </h2>
+
+          <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
+            The talented architects, engineers, designers, and specialists driving digital innovation and building future-ready solutions at E Veda.
+          </p>
+        </div>
 
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -308,6 +340,28 @@ export default function TeamPage() {
                         <FaTwitter className="w-3.5 h-3.5" />
                       </a>
                     )}
+                    {member.instagram && member.instagram !== "#" && member.instagram.trim() !== "" && (
+                      <a
+                        href={member.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-full bg-purple-50 text-[#E1306C] flex items-center justify-center hover:scale-110 hover:bg-[#E1306C] hover:text-white transition-all duration-250 shadow-sm"
+                        title="Instagram Profile"
+                      >
+                        <FaInstagram className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {member.facebook && member.facebook !== "#" && member.facebook.trim() !== "" && (
+                      <a
+                        href={member.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-full bg-purple-50 text-[#1877F2] flex items-center justify-center hover:scale-110 hover:bg-[#1877F2] hover:text-white transition-all duration-250 shadow-sm"
+                        title="Facebook Profile"
+                      >
+                        <FaFacebookF className="w-3.5 h-3.5" />
+                      </a>
+                    )}
                     {member.github && member.github !== "#" && member.github.trim() !== "" && (
                       <a
                         href={member.github}
@@ -317,6 +371,15 @@ export default function TeamPage() {
                         title="GitHub Profile"
                       >
                         <FaGithub className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {member.email && (
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="w-8 h-8 rounded-full bg-purple-50 text-[#7C3AED] flex items-center justify-center hover:scale-110 hover:bg-[#7C3AED] hover:text-white transition-all duration-250 shadow-sm"
+                        title={`Email ${member.name}`}
+                      >
+                        <FaEnvelope className="w-3.5 h-3.5" />
                       </a>
                     )}
                   </div>

@@ -1,4 +1,4 @@
-"use client";
+import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
   badge?: string;
@@ -26,11 +26,15 @@ export default function SectionHeader({
 
   return (
     <div
-      className={`${isCenter ? "text-center mx-auto" : ""} ${className}`}
-      style={{ maxWidth: maxWidth ?? (isCenter ? "640px" : "none") }}
+      className={cn(
+        isCenter ? "text-center mx-auto" : "text-left",
+        isCenter && !maxWidth && !className.includes("max-w-") && "max-w-2xl",
+        className
+      )}
+      style={maxWidth ? { maxWidth } : undefined}
     >
       {badge && (
-        <div className={`mb-4 ${isCenter ? "flex justify-center" : ""}`}>
+        <div className={cn("mb-4", isCenter ? "flex justify-center" : "flex justify-start")}>
           <span className="ng-badge">{badge}</span>
         </div>
       )}

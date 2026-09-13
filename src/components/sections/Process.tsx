@@ -1,18 +1,25 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import { 
   Laptop, Smartphone, Layers, Brain, Cloud, Paintbrush,
-  Sliders, Zap, Sparkles, CheckCircle, ArrowRight
+  BookOpen, Sparkles, Palette, Megaphone, Search,
+  Sliders, Zap, CheckCircle, ArrowRight, ChevronDown, ChevronUp
 } from "lucide-react";
 
 const servicesList = [
-  { id: "web", name: "Web Application", icon: Laptop, baseHours: 120, code: "WEB", desc: "Custom website or portal" },
+  { id: "book-design", name: "Book Designing", icon: BookOpen, baseHours: 45, code: "BKD", desc: "Covers, layout & KDP formatting" },
+  { id: "book-brand", name: "Book Branding", icon: Sparkles, baseHours: 55, code: "BKB", desc: "Author platform & book trailers" },
+  { id: "graphic-design", name: "Graphics Designing", icon: Palette, baseHours: 40, code: "GFX", desc: "Logos, brand identity & creatives" },
+  { id: "web", name: "Web Application", icon: Laptop, baseHours: 120, code: "WEB", desc: "Custom website or web portal" },
   { id: "mobile", name: "Mobile App", icon: Smartphone, baseHours: 160, code: "MOB", desc: "iOS & Android app solution" },
-  { id: "saas", name: "SaaS Platform", icon: Layers, baseHours: 240, code: "SAS", desc: "Subscription cloud platform" },
-  { id: "ai", name: "AI/LLM Solution", icon: Brain, baseHours: 200, code: "AIS", desc: "Chatbots & automation" },
-  { id: "devops", name: "Cloud & DevOps", icon: Cloud, baseHours: 90, code: "CLD", desc: "Server & cloud setup" },
-  { id: "uiux", name: "UI/UX Design", icon: Paintbrush, baseHours: 70, code: "DSN", desc: "Figma specs & visuals" }
+  { id: "saas", name: "SaaS Platform", icon: Layers, baseHours: 240, code: "SAS", desc: "Subscription cloud software" },
+  { id: "digital-marketing", name: "Digital Marketing", icon: Megaphone, baseHours: 60, code: "MKT", desc: "Targeted ads & campaign growth" },
+  { id: "seo", name: "SEO Optimization", icon: Search, baseHours: 50, code: "SEO", desc: "Keyword rank & organic traffic" },
+  { id: "ai", name: "AI/LLM Solution", icon: Brain, baseHours: 200, code: "AIS", desc: "Chatbots & automation agents" },
+  { id: "devops", name: "Cloud & DevOps", icon: Cloud, baseHours: 90, code: "CLD", desc: "Server, CI/CD & cloud infra" },
+  { id: "uiux", name: "UI/UX Design", icon: Paintbrush, baseHours: 70, code: "DSN", desc: "Figma specs & prototypes" }
 ];
 
 const projectScales = [
@@ -59,6 +66,10 @@ export default function Process() {
   const [blueprintId, setBlueprintId] = useState("");
   const [compiling, setCompiling] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const [showAllMobileServices, setShowAllMobileServices] = useState(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInitialMount = useRef(true);
 
   // Trigger simulated blueprint compilation
   useEffect(() => {
@@ -66,7 +77,7 @@ export default function Process() {
     const serviceCode = selectedService.code;
     const scaleCode = selectedScale.code;
     const randNum = Math.floor(1000 + Math.random() * 9000);
-    const id = `NG-${serviceCode}-${scaleCode}-${randNum}`;
+    const id = `EV-${serviceCode}-${scaleCode}-${randNum}`;
     setBlueprintId(id);
 
     const timer = setTimeout(() => {
@@ -75,6 +86,27 @@ export default function Process() {
 
     return () => clearTimeout(timer);
   }, [selectedService, selectedScale, selectedFeatures, selectedVelocity]);
+
+  // When selected service changes on mobile, open in place without scrolling/rendering from top
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      const container = containerRef.current;
+      const wrap = document.getElementById("mobile-service-wrap-" + selectedService.id);
+      if (container && wrap) {
+        // Set scrollTop directly to open exactly in-place, without smooth-scroll animation from top
+        container.scrollTop = Math.max(0, wrap.offsetTop - 8);
+      }
+    }
+  }, [selectedService]);
+
+  const handleSelectService = (service: typeof servicesList[0]) => {
+    if (selectedService.id === service.id) return;
+    setSelectedService(service);
+  };
 
   const toggleFeature = (id: string) => {
     setSelectedFeatures(prev => 
@@ -91,25 +123,136 @@ export default function Process() {
   const calculatedHours = Math.round((baseHours * selectedScale.multiplier) + featureHours);
   const calculatedWeeks = Math.max(2, Math.round((calculatedHours / 35) * selectedVelocity.durationMult));
 
-  const minCost = calculatedHours * 55 * selectedVelocity.costMult;
-  const maxCost = calculatedHours * 80 * selectedVelocity.costMult;
+    // Pricing in Indian Rupees (INR)
+  const minCost = calculatedHours * 750 * selectedVelocity.costMult;
+  const maxCost = calculatedHours * 1250 * selectedVelocity.costMult;
 
   const formatCostValue = (val: number) => {
-    return `$${(val / 1000).toFixed(1)}k`;
+    if (val >= 100000) {
+      const lakhs = val / 100000;
+      return "₹" + lakhs.toFixed(1) + "L";
+    }
+    return "₹" + Math.round(val / 1000) + "k";
   };
 
-  const costRangeStr = `${formatCostValue(minCost)} – ${formatCostValue(maxCost)}`;
+  const costRangeStr = formatCostValue(minCost) + " – " + formatCostValue(maxCost);
 
   // Calculate complexity index percentage
   const maxPossibleHours = (240 * 4.5) + 195;
   const complexityIndex = Math.min(98, Math.max(20, Math.round((calculatedHours / maxPossibleHours) * 100)));
 
-  let mappedBudget = "5k-15k";
+    let mappedBudget = "₹25k-₹50k";
   const averageCost = (minCost + maxCost) / 2;
-  if (averageCost < 15000) mappedBudget = "5k-15k";
-  else if (averageCost >= 15000 && averageCost < 50000) mappedBudget = "15k-50k";
-  else if (averageCost >= 50000 && averageCost < 100000) mappedBudget = "50k-100k";
-  else mappedBudget = "100k+";
+  if (averageCost < 50000) mappedBudget = "₹25k-₹50k";
+  else if (averageCost >= 50000 && averageCost < 150000) mappedBudget = "₹50k-₹1.5L";
+  else if (averageCost >= 150000 && averageCost < 500000) mappedBudget = "₹1.5L-₹5L";
+  else mappedBudget = "₹5L+";
+
+  const renderTelemetryDashboard = (isMobileInline = false) => (
+    <div 
+      id={isMobileInline ? undefined : "configuration-summary-card"} 
+      className={"bg-[#0B0F19] border border-slate-800/80 rounded-3xl p-4 sm:p-6 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col justify-between z-10 text-slate-350 " + (
+        isMobileInline ? "min-h-[380px] h-auto my-1" : "min-h-[490px] h-auto w-full"
+      )}
+    >
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle_at_top_right,_rgba(124,58,237,0.12)_0%,_transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[radial-gradient(circle_at_bottom_left,_rgba(6,182,212,0.06)_0%,_transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none z-0" />
+      
+      <div className="relative z-10 space-y-4 sm:space-y-5 flex-1 flex flex-col justify-between">
+        <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+            <span className="text-[11px] font-bold tracking-wider text-slate-400 uppercase font-sora font-extrabold">
+              Configuration Summary
+            </span>
+          </div>
+          <span className="text-[9px] text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20 font-bold font-sora select-none">
+            Live Estimate
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 items-center">
+          <div className="flex flex-col items-center justify-center">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center">
+              <svg className="w-full h-full transform -rotate-90" viewBox="0 0 112 112">
+                <defs>
+                  <linearGradient id={isMobileInline ? "purpleGradInline" : "purpleGrad"} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#8B5CF6" />
+                    <stop offset="100%" stopColor="#4F46E5" />
+                  </linearGradient>
+                </defs>
+                <circle cx="56" cy="56" r="48" className="stroke-slate-800/60 fill-none" strokeWidth="6" />
+                <circle
+                  cx="56" cy="56" r="48" className="fill-none transition-all duration-500"
+                  stroke={"url(#" + (isMobileInline ? "purpleGradInline" : "purpleGrad") + ")"}
+                  strokeWidth="6" strokeDasharray={2 * Math.PI * 48}
+                  strokeDashoffset={2 * Math.PI * 48 * (1 - complexityIndex / 100)} strokeLinecap="round"
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center font-sora">
+                <span className="text-[8px] text-slate-400 uppercase tracking-wider font-extrabold">Project Scale</span>
+                <span className="text-lg sm:text-xl font-black text-white leading-none mt-0.5">
+                  {compiling ? "..." : (complexityIndex + "%")}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-950/20 to-slate-900/20 border border-purple-900/30 p-3 sm:p-4 rounded-2xl flex flex-col justify-center h-24 sm:h-28 shadow-inner">
+            <div className="text-[9px] sm:text-[9.5px] text-purple-400 font-bold uppercase tracking-wider mb-1 flex items-center gap-1">
+              <Sparkles className="w-3 h-3 animate-pulse" />
+              Investment Range (INR)
+            </div>
+            <div className="text-lg sm:text-xl font-black text-white tracking-tight font-sora leading-tight">
+              {compiling ? "Calculating..." : costRangeStr}
+            </div>
+            <div className="text-[8px] sm:text-[8.5px] text-slate-500 mt-1 leading-tight">
+              *Estimated total investment (₹)
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="space-y-1.5 font-sora">
+            <div className="flex justify-between text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+              <span>Scope Effort</span>
+              <span className="text-white font-extrabold">{compiling ? "..." : (calculatedHours + "h")}</span>
+            </div>
+            <div className="h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800/40 p-[0.5px]">
+              <div className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all duration-500" style={{ width: (compiling ? 10 : complexityIndex) + "%" }} />
+            </div>
+          </div>
+
+          <div className="space-y-1.5 font-sora">
+            <div className="flex justify-between text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+              <span>Timeline</span>
+              <span className="text-white font-extrabold">{compiling ? "..." : ("~" + calculatedWeeks + "w")}</span>
+            </div>
+            <div className="h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800/40 p-[0.5px]">
+              <div className="h-full bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full transition-all duration-500" style={{ width: (compiling ? 10 : (100 - (calculatedWeeks / 15) * 100)) + "%" }} />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 border-t border-slate-800/40 pt-3 text-[9.5px] sm:text-[10px] font-sora">
+          <div>
+            <div className="text-slate-500 mb-0.5">Blueprint Code:</div>
+            <div className="text-purple-400 font-mono font-bold tracking-wider truncate">{blueprintId}</div>
+          </div>
+          <div>
+            <div className="text-slate-500 mb-0.5">Category:</div>
+            <div className="text-white font-bold truncate">{selectedService.name}</div>
+          </div>
+          <div>
+            <div className="text-slate-500 mb-0.5">Security Level:</div>
+            <div className="text-emerald-400 font-bold truncate">ENTERPRISE</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
 
   const handleLockScope = () => {
     const scopeData = {
@@ -151,10 +294,10 @@ export default function Process() {
         <div className="grid lg:grid-cols-12 gap-8 items-stretch w-full">
           
           {/* Left Controls (Funnel-Step Form Card) */}
-          <div className="lg:col-span-7 bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 flex flex-col justify-between shadow-sm relative overflow-hidden h-[420px]">
+          <div ref={containerRef} className="lg:col-span-7 bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-sm relative min-h-[620px] sm:min-h-[500px] max-h-[720px] sm:max-h-none overflow-y-auto sm:overflow-visible hide-scrollbar no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar]:bg-transparent">
             
             {/* Step Header & Indicators */}
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+            <div className={(currentStep === 1 ? "hidden sm:flex " : "flex ") + "items-center justify-between border-b border-slate-100 pb-4 mb-4"}>
               <div className="flex items-center gap-2 font-sora">
                 <span className="w-6 h-6 rounded-full bg-purple-100 text-[var(--accent-global)] flex items-center justify-center text-xs font-black select-none">
                   {currentStep}
@@ -175,17 +318,26 @@ export default function Process() {
               </div>
             </div>
 
+            {/* Mobile Telemetry Dashboard for Steps 2, 3, 4 */}
+            {currentStep > 1 && (
+              <div className="lg:hidden mb-5">
+                {renderTelemetryDashboard(true)}
+              </div>
+            )}
+
             {/* Form Content Steps */}
             <div className="flex-1 flex flex-col justify-center">
               
               {/* Step 1: Select Service Type */}
               {currentStep === 1 && (
                 <div className="space-y-3.5 animate-fadeIn">
-                  <div>
+                  <div className="mb-2">
                     <h4 className="text-base font-bold text-slate-900 font-sora mb-0.5">What type of product are we building?</h4>
                     <p className="text-xs text-slate-500">Select a category to set the foundation of your blueprint scope.</p>
                   </div>
-                  <div className="grid grid-cols-3 gap-2.5">
+
+                  {/* Tablet & Desktop Grid (sm and up) */}
+                  <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-[320px] overflow-y-auto pr-1">
                     {servicesList.map((service) => {
                       const SIcon = service.icon;
                       const isSelected = selectedService.id === service.id;
@@ -194,24 +346,116 @@ export default function Process() {
                           key={service.id}
                           type="button"
                           onClick={() => setSelectedService(service)}
-                          className={`p-3 rounded-xl border transition-all text-left flex items-center gap-2.5 cursor-pointer group/btn ${
+                          className={"p-3 rounded-xl border transition-all text-left flex items-center gap-3 cursor-pointer group/btn " + (
                             isSelected
                               ? "bg-[var(--accent-global-dim)] border-[var(--accent-global)] text-[var(--accent-global)] shadow-sm"
-                              : "bg-slate-55/40 border-slate-200 text-slate-700 hover:border-slate-350 hover:bg-slate-100/50"
-                          }`}
+                              : "bg-slate-50/70 border-slate-200 text-slate-700 hover:border-slate-350 hover:bg-slate-100/70"
+                          )}
                         >
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                            isSelected ? "bg-[var(--accent-global)] text-white" : "bg-white text-slate-400 group-hover/btn:scale-110"
-                          }`}>
-                            <SIcon className="w-4 h-4" />
+                          <div className={"w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-300 " + (
+                            isSelected ? "bg-[var(--accent-global)] text-white shadow-xs" : "bg-white text-slate-400 group-hover/btn:scale-110 shadow-2xs"
+                          )}>
+                            <SIcon className="w-4.5 h-4.5" />
                           </div>
-                          <div className="min-w-0">
-                            <div className="text-xs font-bold font-sora leading-none mb-0.5 truncate">{service.name}</div>
-                            <div className="text-[9px] text-slate-500 font-medium leading-none truncate">{service.desc}</div>
+                          <div className="min-w-0 flex-1">
+                            <div className="text-xs font-bold font-sora leading-tight mb-0.5">{service.name}</div>
+                            <div className="text-[10px] text-slate-500 font-medium leading-tight truncate">{service.desc}</div>
                           </div>
                         </button>
                       );
                     })}
+                  </div>
+
+                  {/* Mobile-only Accordion List (sm:hidden) */}
+                  <div className="sm:hidden space-y-2.5">
+                    {servicesList.map((service, index) => {
+                      const SIcon = service.icon;
+                      const isSelected = selectedService.id === service.id;
+                      
+                      // On mobile, if not expanded, only show the first 3 items
+                      if (!showAllMobileServices && index >= 3) {
+                        return null;
+                      }
+
+                      return (
+                        <div key={service.id} id={"mobile-service-wrap-" + service.id} className="space-y-2.5">
+                          {/* The Cost Card is open JUST ABOVE the selective menu item */}
+                          {isSelected && (
+                            <div id={"mobile-cost-card-" + service.id} className="space-y-2.5 animate-fadeIn">
+                              {renderTelemetryDashboard(true)}
+
+                              {/* Step indicator & Next Step button bar, exactly matching Image 2 */}
+                              <div className="flex items-center justify-between bg-white border border-slate-200 rounded-2xl px-3.5 py-2.5 shadow-xs">
+                                <div className="flex items-center gap-2 font-sora">
+                                  <span className="w-5 h-5 rounded-full bg-purple-100 text-[var(--accent-global)] flex items-center justify-center text-[10px] font-black select-none">
+                                    1
+                                  </span>
+                                  <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                                    Step 1 of 4
+                                  </span>
+                                  <div className="flex gap-1 ml-1">
+                                    <div className="w-4 h-1.5 rounded-full bg-[var(--accent-global)]" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-200" />
+                                  </div>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => setCurrentStep(2)}
+                                  className="px-3.5 py-1.5 bg-[var(--accent-global)] hover:bg-[var(--accent-global-hover)] text-white text-[11px] font-bold font-sora rounded-xl flex items-center gap-1.5 shadow-sm transition-all cursor-pointer active:scale-95"
+                                >
+                                  <span>Next Step</span>
+                                  <ArrowRight className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Menu Item Card */}
+                          <button
+                            type="button"
+                            onClick={() => handleSelectService(service)}
+                            className={"w-full p-3.5 rounded-2xl border transition-all text-left flex items-center gap-3 cursor-pointer " + (
+                              isSelected
+                                ? "bg-[var(--accent-global-dim)] border-[var(--accent-global)] text-[var(--accent-global)] shadow-sm ring-1 ring-[var(--accent-global)]/30"
+                                : "bg-slate-50/80 border-slate-200 text-slate-700 hover:border-slate-350 hover:bg-slate-100/70"
+                            )}
+                          >
+                            <div className={"w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 " + (
+                              isSelected ? "bg-[var(--accent-global)] text-white shadow-xs" : "bg-white text-slate-400 shadow-2xs border border-slate-100"
+                            )}>
+                              <SIcon className="w-5 h-5" />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="text-xs font-bold font-sora leading-tight mb-0.5">{service.name}</div>
+                              <div className="text-[10.5px] text-slate-500 font-medium leading-tight truncate">{service.desc}</div>
+                            </div>
+                          </button>
+                        </div>
+                      );
+                    })}
+
+                    {/* Mobile "View All Services" / "Show Less" toggle button */}
+                    <div className="pt-1">
+                      <button
+                        type="button"
+                        onClick={() => setShowAllMobileServices(!showAllMobileServices)}
+                        className="w-full py-2.5 px-4 rounded-xl border border-purple-200/80 bg-purple-50/40 hover:bg-purple-50 text-[var(--accent-global)] text-xs font-bold font-sora flex items-center justify-center gap-2 transition-all shadow-2xs cursor-pointer active:scale-[0.99]"
+                      >
+                        {showAllMobileServices ? (
+                          <>
+                            <span>Show Less</span>
+                            <ChevronUp className="w-4 h-4 text-[var(--accent-global)]" />
+                          </>
+                        ) : (
+                          <>
+                            <span>View All Services ({servicesList.length})</span>
+                            <ChevronDown className="w-4 h-4 text-[var(--accent-global)]" />
+                          </>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -341,7 +585,7 @@ export default function Process() {
             </div>
 
             {/* Navigation Footer Buttons */}
-            <div className="flex justify-between items-center pt-4 mt-4 border-t border-slate-100 font-sora">
+            <div className={(currentStep === 1 ? "hidden sm:flex " : "flex ") + "justify-between items-center pt-4 mt-4 border-t border-slate-100 font-sora"}>
               {currentStep > 1 ? (
                 <button
                   type="button"
@@ -377,138 +621,11 @@ export default function Process() {
 
           </div>
 
-          {/* Right Telemetry Dashboard (Futuristic Cyber-HUD) */}
-          <div className="lg:col-span-5 bg-[#0B0F19] border border-slate-800/80 rounded-3xl p-6 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col justify-between z-10 text-slate-350 h-[420px]">
-            
-            {/* Glowing Neon Ambient Effects */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle_at_top_right,_rgba(124,58,237,0.12)_0%,_transparent_70%)] pointer-events-none z-0" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-[radial-gradient(circle_at_bottom_left,_rgba(6,182,212,0.06)_0%,_transparent_70%)] pointer-events-none z-0" />
-            
-            {/* Grid Overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none z-0" />
-            
-            <div className="relative z-10 space-y-5 flex-1 flex flex-col justify-between">
-              
-              {/* HUD Header */}
-              <div className="flex items-center justify-between border-b border-slate-800/60 pb-3">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-                  <span className="text-[11px] font-bold tracking-wider text-slate-400 uppercase font-sora font-extrabold">
-                    Configuration Summary
-                  </span>
-                </div>
-                <span className="text-[9px] text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20 font-bold font-sora select-none">
-                  Live Estimate
-                </span>
-              </div>
-
-              {/* Side-by-side: Circular Gauge & Price */}
-              <div className="grid grid-cols-2 gap-4 items-center">
-                {/* Circular Gauge */}
-                <div className="flex flex-col items-center justify-center">
-                  <div className="relative w-28 h-28 flex items-center justify-center">
-                    {/* SVG Circular Gauge */}
-                    <svg className="w-full h-full transform -rotate-90">
-                      <defs>
-                        <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#8B5CF6" />
-                          <stop offset="100%" stopColor="#4F46E5" />
-                        </linearGradient>
-                      </defs>
-                      <circle
-                        cx="56"
-                        cy="56"
-                        r="48"
-                        className="stroke-slate-800/60 fill-none"
-                        strokeWidth="5"
-                      />
-                      <circle
-                        cx="56"
-                        cy="56"
-                        r="48"
-                        className="fill-none transition-all duration-500"
-                        stroke="url(#purpleGrad)"
-                        strokeWidth="5"
-                        strokeDasharray={2 * Math.PI * 48}
-                        strokeDashoffset={2 * Math.PI * 48 * (1 - complexityIndex / 100)}
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    {/* Center Text */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center font-sora">
-                      <span className="text-[8px] text-slate-400 uppercase tracking-wider font-extrabold">Project Scale</span>
-                      <span className="text-xl font-black text-white leading-none mt-0.5">
-                        {compiling ? "..." : `${complexityIndex}%`}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Estimated Price Range */}
-                <div className="bg-gradient-to-br from-purple-950/20 to-slate-900/20 border border-purple-900/30 p-4 rounded-2xl flex flex-col justify-center h-28 shadow-inner">
-                  <div className="text-[9.5px] text-purple-400 font-bold uppercase tracking-wider mb-1 flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 animate-pulse" />
-                    Investment Range
-                  </div>
-                  <div className="text-xl font-black text-white tracking-tight font-sora leading-tight">
-                    {compiling ? "Calculating..." : costRangeStr}
-                  </div>
-                  <div className="text-[8.5px] text-slate-500 mt-1 leading-tight">
-                    *Estimated total cost
-                  </div>
-                </div>
-              </div>
-
-              {/* Side-by-side: Progress Bars */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5 font-sora">
-                  <div className="flex justify-between text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                    <span>Scope Effort</span>
-                    <span className="text-white font-extrabold">{compiling ? "..." : `${calculatedHours}h`}</span>
-                  </div>
-                  <div className="h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800/40 p-[0.5px]">
-                    <div 
-                      className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full transition-all duration-500" 
-                      style={{ width: `${compiling ? 10 : complexityIndex}%` }}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1.5 font-sora">
-                  <div className="flex justify-between text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                    <span>Timeline</span>
-                    <span className="text-white font-extrabold">{compiling ? "..." : `~${calculatedWeeks}w`}</span>
-                  </div>
-                  <div className="h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800/40 p-[0.5px]">
-                    <div 
-                      className="h-full bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full transition-all duration-500" 
-                      style={{ width: `${compiling ? 10 : (100 - (calculatedWeeks / 15) * 100)}%` }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* 3-Column Info Footer */}
-              <div className="grid grid-cols-3 gap-3 border-t border-slate-800/40 pt-3.5 text-[10px] font-sora">
-                <div>
-                  <div className="text-slate-500 mb-0.5">Blueprint Code:</div>
-                  <div className="text-purple-400 font-mono font-bold tracking-wider truncate">{blueprintId}</div>
-                </div>
-                <div>
-                  <div className="text-slate-500 mb-0.5">Category:</div>
-                  <div className="text-white font-bold truncate">{selectedService.name}</div>
-                </div>
-                <div>
-                  <div className="text-slate-500 mb-0.5">Security Level:</div>
-                  <div className="text-emerald-400 font-bold truncate">ENTERPRISE</div>
-                </div>
-              </div>
-
-            </div>
+          {/* Desktop Telemetry Dashboard (Right Column on lg screens) */}
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between">
+            {renderTelemetryDashboard(false)}
           </div>
-
         </div>
-
       </div>
     </section>
   );

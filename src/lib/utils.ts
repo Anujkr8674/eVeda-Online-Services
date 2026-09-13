@@ -88,11 +88,11 @@ export const scaleIn = {
 
 export const COMPANY = {
   name: "Eveda Online Services",
-  shortName: "eVeda",
+  shortName: "EVeda",
   tagline: "Engineering Tomorrow's Digital Future",
-  description: "We design and build high-performance software, AI solutions, SaaS platforms, and enterprise systems for startups and forward-thinking businesses.",
-  founded: 2026,
-  launchDate: "June 16, 2026",
+  description: "We design Book Branding, Book Designs, and Graphic Designs, while building high-performance software, AI solutions, SaaS platforms, and enterprise systems for startups and forward-thinking businesses.",
+  founded: 2023,
+  launchDate: "July 07, 2023",
   email: "info@evedaonlineservices.com",
   supportEmail: "info@evedaonlineservices.com",
   phone: "+91 8630508235",
@@ -105,7 +105,7 @@ export const COMPANY = {
   fullAddress: "53 eVeda Online Services Aryanagar, Haridwar, Uttarakhand, India",
   website: "https://evedaonlineservices.com",
   // Dummy social links — will be made dynamic via backend CMS
-    social: {
+  social: {
     twitter: "https://x.com/EVedaSpeaks",
     linkedin: "https://www.linkedin.com/company/e-veda-online-services",
     github: "https://github.com/E-Veda-Online-Services",

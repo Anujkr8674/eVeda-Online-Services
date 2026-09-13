@@ -4,20 +4,87 @@ import { useState } from "react";
 import {
   Code2, Smartphone, Layers, Brain, Cloud, Server,
   BarChart3, Palette, Zap, Settings2, ArrowRight, ChevronRight, CheckCircle2,
-  BookOpen, Sparkles, ChevronDown, ChevronUp
+  BookOpen, Sparkles, ChevronDown, ChevronUp, PenTool, Search, Megaphone, ShoppingCart, CreditCard
 } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const categories = [
+
   { id: "all", label: "All Services" },
+  { id: "design-growth", label: "Design & Growth" },
   { id: "software", label: "Software & SaaS" },
-  { id: "ai-cloud", label: "AI & Cloud" },
-  { id: "design-growth", label: "Design & Growth" }
+  { id: "ai-cloud", label: "AI & Cloud" }
+
 ];
 
 const services = [
+  {
+    icon: BookOpen, title: "Book Designing", id: "book-designing", category: "design-growth",
+    description: "Bespoke 3D book covers, interior typesetting, and print-ready files for KDP & IngramSpark.",
+    features: ["Full cover wrap", "Interior typesetting", "ePub & Kindle mobi", "100% KDP compliance"],
+  },
+  {
+    icon: Sparkles, title: "Book Branding", id: "book-branding", category: "design-growth",
+    description: "Author platform architecture, Amazon A+ Content, BookTok trailers, and bestseller launch campaigns.",
+    features: ["Amazon A+ modules", "Cinematic 3D trailers", "Author website", "ARC reader funnel"],
+  },
+  {
+    icon: Palette,
+    title: "Graphic Designing",
+    id: "graphic-designing",
+    category: "design-growth",
+    description: "Creative and professional graphics designed to communicate your brand, ideas, and message effectively.",
+    features: [
+      "Social media graphics",
+      "Marketing materials",
+      "Posters & banners",
+      "Creative visual designs"
+    ],
+  },
+
+  {
+    icon: BookOpen,
+    title: "Book Cover Design",
+    id: "book-cover-design",
+    category: "design-growth",
+    description: "Eye-catching and professional book covers designed to capture attention and represent your story.",
+    features: [
+      "Front & back cover",
+      "Full cover wrap",
+      "3D book mockups",
+      "Print-ready design"
+    ],
+  },
+
+  {
+    icon: PenTool,
+    title: "Logo Designing",
+    id: "logo-designing",
+    category: "design-growth",
+    description: "Unique and memorable logos crafted to establish a strong and recognizable brand identity.",
+    features: [
+      "Custom logo concepts",
+      "Brand identity design",
+      "Multiple formats",
+      "Vector & print-ready files"
+    ],
+  },
+
+  {
+    icon: CreditCard,
+    title: "Card Designing",
+    id: "card-designing",
+    category: "design-growth",
+    description: "Professional and creative card designs that make your business and personal brand stand out.",
+    features: [
+      "Business cards",
+      "Visiting cards",
+      "Invitation cards",
+      "Print-ready files"
+    ],
+  },
   {
     icon: Code2, title: "Web Development", id: "web", category: "software",
     description: "Full-stack modern web applications built with Next.js, React, TypeScript, and cloud infrastructure.",
@@ -32,6 +99,47 @@ const services = [
     icon: Layers, title: "SaaS Platforms", id: "saas", category: "software",
     description: "Multi-tenant SaaS with subscription management, analytics, and enterprise-grade scalability.",
     features: ["Multi-tenancy", "Subscription billing", "Real-time dashboards", "API-first design"],
+  },
+  {
+    icon: Search,
+    title: "SEO",
+    id: "seo",
+    category: "design-growth",
+    description: "Improve your online visibility, search rankings, and organic traffic with effective SEO strategies.",
+    features: [
+      "Keyword research",
+      "On-page SEO",
+      "Technical SEO",
+      "SEO analytics"
+    ],
+  },
+
+  {
+    icon: Megaphone,
+    title: "Digital Marketing",
+    id: "digital-marketing",
+    category: "design-growth",
+    description: "Grow your brand online with targeted digital marketing strategies that reach the right audience.",
+    features: [
+      "Social media marketing",
+      "Content marketing",
+      "Campaign management",
+      "Performance analytics"
+    ],
+  },
+
+  {
+    icon: ShoppingCart,
+    title: "E-commerce Management",
+    id: "ecommerce-management",
+    category: "design-growth",
+    description: "Manage and optimize your online store for better performance, customer experience, and growth.",
+    features: [
+      "Product management",
+      "Store optimization",
+      "Order management",
+      "Sales analytics"
+    ],
   },
   {
     icon: Brain, title: "AI & ML Solutions", id: "ai", category: "ai-cloud",
@@ -58,21 +166,7 @@ const services = [
     description: "Pixel-perfect, user-centered design systems that drive conversion and engagement.",
     features: ["Design systems", "Figma prototypes", "User research", "Accessibility"],
   },
-  {
-    icon: BookOpen, title: "Book Designing", id: "book-designing", category: "design-growth",
-    description: "Bespoke 3D book covers, interior typesetting, and print-ready files for KDP & IngramSpark.",
-    features: ["Full cover wrap", "Interior typesetting", "ePub & Kindle mobi", "100% KDP compliance"],
-  },
-  {
-    icon: Sparkles, title: "Book Branding", id: "book-branding", category: "design-growth",
-    description: "Author platform architecture, Amazon A+ Content, BookTok trailers, and bestseller launch campaigns.",
-    features: ["Amazon A+ modules", "Cinematic 3D trailers", "Author website", "ARC reader funnel"],
-  },
-  {
-    icon: Zap, title: "Digital Transformation", id: "transform", category: "design-growth",
-    description: "End-to-end transformation strategies that modernize legacy systems and future-proof businesses.",
-    features: ["Legacy modernization", "Process automation", "Technology audit", "Change management"],
-  },
+
   {
     icon: Settings2, title: "Maintenance & Support", id: "support", category: "design-growth",
     description: "Ongoing support, performance monitoring, security patches, and continuous enhancement.",
@@ -95,15 +189,15 @@ export default function Services() {
     : filteredServices.slice(0, 4);
 
   return (
-    <section 
-      className="py-12 sm:py-16 text-slate-800 border-t border-slate-200/50 relative overflow-hidden" 
+    <section
+      className="py-12 sm:py-16 text-slate-800 border-t border-slate-200/50 relative overflow-hidden"
       id="services"
       style={{
         background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(var(--accent-global-rgb), 0.04) 0%, transparent 70%), linear-gradient(180deg, #f8fafc 0%, #f9f8ff 50%, #f8fafc 100%)"
       }}
     >
       <div className="max-w-[1400px] mx-auto px-4 relative z-10">
-        
+
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 sm:mb-12">
           <div>
             <SectionHeader
@@ -127,11 +221,10 @@ export default function Services() {
                     setIsExpanded(true);
                   }
                 }}
-                className={`px-4 py-2 rounded-full text-xs font-bold border transition-all cursor-pointer ${
-                  activeCategory === cat.id
-                    ? "bg-[var(--accent-global)] text-white border-[var(--accent-global)] shadow-md shadow-purple-500/10"
-                    : "bg-slate-100 text-slate-500 border-slate-200 hover:border-slate-350 hover:text-slate-800"
-                }`}
+                className={`px-4 py-2 rounded-full text-xs font-bold border transition-all cursor-pointer ${activeCategory === cat.id
+                  ? "bg-[var(--accent-global)] text-white border-[var(--accent-global)] shadow-md shadow-purple-500/10"
+                  : "bg-slate-100 text-slate-500 border-slate-200 hover:border-slate-350 hover:text-slate-800"
+                  }`}
               >
                 {cat.label}
               </button>

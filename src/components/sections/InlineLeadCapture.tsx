@@ -9,11 +9,14 @@ import {
 import { COMPANY } from "@/lib/utils";
 
 const services = [
-  "Web Development",
-  "Mobile App Development",
   "Book Designing",
   "Book Branding",
   "Logo Design",
+  "Digital Marketing",
+  "E-commerce Management",
+  "Web Development",
+  "Mobile App Development",
+  "SEO",
   "SaaS Platform",
   "AI & Automation",
   "Cloud / DevOps",

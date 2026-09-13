@@ -19,180 +19,12 @@ const STATIC_TEAM_MEMBERS = [
     image: "/images/team/geet.png",
     email: "geetanjalisingh@evedaonlineservices.com",
     linkedin: "https://www.linkedin.com/in/geetanjali-singh-83a53a100/",
-    instagram: "https://www.instagram.com/nirved1326/?hl=en",
-    facebook: "https://www.facebook.com/geetanjali.singh.92102",
+    instagram: "https://www.instagram.com/evedaonlineservices/",
+    facebook: "https://www.facebook.com/evedaonlineservices/",
     twitter: "https://x.com/EVedaSpeaks",
-  },
-  {
-    id: "static-1",
-    name: "Dr. Rahul Sharma",
-    role: "Managing Director",
-    expertise: "Enterprise Systems & AI Strategy",
-    image: "/images/team/rahul.png",
-    linkedin: "#",
-    twitter: "#",
-    github: "#"
-  },
-  {
-    id: "static-7",
-    name: "Satya Prakash Yadav",
-    role: "Director",
-    expertise: "Strategic Growth & Enterprise Partnerships",
-    image: "/images/team/satya.jpg",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-2",
-    name: "Priya Malhotra",
-    role: "Creative Director",
-    expertise: "Brand Strategy & Human-Centric UX",
-    image: "/images/team/priya.png",
-    linkedin: "#",
-    twitter: "#",
-    github: "#"
-  },
-  {
-    id: "static-3",
-    name: "Vikram Singhania",
-    role: "Director of Operations",
-    expertise: "Global Delivery & Agile Scale",
-    image: "/images/team/vikram.png",
-    linkedin: "#",
-    twitter: "#",
-    github: "#"
-  },
-  {
-    id: "static-4",
-    name: "Sneha Reddy",
-    role: "Director of Client Success",
-    expertise: "Client Partnerships & Product Growth",
-    image: "/images/team/sneha.png",
-    linkedin: "#",
-    twitter: "#",
-    github: "#"
-  },
-  {
-    id: "static-5",
-    name: "Aryan Kapoor",
-    role: "Director of Engineering",
-    expertise: "Cloud Infrastructure & Hyper-Scale Systems",
-    image: "/images/team/aryan.png",
-    linkedin: "#",
-    twitter: "#",
-    github: "#"
-  },
-  {
-    id: "static-6",
-    name: "Ananya Roy",
-    role: "Director of Product",
-    expertise: "SaaS Roadmap & AI-First Frameworks",
-    image: "/images/team/ananya.png",
-    linkedin: "#",
-    twitter: "#",
-    github: "#"
-  },
-  {
-    id: "static-8",
-    name: "Harsh Kumar",
-    role: "IT Administrator",
-    expertise: "Enterprise Infrastructure & Security Operations",
-    image: "/images/team/harsh.jpg",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-9",
-    name: "Shovam Kumar",
-    role: "Senior Full Stack Developer",
-    expertise: "Full Stack Architecture & Scalable Cloud Apps",
-    image: "/images/team/shovam_v2.png",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-10",
-    name: "Badal Kumar Singh",
-    role: "Senior Full Stack Developer",
-    expertise: "Full Stack Development & Scalable Backend Solutions",
-    image: "/images/team/badal.jpg",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-11",
-    name: "Kunal Bose",
-    role: "Senior Full Stack Developer",
-    expertise: "Full Stack Engineering & Modern Web Architectures",
-    image: "/images/team/kunal.png",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-12",
-    name: "Anuj Kumar",
-    role: "Full Stack Developer",
-    expertise: "Full Stack Web & Database Engineering",
-    image: "/images/team/anuj.png",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-13",
-    name: "Ravi Kumar",
-    role: "Senior Performance Marketing",
-    expertise: "Performance Marketing & Digital Growth Strategy",
-    image: "/images/team/ravi.png",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-14",
-    name: "Saovik Biswas",
-    role: "Senior App Developer",
-    expertise: "Mobile Application Design & Cross-Platform Systems",
-    image: "/images/team/saovik.png",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-15",
-    name: "Vikash Mahto",
-    role: "Senior SEO Executive & Developer",
-    expertise: "Search Engine Optimization & Frontend Web Development",
-    image: "/images/team/vikash.png",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-16",
-    name: "Roshni Kumar Singh",
-    role: "Graphic Designer",
-    expertise: "UI/UX & Graphic Design",
-    image: "/images/team/roshni.png",
-    linkedin: "",
-    twitter: "",
-    github: ""
-  },
-  {
-    id: "static-17",
-    name: "Anurag",
-    role: "Cinematographer",
-    expertise: "Cinematography & Media Production",
-    image: "/images/team/anurag.png",
-    linkedin: "",
-    twitter: "",
-    github: ""
   }
+
+
 ];
 
 export default function TeamPage() {
@@ -219,7 +51,7 @@ export default function TeamPage() {
       <PageHero
         badge="Our Experts"
         title="Meet the Minds Driving"
-        titleHighlight="eVeda Engineering"
+        titleHighlight="EVeda Engineering"
         description="A premium collective of directors, product leaders, and veteran system architects building the future of software."
         breadcrumbs={[{ label: "Team" }]}
       />

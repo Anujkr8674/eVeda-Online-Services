@@ -10,7 +10,7 @@ import {
   SiTailwindcss, SiFigma, SiGraphql, SiRedis, SiFlutter,
   SiAndroid, SiApple, SiGooglecloud, SiTerraform, SiGithubactions,
   SiSupabase, SiPrisma, SiStripe, SiOpenai,
-  SiBlender, SiCoreldraw, SiCanva,
+  SiBlender, SiCoreldraw, SiCanva, SiWordpress, SiShopify,
 } from "react-icons/si";
 import {
   TbBrandAdobeIllustrator,
@@ -67,10 +67,12 @@ const cardsData = [
   { name: "AWS", icon: FaAws, color: "#FF9900", r: 3, c: 1 },
   { name: "Docker", icon: SiDocker, color: "#2496ED", r: 3, c: 2 },
   { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5", r: 3, c: 3 },
-  { name: "Terraform", icon: SiTerraform, color: "#7B42BC", r: 3, c: 4 },
+  { name: "WordPress", icon: SiWordpress, color: "#21759B", r: 3, c: 4 },
+  // { name: "Terraform", icon: SiTerraform, color: "#7B42BC", r: 3, c: 4 },
 
   { name: "MongoDB", icon: SiMongodb, color: "#47A248", r: 3, c: 8 },
-  { name: "Redis", icon: SiRedis, color: "#DC382D", r: 3, c: 9 },
+  // { name: "Redis", icon: SiRedis, color: "#DC382D", r: 3, c: 9 },
+  { name: "Shopify", icon: SiShopify, color: "#95BF47", r: 3, c: 9 },
   { name: "Supabase", icon: SiSupabase, color: "#3ECF8E", r: 3, c: 10 },
   { name: "Prisma", icon: SiPrisma, color: "#8A9BA8", r: 3, c: 11 },
 

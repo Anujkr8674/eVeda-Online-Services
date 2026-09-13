@@ -14,7 +14,7 @@ export default function About({ isAboutPage = false }: AboutProps) {
     <section className="py-10 bg-white relative overflow-hidden" id="about">
       {/* Decorative Grid Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(rgba(15,23,42,0.02)_1px,transparent_1px)] [background-size:20px_20px] opacity-80 pointer-events-none z-0" />
-      
+
       {/* Subtle Radial Orbs for Light Theme */}
       <div className="absolute top-[10%] left-[-10%] w-[45%] h-[45%] bg-[radial-gradient(circle,_rgba(124,58,237,0.04)_0%,_transparent_70%)] blur-[90px] pointer-events-none z-0" />
       <div className="absolute bottom-[10%] right-[-10%] w-[45%] h-[45%] bg-[radial-gradient(circle,_rgba(6,182,212,0.03)_0%,_transparent_70%)] blur-[90px] pointer-events-none z-0" />
@@ -25,15 +25,15 @@ export default function About({ isAboutPage = false }: AboutProps) {
 
       <div className="max-w-[1400px] mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Premium Image Collage (Safari Mockup + Circular Overlapping Image) */}
           <div className="lg:col-span-6 relative pt-4 pb-8 lg:pb-0">
             {/* Background dynamic glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[radial-gradient(circle_at_center,_rgba(124,58,237,0.02)_0%,_transparent_75%)] pointer-events-none z-0" />
-            
+
             {/* Decorative Background Shape */}
             <div className="absolute top-[-20px] left-[-20px] w-48 h-48 bg-gradient-to-br from-purple-100/70 to-indigo-50/50 rounded-3xl -z-10 border border-purple-100/40 hidden sm:block animate-pulse duration-[8s]" />
-            
+
             {/* Subtle Dot Pattern */}
             <div className="absolute top-[-32px] left-[-32px] w-24 h-48 bg-[radial-gradient(var(--accent-global)_1.5px,transparent_1.5px)] [background-size:12px_12px] opacity-10 -z-15 hidden sm:block" />
 
@@ -50,7 +50,7 @@ export default function About({ isAboutPage = false }: AboutProps) {
                   evedaonlineservices.com/about
                 </div>
               </div>
-              
+
               {/* Main Image content */}
               <div className="relative aspect-[16/10] w-full bg-slate-50">
                 <Image
@@ -63,7 +63,7 @@ export default function About({ isAboutPage = false }: AboutProps) {
                 />
               </div>
             </div>
-            
+
             {/* Circular Overlapping Secondary Image Card (White border & custom shadow) */}
             <div className="absolute bottom-[-32px] left-[-24px] w-[38%] aspect-square rounded-full overflow-hidden border-4 border-white shadow-2xl bg-white z-20 hidden sm:block animate-float-slow">
               <div className="relative w-full h-full bg-slate-50">
@@ -105,7 +105,7 @@ export default function About({ isAboutPage = false }: AboutProps) {
 
             {/* Description */}
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
-              {COMPANY.description} Founded in {COMPANY.founded}, officially launched {COMPANY.launchDate} — built from Day 1 to compete globally.
+              We design Book Branding, Book Designs, and Graphic Designs, while building high-performance software, AI solutions, SaaS platforms, and enterprise systems for startups and forward-thinking businesses. Founded in {COMPANY.founded}, officially launched {COMPANY.launchDate} — built from Day 1 to compete globally.
             </p>
 
             {/* Features List */}

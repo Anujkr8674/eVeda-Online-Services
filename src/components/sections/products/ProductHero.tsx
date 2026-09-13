@@ -126,7 +126,7 @@ export default function ProductHero({
 
   return (
     <section
-      className="relative overflow-visible"
+      className="relative overflow-x-clip overflow-y-visible w-full max-w-full"
       /* Extra bottom padding so stats card (translate-y-1/2) doesn't clip mockup */
       style={{ minHeight: "100vh", background: "#000000", paddingTop: "110px", paddingBottom: "80px" }}
     >
@@ -305,11 +305,11 @@ export default function ProductHero({
 
       {/* ── Stats Card — same as Hero.tsx, straddling bottom ─────── */}
       <div className="relative z-20 px-4 md:absolute md:bottom-0 md:left-0 md:right-0 md:transform md:translate-y-1/2">
-        <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-y md:divide-y-0 divide-slate-100 max-w-6xl mx-auto bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.10)] border border-slate-100">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 max-w-6xl mx-auto bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.10)] border border-slate-100 w-full min-w-0 overflow-hidden">
           {stats.map((stat, idx) => {
             const SIcon = stat.icon;
             return (
-              <div key={idx} className="flex items-center gap-4 p-5 md:p-6">
+              <div key={idx} className="flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 md:p-6 min-w-0">
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background: accentAlpha }}>
                   <SIcon className="w-[18px] h-[18px]" style={{ color: accent }} />
                 </div>

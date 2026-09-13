@@ -17,27 +17,86 @@ import { COMPANY } from "@/lib/utils";
 import { useWebSettings } from "@/context/WebSettingsContext";
 import { triggerOnboardingModal } from "@/components/shared/OnboardingModal";
 
-function LogoMark({ size = 52 }: { size?: number }) {
+function LogoMark({
+  size = 85,
+  scrolled = false,
+  className = "",
+}: {
+  size?: number;
+  scrolled?: boolean;
+  className?: string;
+}) {
   return (
-    <img
-      src="/images/logo.png"
-      alt="Eveda Online Services"
-      style={{
-        height: `${size}px`,
-        width: "auto",
-        display: "block",
-        objectFit: "contain",
-        maxWidth: "220px",
-        transition: "all 0.5s ease-in-out",
-      }}
-      onError={(e) => {
-        e.currentTarget.style.display = "none";
-      }}
-    />
+    <div
+      className={cn(
+        "relative flex items-center transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform-gpu origin-center hover:scale-[1.08] hover:translate-y-0 group-hover/logo:scale-[1.08] group-hover/logo:translate-y-0 active:scale-95 active:translate-y-0 cursor-pointer select-none z-10",
+        scrolled
+          ? "hover:drop-shadow-[0_8px_20px_rgba(124,58,237,0.38)] hover:drop-shadow-[0_2px_6px_rgba(0,0,0,0.06)] group-hover/logo:drop-shadow-[0_8px_20px_rgba(124,58,237,0.38)]"
+          : "hover:drop-shadow-[0_12px_28px_rgba(167,139,250,0.7)] hover:drop-shadow-[0_2px_8px_rgba(255,255,255,0.25)] group-hover/logo:drop-shadow-[0_12px_28px_rgba(167,139,250,0.7)]",
+        className
+      )}
+      style={{ height: `${size}px` }}
+    >
+      <img
+        src={scrolled ? "/images/logo2.png" : "/images/logo.png"}
+        alt="Eveda Online Services"
+        style={{
+          height: `${size}px`,
+          width: "auto",
+          display: "block",
+          objectFit: "contain",
+          maxWidth: "320px",
+          transition: "height 0.4s ease-in-out, filter 0.3s ease-in-out",
+        }}
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+        }}
+      />
+    </div>
   );
 }
 
 const servicesMenuLinks = [
+  {
+    label: "Book Designing",
+    desc: "Cover formatting, typesetting & print",
+    href: "/services/book-designing",
+    icon: BookOpen,
+    color: "#F97316", // Orange
+    bg: "rgba(249, 115, 22, 0.08)"
+  },
+  {
+    label: "Book Branding",
+    desc: "Author launch PR & Amazon A+ suite",
+    href: "/services/book-branding",
+    icon: Sparkles,
+    color: "#c4347cdc", // Pink
+    bg: "rgba(196, 52, 124, 0.08)"
+  },
+  {
+    label: "Graphic Designing",
+    desc: "Visual collaterals & layout designs",
+    href: "/services/graphic-designing",
+    icon: PenTool,
+    color: "#06B6D4", // Cyan
+    bg: "rgba(6, 182, 212, 0.08)"
+  },
+  {
+    label: "Search Engine Optimization",
+    desc: "Rank page 1 on Google & search engines",
+    href: "/services/seo",
+    icon: Search,
+    color: "#3B82F6", // Blue
+    bg: "rgba(59, 130, 246, 0.08)"
+  },
+  {
+    label: "Social Media Marketing",
+    desc: "Grow audiences & organic content",
+    href: "/services/social-media-marketing",
+    icon: Share2,
+    color: "#8B5CF6", // Purple
+    bg: "rgba(139, 92, 246, 0.08)"
+  },
   {
     label: "Web Development",
     desc: "Custom full-stack web applications",
@@ -94,22 +153,7 @@ const servicesMenuLinks = [
     color: "#25D366", // Green
     bg: "rgba(37, 211, 102, 0.08)"
   },
-  {
-    label: "Search Engine Optimization",
-    desc: "Rank page 1 on Google & search engines",
-    href: "/services/seo",
-    icon: Search,
-    color: "#3B82F6", // Blue
-    bg: "rgba(59, 130, 246, 0.08)"
-  },
-  {
-    label: "Social Media Marketing",
-    desc: "Grow audiences & organic content",
-    href: "/services/social-media-marketing",
-    icon: Share2,
-    color: "#8B5CF6", // Purple
-    bg: "rgba(139, 92, 246, 0.08)"
-  },
+
   {
     label: "Paid Ads (PPC)",
     desc: "Target ad campaigns on Meta & Google",
@@ -126,30 +170,8 @@ const servicesMenuLinks = [
     color: "#EC4899", // Pink
     bg: "rgba(236, 72, 153, 0.08)"
   },
-  {
-    label: "Graphic Designing",
-    desc: "Visual collaterals & layout designs",
-    href: "/services/graphic-designing",
-    icon: PenTool,
-    color: "#06B6D4", // Cyan
-    bg: "rgba(6, 182, 212, 0.08)"
-  },
-  {
-    label: "Book Designing",
-    desc: "Cover formatting, typesetting & print",
-    href: "/services/book-designing",
-    icon: BookOpen,
-    color: "#F97316", // Orange
-    bg: "rgba(249, 115, 22, 0.08)"
-  },
-  {
-    label: "Book Branding",
-    desc: "Author launch PR & Amazon A+ suite",
-    href: "/services/book-branding",
-    icon: Sparkles,
-    color: "#c4347cdc", // Pink
-    bg: "rgba(196, 52, 124, 0.08)"
-  }
+
+
 ];
 
 const productsMenuLinks = [
@@ -347,8 +369,8 @@ export default function Navbar() {
           scrolled ? "h-[72px]" : "h-[104px]"
         )}>
           {/* Logo on Left */}
-          <Link href="/" className="flex items-center shrink-0 group" aria-label="Eveda Online Services — Home">
-            <LogoMark size={scrolled ? 46 : 56} />
+          <Link href="/" className="flex items-center shrink-0 group/logo relative z-20" aria-label="Eveda Online Services — Home">
+            <LogoMark size={scrolled ? 50 : 70} scrolled={scrolled} />
           </Link>
 
           {/* Centered Navigation Menu */}
@@ -387,23 +409,24 @@ export default function Navbar() {
                     aria-expanded={!!megaOpen}
                     aria-haspopup="true"
                   >
-
-                    <span>{link.label}</span>
-                    <ChevronDown
-                      className={cn(
-                        "w-3 h-3 transition-all duration-500 ease-in-out ml-0.5",
-                        scrolled
-                          ? (isActive ? "text-[#7C3AED]" : "text-slate-500 group-hover/nav:text-[#7C3AED]")
-                          : (isActive ? "text-white" : "text-white/60 group-hover/nav:text-white"),
-                        (megaOpen === link.label) && (scrolled ? "text-[#7C3AED] rotate-180" : "text-white rotate-180")
+                    <span className="relative inline-flex items-center gap-1 py-1">
+                      <span>{link.label}</span>
+                      <ChevronDown
+                        className={cn(
+                          "w-3 h-3 transition-all duration-500 ease-in-out ml-0.5",
+                          scrolled
+                            ? (isActive ? "text-[#7C3AED]" : "text-slate-500 group-hover/nav:text-[#7C3AED]")
+                            : (isActive ? "text-white" : "text-white/60 group-hover/nav:text-white"),
+                          (megaOpen === link.label) && (scrolled ? "text-[#7C3AED] rotate-180" : "text-white rotate-180")
+                        )}
+                      />
+                      {isActive && (
+                        <span className={cn(
+                          "absolute -bottom-1 left-0 right-0 h-[2.5px] rounded-full transition-all duration-300 ease-in-out shadow-sm",
+                          scrolled ? "bg-[#7C3AED]" : "bg-white"
+                        )} />
                       )}
-                    />
-                    {isActive && (
-                      <span className={cn(
-                        "absolute bottom-0 left-3 right-3 h-[3px] rounded-t-full transition-all duration-500 ease-in-out",
-                        scrolled ? "bg-[#7C3AED]" : "bg-white"
-                      )} />
-                    )}
+                    </span>
                   </Link>
 
                   {/* Mega Menu / Submenu matching the premium design */}
@@ -608,13 +631,15 @@ export default function Navbar() {
                       : (isActive ? "text-white" : "text-white/85 hover:text-white")
                   )}
                 >
-                  {link.label}
-                  {isActive && (
-                    <span className={cn(
-                      "absolute bottom-0 left-3 right-3 h-[3px] rounded-t-full transition-all duration-500 ease-in-out",
-                      scrolled ? "bg-[#7C3AED]" : "bg-white"
-                    )} />
-                  )}
+                  <span className="relative inline-flex items-center py-1">
+                    {link.label}
+                    {isActive && (
+                      <span className={cn(
+                        "absolute -bottom-1 left-0 right-0 h-[2.5px] rounded-full transition-all duration-300 ease-in-out shadow-sm",
+                        scrolled ? "bg-[#7C3AED]" : "bg-white"
+                      )} />
+                    )}
+                  </span>
                 </Link>
               );
             })}
@@ -654,8 +679,8 @@ export default function Navbar() {
           "flex lg:hidden items-center justify-between w-full px-4 py-3.5 transition-colors duration-500 ease-in-out",
           scrolled ? "bg-white text-slate-900 border-b border-slate-200" : "bg-transparent text-white"
         )}>
-          <Link href="/" className="flex items-center shrink-0" aria-label="Eveda Online Services — Home">
-            <LogoMark size={38} />
+          <Link href="/" className="flex items-center shrink-0 group/logo relative z-20" aria-label="Eveda Online Services — Home">
+            <LogoMark size={scrolled ? 44 : 50} scrolled={scrolled} />
           </Link>
           <div className="flex items-center gap-3">
             <button
@@ -695,7 +720,7 @@ export default function Navbar() {
             aria-label="Mobile navigation"
           >
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-              <LogoMark size={36} />
+              <Link href="/" onClick={() => setMobileOpen(false)} aria-label="Eveda Online Services — Home"><LogoMark size={46} scrolled={false} /></Link>
               <button
                 onClick={() => { setMobileOpen(false); window.scrollTo({ top: 0, left: 0, behavior: "instant" }); }}
                 className="w-9.5 h-9.5 rounded-lg flex items-center justify-center bg-slate-800 text-slate-400 hover:text-white transition-colors"

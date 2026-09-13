@@ -1,4 +1,19 @@
 import type { Metadata, Viewport } from "next";
+import { Sora, Inter } from "next/font/google";
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
 import { headers } from "next/headers";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -196,7 +211,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body
-        className={isCRM ? "crm-shell antialiased overflow-x-hidden" : "antialiased overflow-x-hidden"}
+        className={`${sora.variable} ${inter.variable} ${isCRM ? "crm-shell antialiased overflow-x-hidden" : "antialiased overflow-x-hidden"}`}
         style={
           isCRM
             ? { background: "var(--crm-bg)", color: "var(--crm-text)" }

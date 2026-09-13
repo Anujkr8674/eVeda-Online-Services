@@ -42,15 +42,15 @@ export default function WhyChooseUs() {
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Image Section */}
           <div className="lg:col-span-6 relative">
             {/* Background dynamic glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-[radial-gradient(circle_at_center,_rgba(124,58,237,0.03)_0%,_transparent_75%)] pointer-events-none z-0" />
-            
+
             {/* Decorative Background Shape */}
             <div className="absolute top-[-20px] right-[-20px] w-48 h-48 bg-gradient-to-br from-purple-100/70 to-indigo-50/50 rounded-3xl -z-10 border border-purple-100/40 hidden sm:block animate-pulse duration-[8s]" />
-            
+
             {/* Subtle Dot Pattern */}
             <div className="absolute bottom-[-32px] left-[-32px] w-32 h-32 bg-[radial-gradient(var(--accent-global)_1.5px,transparent_1.5px)] [background-size:12px_12px] opacity-15 -z-15 hidden sm:block" />
 
@@ -89,7 +89,7 @@ export default function WhyChooseUs() {
                 Why Choose Us
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-sora">
-                Why Global Leaders <span className="text-[var(--accent-global)]">Choose eVeda</span>
+                Why Global Leaders <span className="text-[var(--accent-global)]">Choose EVeda</span>
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 World-class engineering talent, enterprise security, and transparent delivery — engineered to maximize the ROI of your technology investments.

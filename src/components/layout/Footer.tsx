@@ -28,11 +28,14 @@ function LogoMark({ size = 68 }: { size?: number }) {
 
 const footerLinks = {
   Services: [
+    { label: "Book Designing", href: "services/book-designing" },
+    { label: "Book Branding", href: "services/book-branding" },
+    { label: "Graphic Designing", href: "/services/graphic-designing" },
     { label: "Web Development", href: "/services/web" },
     { label: "Mobile Apps", href: "/services/mobile" },
     { label: "SaaS Platforms", href: "/services/saas" },
-    { label: "AI Solutions", href: "/services/ai" },
-    { label: "Cloud & DevOps", href: "/services/cloud" },
+    // { label: "AI Solutions", href: "/services/ai" },
+    // { label: "Cloud & DevOps", href: "/services/cloud" },
     { label: "UI/UX Design", href: "/services/design" },
   ],
   Products: [
@@ -41,6 +44,7 @@ const footerLinks = {
     { label: "E-Commerce System", href: "/products/ecommerce" },
     { label: "Hospital Management", href: "/products/hms" },
     { label: "HR Payroll & Roster", href: "/products/hrms" },
+    { label: "Inventory Management", href: "/products/inventory" },
     { label: "POS & Retail Solutions", href: "/products/pos" },
   ],
   Company: [
@@ -49,6 +53,7 @@ const footerLinks = {
     { label: "Our Portfolio", href: "/portfolio" },
     { label: "Careers", href: "/careers" },
     { label: "Blog & Insights", href: "/blog" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Contact Us", href: "/contact" },
   ]
 };
@@ -164,7 +169,7 @@ export default function Footer() {
               </p>
               <div className="inline-flex items-center gap-2 text-[10px] font-extrabold text-slate-350 uppercase tracking-widest border border-white/[0.08] bg-white/[0.02] px-3.5 py-1.5 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] inline-block animate-pulse" />
-                Est. {COMPANY.founded} · Ranchi, India
+                Est. {COMPANY.founded} · Haridwar, India
               </div>
             </div>
           </div>
@@ -257,7 +262,7 @@ export default function Footer() {
             <span className="text-white/20">•</span>
             <span>Delhi</span>
             <span className="text-white/20">•</span>
-            <span>Gurugram</span>
+            <span>Ranchi</span>
             <span className="text-white/20">•</span>
             <span>Noida</span>
             <span className="text-white/20">•</span>

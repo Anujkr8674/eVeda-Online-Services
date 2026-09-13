@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import { verifyToken, TOKEN_KEY } from "@/lib/auth";
 import { COMPANY } from "@/lib/utils";
+import { invalidateWebsiteSettingsCache } from "@/lib/settings";
 
 async function getUser(req: NextRequest) {
   const token = req.cookies.get(TOKEN_KEY)?.value;
@@ -90,6 +91,7 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    invalidateWebsiteSettingsCache();
     return NextResponse.json({ success: true, updatedKeys: upserts.map((u) => u.key) });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });

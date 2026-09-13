@@ -548,7 +548,7 @@ export default function Portfolio() {
               badge="BUILD WITH US"
               title="Start Your"
               titleHighlight="Success Story"
-              description="Partner with eVeda to transform your product ideas into digital realities."
+              description="Partner with EVeda to transform your product ideas into digital realities."
               align="left"
               theme="dark"
               className="w-[320px] section-header-box"

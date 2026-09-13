@@ -19,6 +19,15 @@ export interface WebsiteSettings {
   };
 }
 
+let cachedSettings: WebsiteSettings | null = null;
+let cacheTimestamp = 0;
+const CACHE_TTL_MS = 1000 * 60 * 5; // 5 minutes server-side in-memory cache
+
+export function invalidateWebsiteSettingsCache() {
+  cachedSettings = null;
+  cacheTimestamp = 0;
+}
+
 export async function getWebsiteSettings(): Promise<WebsiteSettings> {
   const fallback: WebsiteSettings = {
     phone: COMPANY.phone,
@@ -31,28 +40,48 @@ export async function getWebsiteSettings(): Promise<WebsiteSettings> {
     social: { ...COMPANY.social },
   };
 
+  const now = Date.now();
+  if (cachedSettings && (now - cacheTimestamp < CACHE_TTL_MS)) {
+    return cachedSettings;
+  }
+
   if (!isSupabaseConfigured()) {
+    cachedSettings = fallback;
+    cacheTimestamp = now;
     return fallback;
   }
 
   try {
     const supabase = getServerSupabase();
-    if (!supabase) return fallback;
+    if (!supabase) {
+      cachedSettings = fallback;
+      cacheTimestamp = now;
+      return fallback;
+    }
 
-    const { data, error } = await supabase
+    // Wrap query with a 2-second timeout so network lag never freezes SSR
+    const fetchPromise = supabase
       .from("website_settings")
       .select("*");
+      
+    const timeoutPromise = new Promise<{ data: null; error: Error }>((_, reject) =>
+      setTimeout(() => reject(new Error("Supabase query timed out")), 2000)
+    );
 
-    if (error || !data) return fallback;
+    const { data, error } = await Promise.race([fetchPromise, timeoutPromise]) as any;
+
+    if (error || !data) {
+      return cachedSettings || fallback;
+    }
 
     const dbSettings: Record<string, any> = {};
-    data.forEach((row) => {
+    data.forEach((row: { key: string; value: any }) => {
       dbSettings[row.key] = row.value;
     });
 
     const finalAddress = dbSettings.address || fallback.address;
 
-    return {
+    const result: WebsiteSettings = {
       phone: dbSettings.phone || fallback.phone,
       email: dbSettings.email || fallback.email,
       supportEmail: dbSettings.supportEmail || fallback.supportEmail,
@@ -62,8 +91,12 @@ export async function getWebsiteSettings(): Promise<WebsiteSettings> {
       mapEmbed: dbSettings.mapEmbed || fallback.mapEmbed,
       social: dbSettings.social || fallback.social,
     };
+
+    cachedSettings = result;
+    cacheTimestamp = Date.now();
+    return result;
   } catch (e) {
-    console.error("Error fetching website settings on server:", e);
-    return fallback;
+    console.error("Error fetching website settings on server (using cache/fallback):", e);
+    return cachedSettings || fallback;
   }
 }
